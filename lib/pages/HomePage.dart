@@ -2,6 +2,11 @@
 import 'package:flutter/material.dart' hide VoidCallback;
 import 'package:papa/PapaComm.dart';
 import '../Storage.dart';
+import '../l10n/app_localizations.dart';
+
+//====================================================
+final String tag = 'HomePage.dart';
+//====================================================
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key, });
@@ -24,15 +29,31 @@ class HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return PapaComm.materialApp(
-        title: "",
-        locale: const Locale('ko'),
-        home: WillPopScope(
-          onWillPop: () async => false,
-          child : Scaffold(
-            backgroundColor: Colors.white,
+      home: Builder(
+        builder: (context) {
+          return Scaffold(
+            backgroundColor: Colors.blue,
+            body: Column(
+              children: [
+                const SizedBox(height: 10),
+                Text(
+                  AppLocalizations.of(context)?.title ?? '',
+                  style: const TextStyle(
+                    fontSize: 18,
+                    color: Color(0xFF540B73),
+                    fontWeight: FontWeight.bold,
+                  ),
+                  textAlign: TextAlign.center,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ],
+            ),
+          );
+        },
+      ),
+    );
 
-          ),
-        ));
   }
 
 }

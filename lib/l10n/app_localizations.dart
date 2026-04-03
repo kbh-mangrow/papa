@@ -98,7 +98,7 @@ abstract class AppLocalizations {
   /// No description provided for @title.
   ///
   /// In en, this message translates to:
-  /// **'HoYo'**
+  /// **'DeliveryPapa'**
   String get title;
 
   /// No description provided for @access_denied_title.

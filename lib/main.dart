@@ -23,12 +23,11 @@ void registerNativeHandler(void Function(String message) onMessage) {
   js_util.setProperty(
     html.window,
     'onNativeMessage',
-        (String message) {
-      onMessage(message);
-    },
+    js_util.allowInterop((message) {
+      onMessage(message?.toString() ?? '');
+    }),
   );
 }
-
 void sendAndroid(String message) {
   final bridge = js_util.getProperty(html.window, 'AndroidBridge');
   if (bridge != null) {
@@ -47,12 +46,11 @@ class PapaAppState extends State<PapaApp> {
   @override
   void initState() {
     super.initState();
-/*
+
     registerNativeHandler((message) {
       print('from android: $message');
     });
 
- */
   }
 
   @override

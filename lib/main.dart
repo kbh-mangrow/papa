@@ -28,11 +28,18 @@ void registerNativeHandler(void Function(String message) onMessage) {
     }),
   );
 }
+
 void sendAndroid(String message) {
   final bridge = js_util.getProperty(html.window, 'AndroidBridge');
-  if (bridge != null) {
-    js_util.callMethod(bridge, 'postMessage', [message]);
+  print('bridge: $bridge');
+  if (bridge == null) {
+    print('AndroidBridge is null');
+    return;
   }
+  final hasMethod = js_util.hasProperty(bridge, 'postMessage');
+  print('has postMessage: $hasMethod');
+  if (!hasMethod) return;
+  js_util.callMethod(bridge, 'postMessage', [message]);
 }
 
 class PapaAppState extends State<PapaApp> {

@@ -31,6 +31,20 @@
 
   <title>papa</title>
   <link rel="manifest" href="manifest.json">
+
+  <script>
+    window.sendToAndroid = function(message) {
+      if (typeof AndroidBridge !== 'undefined' && AndroidBridge.postMessage) {
+        AndroidBridge.postMessage(String(message));
+        return true;
+      }
+      return false;
+    };
+
+    window.onNativeMessage = function(message) {
+      console.log('from android:', message);
+    };
+  </script>
 </head>
 <body>
   <script src="flutter_bootstrap.js" async></script>

@@ -30,16 +30,16 @@ void registerNativeHandler(void Function(String message) onMessage) {
 }
 
 void sendAndroid(String message) {
-  final bridge = js_util.getProperty(html.window, 'AndroidBridge');
-  print('bridge: $bridge');
-  if (bridge == null) {
-    print('AndroidBridge is null');
+  final hasSender = js_util.hasProperty(js_util.globalThis, 'sendToAndroid');
+  print('has sendToAndroid: $hasSender');
+
+  if (!hasSender) {
+    print('sendToAndroid is not defined');
     return;
   }
-  final hasMethod = js_util.hasProperty(bridge, 'postMessage');
-  print('has postMessage: $hasMethod');
-  if (!hasMethod) return;
-  js_util.callMethod(bridge, 'postMessage', [message]);
+
+  final result = js_util.callMethod(js_util.globalThis, 'sendToAndroid', [message]);
+  print('sendToAndroid result: $result');
 }
 
 class PapaAppState extends State<PapaApp> {

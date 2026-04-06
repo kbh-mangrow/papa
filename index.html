@@ -43,6 +43,7 @@
 
     window.onNativeMessage = function(message) {
       console.log('from android:', message);
+      window.fromJs(message);
     };
   </script>
 </head>

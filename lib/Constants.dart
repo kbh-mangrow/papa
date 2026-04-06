@@ -9,4 +9,6 @@ class Constants {
   static const String OPEN_VIEW = 'open_view';
   static const String RMS2 = 'rms2';
 
+  static const String BACK_PRESSED = 'back_pressed';
+
 }

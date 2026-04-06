@@ -9,9 +9,14 @@ import 'JSBridgeInterface.dart';
 import 'PapaComm.dart';
 import 'common/GradientButtonStyle.dart';
 import 'l10n/app_localizations.dart';
+import 'dart:js' as js;
 
 void main() {
   runApp(const PapaApp());
+  
+  js.context['fromJs'] = (message) {
+    print('JS에서 받은 메시지: $message');
+  };
 }
 
 class PapaApp extends StatefulWidget {

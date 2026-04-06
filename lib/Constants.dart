@@ -4,4 +4,9 @@ class Constants {
 
   static const String KO = 'ko';
   static const String EN = 'en';
+
+
+  static const String OPEN_VIEW = 'open_view';
+  static const String RMS2 = 'rms2';
+
 }

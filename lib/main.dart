@@ -76,11 +76,10 @@ class PapaAppState extends State<PapaApp> {
                   width: double.infinity,
                   child: GradientButton(
                     onPressed: () {
-                      String command = "test";
-                      String message = "hello";
+
                       JSBridgeInterface params = JSBridgeInterface(
-                        command: command,
-                        data: JSData(message: message),
+                        command: Constants.OPEN_VIEW,
+                        data: JSData(key: Constants.RMS2),
                       );
                       AppBridge.sendApp(params);
 

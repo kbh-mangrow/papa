@@ -2,8 +2,10 @@ import 'dart:ui' as html;
 
 import 'package:flutter/material.dart';
 import 'package:js/js_util.dart' as js_util;
+import 'package:papa/AppBridge.dart';
 import 'package:papa/Constants.dart';
 
+import 'JSBridgeInterface.dart';
 import 'PapaComm.dart';
 import 'common/GradientButtonStyle.dart';
 import 'l10n/app_localizations.dart';
@@ -27,19 +29,6 @@ void registerNativeHandler(void Function(String message) onMessage) {
       onMessage(message?.toString() ?? '');
     }),
   );
-}
-
-void sendAndroid(String message) {
-  final hasSender = js_util.hasProperty(js_util.globalThis, 'sendToAndroid');
-  print('has sendToAndroid: $hasSender');
-
-  if (!hasSender) {
-    print('sendToAndroid is not defined');
-    return;
-  }
-
-  final result = js_util.callMethod(js_util.globalThis, 'sendToAndroid', [message]);
-  print('sendToAndroid result: $result');
 }
 
 class PapaAppState extends State<PapaApp> {
@@ -87,7 +76,14 @@ class PapaAppState extends State<PapaApp> {
                   width: double.infinity,
                   child: GradientButton(
                     onPressed: () {
-                      sendAndroid('test');
+                      String command = "test";
+                      String message = "hello";
+                      JSBridgeInterface params = JSBridgeInterface(
+                        command: command,
+                        data: JSData(message: message),
+                      );
+                      AppBridge.sendApp(params);
+
                     },
                     style: GradientButtonStyle(
                       padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),

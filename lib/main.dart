@@ -1,9 +1,11 @@
+import 'dart:convert';
 import 'dart:ui' as html;
 
 import 'package:flutter/material.dart';
 import 'package:js/js_util.dart' as js_util;
 import 'package:papa/AppBridge.dart';
 import 'package:papa/Constants.dart';
+import 'package:papa/common/FlutterToast.dart';
 
 import 'JSBridgeInterface.dart';
 import 'PapaComm.dart';
@@ -13,10 +15,23 @@ import 'dart:js' as js;
 
 void main() {
   runApp(const PapaApp());
-  
+
+  //from App
   js.context['fromJs'] = (message) {
-    print('JS에서 받은 메시지: $message');
+    if (message != null || !message.isEmpty) {
+      final objx = JSBridgeInterface.fromJson(jsonDecode(message));
+      switch (objx.command) {
+        case Constants.BACK_PRESSED : { //백키 눌림
+          FlutterToast.show("백키 눌림");
+          break;
+        }
+        default : {
+          break;
+        }
+      }
+    }
   };
+
 }
 
 class PapaApp extends StatefulWidget {

@@ -6,7 +6,7 @@ import 'package:papa/common/UIBuild.dart';
 import 'Constants.dart';
 
 class PapaComm {
-  static Widget materialApp({ required Widget home,}) {
+  static Widget deafultLayout({ required Widget home,}) {
     return UIBuild.materialApp(title: "", locale: const Locale(Constants.KO), home: home);
   }
 }

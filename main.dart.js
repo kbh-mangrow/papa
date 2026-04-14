@@ -53496,7 +53496,7 @@ switch(q){case"back_pressed":p=this.a.gbn()
 if(p==null)return
 if($.a8G){p.ei()
 return}if(p.tj()){p.ei()
-return}A.akd(new A.Up("finish_app",new A.Uq(o,o,o,o,o,o)))
+return}A.akd(new A.Up("finish_app",new A.Uq("","",o,o,o,o)))
 break
 default:break}}},
 $S:16}

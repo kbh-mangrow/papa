@@ -1,10 +1,10 @@
 {
   "@@locale": "ko",
   "title" : "택배아빠",
-  "access_denied_title" : "Incorrect access.",
-  "tab_home" : "홈",
-  "tab_work" : "근무",
-  "tab_safety" : "안전",
-  "tab_alarm" : "알림",
-  "tab_my" : "마이"
+
+  "rms2_tab_home" : "홈",
+  "rms2_tab_work" : "근무",
+  "rms2_tab_safety" : "안전",
+  "rms2_tab_alarm" : "알림",
+  "rms2_tab_my" : "마이"
 }

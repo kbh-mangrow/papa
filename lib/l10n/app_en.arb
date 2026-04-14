@@ -1,10 +1,10 @@
 {
   "@@locale": "en",
   "title" : "DeliveryPapa",
-  "access_denied_title" : "Incorrect access.",
-  "tab_home" : "Home",
-  "tab_work" : "Work",
-  "tab_safety" : "Safety",
-  "tab_alarm" : "Alarm",
-  "tab_my" : "My"
+
+  "rms2_tab_home" : "Home",
+  "rms2_tab_work" : "Work",
+  "rms2_tab_safety" : "Safety",
+  "rms2_tab_alarm" : "Alarm",
+  "rms2_tab_my" : "My"
 }

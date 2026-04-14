@@ -12,20 +12,17 @@ class AppLocalizationsKo extends AppLocalizations {
   String get title => '택배아빠';
 
   @override
-  String get access_denied_title => 'Incorrect access.';
+  String get rms2_tab_home => '홈';
 
   @override
-  String get tab_home => '홈';
+  String get rms2_tab_work => '근무';
 
   @override
-  String get tab_work => '근무';
+  String get rms2_tab_safety => '안전';
 
   @override
-  String get tab_safety => '안전';
+  String get rms2_tab_alarm => '알림';
 
   @override
-  String get tab_alarm => '알림';
-
-  @override
-  String get tab_my => '마이';
+  String get rms2_tab_my => '마이';
 }

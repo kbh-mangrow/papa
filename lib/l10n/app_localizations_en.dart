@@ -12,20 +12,17 @@ class AppLocalizationsEn extends AppLocalizations {
   String get title => 'DeliveryPapa';
 
   @override
-  String get access_denied_title => 'Incorrect access.';
+  String get rms2_tab_home => 'Home';
 
   @override
-  String get tab_home => 'Home';
+  String get rms2_tab_work => 'Work';
 
   @override
-  String get tab_work => 'Work';
+  String get rms2_tab_safety => 'Safety';
 
   @override
-  String get tab_safety => 'Safety';
+  String get rms2_tab_alarm => 'Alarm';
 
   @override
-  String get tab_alarm => 'Alarm';
-
-  @override
-  String get tab_my => 'My';
+  String get rms2_tab_my => 'My';
 }

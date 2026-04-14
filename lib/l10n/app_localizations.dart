@@ -101,41 +101,35 @@ abstract class AppLocalizations {
   /// **'DeliveryPapa'**
   String get title;
 
-  /// No description provided for @access_denied_title.
-  ///
-  /// In en, this message translates to:
-  /// **'Incorrect access.'**
-  String get access_denied_title;
-
-  /// No description provided for @tab_home.
+  /// No description provided for @rms2_tab_home.
   ///
   /// In en, this message translates to:
   /// **'Home'**
-  String get tab_home;
+  String get rms2_tab_home;
 
-  /// No description provided for @tab_work.
+  /// No description provided for @rms2_tab_work.
   ///
   /// In en, this message translates to:
   /// **'Work'**
-  String get tab_work;
+  String get rms2_tab_work;
 
-  /// No description provided for @tab_safety.
+  /// No description provided for @rms2_tab_safety.
   ///
   /// In en, this message translates to:
   /// **'Safety'**
-  String get tab_safety;
+  String get rms2_tab_safety;
 
-  /// No description provided for @tab_alarm.
+  /// No description provided for @rms2_tab_alarm.
   ///
   /// In en, this message translates to:
   /// **'Alarm'**
-  String get tab_alarm;
+  String get rms2_tab_alarm;
 
-  /// No description provided for @tab_my.
+  /// No description provided for @rms2_tab_my.
   ///
   /// In en, this message translates to:
   /// **'My'**
-  String get tab_my;
+  String get rms2_tab_my;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

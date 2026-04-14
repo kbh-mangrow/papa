@@ -7,6 +7,7 @@ import 'package:papa/pages/rms2/safety/SafetyPage.dart';
 import 'package:papa/pages/rms2/work/WorkPage.dart';
 import '../../../Storage.dart';
 import '../../../l10n/app_localizations.dart';
+import '../popup/CommonPopup.dart';
 
 //====================================================
 final String tag = 'Rms2Page.dart';
@@ -28,6 +29,23 @@ class Rms2PageState extends State<Rms2Page> {
   void initState() {
     super.initState();
     pages[0] = getPage();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      CommonPopup.show(context,
+        title: 'test',
+        message: 'message',
+        cancel: 'cancel',
+        ok: 'ok',
+        onOk: () {
+
+        },
+        onCancel: () {
+
+        }
+      );
+
+    });
+
   }
 
   @override
@@ -81,7 +99,7 @@ class Rms2PageState extends State<Rms2Page> {
                         Expanded(
                           child: Tab(
                             icon: Icons.home_rounded,
-                            label: AppLocalizations.of(context)!.tab_home,
+                            label: AppLocalizations.of(context)!.rms2_tab_home,
                             selected: index == 0,
                             onTap: () => onClick(0),
                           ),
@@ -89,7 +107,7 @@ class Rms2PageState extends State<Rms2Page> {
                         Expanded(
                           child: Tab(
                             icon: Icons.work_rounded,
-                            label: AppLocalizations.of(context)!.tab_work,
+                            label: AppLocalizations.of(context)!.rms2_tab_work,
                             selected: index == 1,
                             onTap: () => onClick(1),
                           ),
@@ -97,7 +115,7 @@ class Rms2PageState extends State<Rms2Page> {
                         Expanded(
                           child: Tab(
                             icon: Icons.safety_check,
-                            label: AppLocalizations.of(context)!.tab_safety,
+                            label: AppLocalizations.of(context)!.rms2_tab_safety,
                             selected: index == 2,
                             onTap: () => onClick(2),
                           ),
@@ -105,7 +123,7 @@ class Rms2PageState extends State<Rms2Page> {
                         Expanded(
                           child: Tab(
                             icon: Icons.alarm_rounded,
-                            label: AppLocalizations.of(context)!.tab_alarm,
+                            label: AppLocalizations.of(context)!.rms2_tab_alarm,
                             selected: index == 3,
                             onTap: () => onClick(3),
                           ),
@@ -113,7 +131,7 @@ class Rms2PageState extends State<Rms2Page> {
                         Expanded(
                           child: Tab(
                             icon: Icons.person_rounded,
-                            label: AppLocalizations.of(context)!.tab_my,
+                            label: AppLocalizations.of(context)!.rms2_tab_my,
                             selected: index == 4,
                             onTap: () => onClick(4),
                           ),

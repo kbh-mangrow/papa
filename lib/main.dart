@@ -37,12 +37,14 @@ void main() {
             return;
           }
 
-          JSBridgeInterface params = JSBridgeInterface(
-            command: Constants.FINISH_APP,
-            data: JSData(),
-          );
-          AppBridge.sendApp(params);
+          AppBridge.sendAppx(Constants.FINISH_APP);
 
+        /*
+        Navigator.push(
+  context,
+  MaterialPageRoute(builder: (_) => Page2()),
+);
+         */
           break;
         }
         default : {

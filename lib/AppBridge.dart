@@ -18,4 +18,11 @@ class AppBridge {
     final result = js_util.callMethod(js_util.globalThis, 'sendToAndroid', [json]);
     print('sendToAndroid result: $result');
   }
+  static void sendAppx(String command, {String key = '', String value = ''}) {
+    JSBridgeInterface params = JSBridgeInterface(
+      command: command,
+      data: JSData(key: key, value: value),
+    );
+    AppBridge.sendApp(params);
+  }
 }

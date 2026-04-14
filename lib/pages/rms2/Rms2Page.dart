@@ -5,7 +5,6 @@ import 'package:papa/pages/rms2/home/HomePage.dart';
 import 'package:papa/pages/rms2/my/MyPage.dart';
 import 'package:papa/pages/rms2/safety/SafetyPage.dart';
 import 'package:papa/pages/rms2/work/WorkPage.dart';
-import '../../../Storage.dart';
 import '../../../l10n/app_localizations.dart';
 import '../popup/CommonPopup.dart';
 

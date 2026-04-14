@@ -106,6 +106,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Incorrect access.'**
   String get access_denied_title;
+
+  /// No description provided for @tab_home.
+  ///
+  /// In en, this message translates to:
+  /// **'Home'**
+  String get tab_home;
+
+  /// No description provided for @tab_work.
+  ///
+  /// In en, this message translates to:
+  /// **'Work'**
+  String get tab_work;
+
+  /// No description provided for @tab_safety.
+  ///
+  /// In en, this message translates to:
+  /// **'Safety'**
+  String get tab_safety;
+
+  /// No description provided for @tab_alarm.
+  ///
+  /// In en, this message translates to:
+  /// **'Alarm'**
+  String get tab_alarm;
+
+  /// No description provided for @tab_my.
+  ///
+  /// In en, this message translates to:
+  /// **'My'**
+  String get tab_my;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

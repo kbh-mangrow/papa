@@ -13,4 +13,19 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get access_denied_title => 'Incorrect access.';
+
+  @override
+  String get tab_home => '홈';
+
+  @override
+  String get tab_work => '근무';
+
+  @override
+  String get tab_safety => '안전';
+
+  @override
+  String get tab_alarm => '알림';
+
+  @override
+  String get tab_my => '마이';
 }

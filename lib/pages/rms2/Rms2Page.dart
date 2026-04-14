@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:papa/PapaComm.dart';
 import 'package:papa/pages/rms2/alarm/AlarmPage.dart';
@@ -52,6 +51,12 @@ class Rms2PageState extends State<Rms2Page> {
     }
     return pages[index]!;
   }
+  void onClick(int idx) {
+    if (index == idx) return;
+    setState(() {
+      index = idx;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -70,7 +75,51 @@ class Rms2PageState extends State<Rms2Page> {
                   child: Container(
                     width: double.infinity,
                     height: 60,
-                    color: Colors.red,
+                    color: Colors.white,
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: Tab(
+                            icon: Icons.home_rounded,
+                            label: AppLocalizations.of(context)!.tab_home,
+                            selected: index == 0,
+                            onTap: () => onClick(0),
+                          ),
+                        ),
+                        Expanded(
+                          child: Tab(
+                            icon: Icons.work_rounded,
+                            label: AppLocalizations.of(context)!.tab_work,
+                            selected: index == 1,
+                            onTap: () => onClick(1),
+                          ),
+                        ),
+                        Expanded(
+                          child: Tab(
+                            icon: Icons.safety_check,
+                            label: AppLocalizations.of(context)!.tab_safety,
+                            selected: index == 2,
+                            onTap: () => onClick(2),
+                          ),
+                        ),
+                        Expanded(
+                          child: Tab(
+                            icon: Icons.alarm_rounded,
+                            label: AppLocalizations.of(context)!.tab_alarm,
+                            selected: index == 3,
+                            onTap: () => onClick(3),
+                          ),
+                        ),
+                        Expanded(
+                          child: Tab(
+                            icon: Icons.person_rounded,
+                            label: AppLocalizations.of(context)!.tab_my,
+                            selected: index == 4,
+                            onTap: () => onClick(4),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ],
@@ -105,7 +154,7 @@ class Tab extends StatelessWidget {
       onTap: onTap,
       borderRadius: BorderRadius.circular(16),
       child: SizedBox(
-        height: 64,
+        height: double.infinity,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

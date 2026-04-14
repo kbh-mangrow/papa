@@ -1,5 +1,10 @@
 {
   "@@locale": "en",
   "title" : "DeliveryPapa",
-  "access_denied_title" : "Incorrect access."
+  "access_denied_title" : "Incorrect access.",
+  "tab_home" : "Home",
+  "tab_work" : "Work",
+  "tab_safety" : "Safety",
+  "tab_alarm" : "Alarm",
+  "tab_my" : "My"
 }

@@ -66,7 +66,8 @@ class PapaAppState extends State<PapaApp> {
         return PapaComm.deafultLayout(home: Rms2Page());
       }
       default: {
-        return PapaComm.deafultLayout(home: PapaPage());
+        //return PapaComm.deafultLayout(home: PapaPage());
+        return PapaComm.deafultLayout(home: Rms2Page());
       }
     }
   }

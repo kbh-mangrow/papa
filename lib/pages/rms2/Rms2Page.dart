@@ -14,7 +14,8 @@ final String tag = 'Rms2Page.dart';
 //====================================================
 
 class Rms2Page extends StatefulWidget {
-  const Rms2Page({super.key, });
+  final GlobalKey<NavigatorState> navigatorKey;
+  const Rms2Page({super.key, required this.navigatorKey});
 
   @override
   State<Rms2Page> createState() => Rms2PageState();
@@ -24,28 +25,10 @@ class Rms2PageState extends State<Rms2Page> {
   int index = 0;
   final List<Widget?> pages = List<Widget?>.filled(5, null, growable: false);
 
-
   @override
   void initState() {
     super.initState();
     pages[0] = getPage();
-
-    WidgetsBinding.instance.addPostFrameCallback((_) async {
-      CommonPopup.show(context,
-        title: 'test',
-        message: 'message',
-        cancel: 'cancel',
-        ok: 'ok',
-        onOk: () {
-
-        },
-        onCancel: () {
-
-        }
-      );
-
-    });
-
   }
 
   @override
@@ -76,11 +59,27 @@ class Rms2PageState extends State<Rms2Page> {
     });
   }
 
+  void showPopup(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      CommonPopup.show(
+        context,
+        title: 'test',
+        message: 'message',
+        cancel: 'cancel',
+        ok: 'ok',
+        onOk: () {},
+        onCancel: () {},
+      );
+
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return PapaComm.deafultLayout(
       home: Builder(
         builder: (context) {
+          showPopup(context);
           return Scaffold(
             backgroundColor: Colors.white,
             body: Stack(
@@ -145,6 +144,7 @@ class Rms2PageState extends State<Rms2Page> {
           );
         },
       ),
+      navigatorKey: widget.navigatorKey
     );
 
   }

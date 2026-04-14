@@ -8,10 +8,12 @@ class UIBuild {
   static Widget materialApp({
     required String title,
     required Locale locale,
+    required GlobalKey<NavigatorState> navigatorKey,
     required Widget home,
   }) {
     return MaterialApp(
         locale: locale,
+        navigatorKey: navigatorKey,
         debugShowCheckedModeBanner: false,
         supportedLocales: const [
           Locale('en'),

@@ -28,22 +28,15 @@ class HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return PapaComm.deafultLayout(
-      home: Builder(
-        builder: (context) {
-          return Scaffold(
-            backgroundColor: Colors.blue,
-            body: Column(
-              children: [
-                const SizedBox(height: 10),
+    return Scaffold(
+      backgroundColor: Colors.red,
+      body: Column(
+        children: [
+          const SizedBox(height: 10),
 
-              ],
-            ),
-          );
-        },
+        ],
       ),
     );
-
   }
 
 }

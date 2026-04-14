@@ -13,7 +13,8 @@ final String tag = 'Rms2Page.dart';
 //====================================================
 
 class PapaPage extends StatefulWidget {
-  const PapaPage({super.key, });
+  final GlobalKey<NavigatorState> navigatorKey;
+  const PapaPage({super.key, required this.navigatorKey});
 
   @override
   State<PapaPage> createState() => PapaPageState();
@@ -93,6 +94,7 @@ class PapaPageState extends State<PapaPage> {
           );
         },
       ),
+      navigatorKey: widget.navigatorKey
     );
 
   }

@@ -6,7 +6,10 @@ import 'package:papa/common/UIBuild.dart';
 import 'Constants.dart';
 
 class PapaComm {
-  static Widget deafultLayout({ required Widget home,}) {
-    return UIBuild.materialApp(title: "", locale: const Locale(Constants.KO), home: home);
+  static Widget deafultLayout({ required Widget home, required GlobalKey<NavigatorState> navigatorKey}) {
+    return UIBuild.materialApp(title: "",
+                              locale: const Locale(Constants.KO),
+                              navigatorKey: navigatorKey,
+                              home: home);
   }
 }

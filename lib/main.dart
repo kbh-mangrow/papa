@@ -7,16 +7,16 @@ import 'package:papa/AppBridge.dart';
 import 'package:papa/Constants.dart';
 import 'package:papa/common/FlutterToast.dart';
 import 'package:papa/pages/papa/PapaPage.dart';
+import 'package:papa/pages/popup/AppOverlayState.dart';
 import 'package:papa/pages/rms2/Rms2Page.dart';
-import 'package:papa/pages/rms2/home/HomePage.dart';
 import 'dart:html' as html;
 import 'JSBridgeInterface.dart';
-import 'PapaComm.dart';
-import 'common/GradientButtonStyle.dart';
-import 'l10n/app_localizations.dart';
 import 'dart:js' as js;
 
+
 void main() {
+  final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
   //from App
   js.context['fromJs'] = (message) {
     if (message != null || !message.isEmpty) {
@@ -24,6 +24,21 @@ void main() {
       switch (objx.command) {
         case Constants.BACK_PRESSED : { //백키 눌림
           FlutterToast.show("백키 눌림");
+          final navigator = navigatorKey.currentState;
+          if (navigator == null) return;
+
+          if (AppOverlayState.isDialogOpen) {
+            navigator.pop();
+            return;
+          }
+
+          if (navigator.canPop()) {
+            navigator.pop();
+            return;
+          }
+
+          //sendAndroid('finish_app');
+
           break;
         }
         default : {
@@ -33,14 +48,17 @@ void main() {
     }
   };
 
+
   final uri = Uri.parse(html.window.location.href);
   String page = uri.queryParameters['page'] ?? '';
-  runApp(PapaApp(page: page));
+  runApp(PapaApp(page: page, navigatorKey: navigatorKey));
 }
 
 class PapaApp extends StatefulWidget {
   final String page;
-  const PapaApp({super.key, required this.page});
+  final GlobalKey<NavigatorState> navigatorKey;
+
+  const PapaApp({super.key, required this.page, required this.navigatorKey});
 
   @override
   State<PapaApp> createState() => PapaAppState();
@@ -63,11 +81,11 @@ class PapaAppState extends State<PapaApp> {
   Widget build(BuildContext context) {
     switch (widget.page) {
       case Constants.RMS2 : {
-        return PapaComm.deafultLayout(home: Rms2Page());
+        return Rms2Page(navigatorKey: widget.navigatorKey);
       }
       default: {
-        //return PapaComm.deafultLayout(home: PapaPage());
-        return PapaComm.deafultLayout(home: Rms2Page());
+        //return PapaPage(navigatorKey: widget.navigatorKey);
+        return Rms2Page(navigatorKey: widget.navigatorKey);
       }
     }
   }

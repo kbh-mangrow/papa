@@ -1,8 +1,6 @@
-import 'dart:ui_web' as html show EventListener;
+import 'package:flutter/material.dart';
 
-import 'package:flutter/material.dart' hide VoidCallback;
-import 'dart:html' as html hide EventListener;
-import 'dart:html' hide window;
+import 'AppOverlayState.dart';
 
 class CommonPopup extends StatefulWidget {
   final String title;
@@ -27,7 +25,7 @@ class CommonPopup extends StatefulWidget {
   @override
   State<CommonPopup> createState() => CommonPopupState();
 
-  static void show(
+  static Future<bool?> show(
       BuildContext context, {
         required String title,
         String? message,
@@ -37,10 +35,12 @@ class CommonPopup extends StatefulWidget {
         required String ok,
         required VoidCallback onOk,
       }) {
-    showDialog(
+    AppOverlayState.isDialogOpen = true;
+
+    return showDialog<bool>(
       context: context,
       barrierDismissible: false,
-      builder: (BuildContext context) {
+      builder: (BuildContext dialogContext) {
         return CommonPopup(
           title: title,
           message: message,
@@ -51,30 +51,17 @@ class CommonPopup extends StatefulWidget {
           onOk: onOk,
         );
       },
-    );
+    ).whenComplete(() {
+      AppOverlayState.isDialogOpen = false;
+    });
   }
 }
 
 class CommonPopupState extends State<CommonPopup> {
-  html.EventListener? popStateListener;
-
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async {
-        Navigator.of(context).pop();
-        return true;
-      },
+    return PopScope(
+      canPop: true,
       child: Dialog(
         backgroundColor: Colors.white,
         shape: RoundedRectangleBorder(
@@ -110,6 +97,7 @@ class CommonPopupState extends State<CommonPopup> {
                           style: const TextStyle(
                             fontSize: 13,
                           ),
+                          textAlign: TextAlign.center,
                         ),
                       ),
                     if (widget.widget != null) widget.widget!,
@@ -133,7 +121,7 @@ class CommonPopupState extends State<CommonPopup> {
                           child: InkWell(
                             onTap: () {
                               widget.onCancel?.call();
-                              Navigator.pop(context);
+                              Navigator.of(context).pop(false);
                             },
                             child: Center(
                               child: Text(
@@ -159,7 +147,7 @@ class CommonPopupState extends State<CommonPopup> {
                         child: InkWell(
                           onTap: () {
                             widget.onOk();
-                            Navigator.pop(context);
+                            Navigator.of(context).pop(true);
                           },
                           child: Center(
                             child: Text(

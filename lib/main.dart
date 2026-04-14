@@ -23,7 +23,7 @@ void main() {
       final objx = JSBridgeInterface.fromJson(jsonDecode(message));
       switch (objx.command) {
         case Constants.BACK_PRESSED : { //백키 눌림
-          FlutterToast.show("백키 눌림");
+          //FlutterToast.show("백키 눌림");
           final navigator = navigatorKey.currentState;
           if (navigator == null) return;
 
@@ -37,7 +37,11 @@ void main() {
             return;
           }
 
-          //sendAndroid('finish_app');
+          JSBridgeInterface params = JSBridgeInterface(
+            command: Constants.FINISH_APP,
+            data: JSData(),
+          );
+          AppBridge.sendApp(params);
 
           break;
         }

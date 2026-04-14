@@ -12,6 +12,10 @@ class Constants {
 
   static const String BACK_PRESSED = 'back_pressed';
 
+  static const String FINISH_APP = 'finish_app';
+
+
+
 
 
 }

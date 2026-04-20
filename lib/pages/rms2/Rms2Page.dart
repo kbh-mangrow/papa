@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:papa/AppBridge.dart';
+import 'package:papa/Constants.dart';
 import 'package:papa/PapaComm.dart';
 import 'package:papa/pages/rms2/alarm/AlarmPage.dart';
 import 'package:papa/pages/rms2/home/HomePage.dart';
@@ -75,10 +77,11 @@ class Rms2PageState extends State<Rms2Page> {
 
   @override
   Widget build(BuildContext context) {
+    AppBridge.sendAppx(Constants.INITIAL_PAGE);
+
     return PapaComm.deafultLayout(
       home: Builder(
         builder: (context) {
-          showPopup(context);
           return Scaffold(
             backgroundColor: Colors.white,
             body: Stack(
@@ -145,7 +148,6 @@ class Rms2PageState extends State<Rms2Page> {
       ),
       navigatorKey: widget.navigatorKey
     );
-
   }
 
 

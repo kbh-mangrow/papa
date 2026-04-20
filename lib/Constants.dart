@@ -14,6 +14,7 @@ class Constants {
   static const String BACK_PRESSED = 'back_pressed';
 
   static const String FINISH_APP = 'finish_app';
+  static const String INITIAL_PAGE = 'initial_page';
 
 
 

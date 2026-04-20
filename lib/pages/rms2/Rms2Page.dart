@@ -77,7 +77,9 @@ class Rms2PageState extends State<Rms2Page> {
 
   @override
   Widget build(BuildContext context) {
-    AppBridge.sendAppx(Constants.INITIAL_PAGE);
+    Future.delayed(Duration(milliseconds: 1000), () {
+      AppBridge.sendAppx(Constants.INITIAL_PAGE);
+    });
 
     return PapaComm.deafultLayout(
       home: Builder(

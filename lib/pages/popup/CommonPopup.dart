@@ -120,8 +120,8 @@ class CommonPopupState extends State<CommonPopup> {
                           color: Colors.transparent,
                           child: InkWell(
                             onTap: () {
-                              widget.onCancel?.call();
                               Navigator.of(context).pop(false);
+                              widget.onCancel?.call();
                             },
                             child: Center(
                               child: Text(
@@ -146,8 +146,8 @@ class CommonPopupState extends State<CommonPopup> {
                         color: Colors.transparent,
                         child: InkWell(
                           onTap: () {
-                            widget.onOk();
                             Navigator.of(context).pop(true);
+                            widget.onOk();
                           },
                           child: Center(
                             child: Text(

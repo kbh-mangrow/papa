@@ -2,12 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:papa/AppBridge.dart';
 import 'package:papa/Constants.dart';
 import 'package:papa/PapaComm.dart';
+import 'package:papa/pages/popup/PopupManager.dart';
 import 'package:papa/pages/rms2/alarm/AlarmPage.dart';
 import 'package:papa/pages/rms2/home/HomePage.dart';
 import 'package:papa/pages/rms2/my/MyPage.dart';
 import 'package:papa/pages/rms2/safety/SafetyPage.dart';
 import 'package:papa/pages/rms2/work/WorkPage.dart';
+import 'package:papa/pages/signin/SignInPage.dart';
 import '../../../l10n/app_localizations.dart';
+import '../../common/Navigation.dart';
 import '../popup/CommonPopup.dart';
 
 //====================================================
@@ -25,6 +28,7 @@ class Rms2Page extends StatefulWidget {
 class Rms2PageState extends State<Rms2Page> {
   int index = 0;
   final List<Widget?> pages = List<Widget?>.filled(5, null, growable: false);
+  late BuildContext context;
 
   @override
   void initState() {
@@ -53,37 +57,45 @@ class Rms2PageState extends State<Rms2Page> {
     }
     return pages[index]!;
   }
+
   void onClick(int idx) {
     if (index == idx) return;
-    setState(() {
-      index = idx;
-    });
-  }
 
-  void showPopup(BuildContext context) {
-    WidgetsBinding.instance.addPostFrameCallback((_) async {
-      CommonPopup.show(
-        context,
-        title: 'test',
-        message: 'message',
-        cancel: 'cancel',
-        ok: 'ok',
-        onOk: () {},
-        onCancel: () {},
-      );
-
-    });
+    if (idx == 4) { //임시
+      if (!PapaComm.isSignIn()) {
+        PopupManager.show(context,
+            AppLocalizations.of(context)!.signin,
+            AppLocalizations.of(context)!.popup_signin_confirm,
+            AppLocalizations.of(context)!.cancel,
+            AppLocalizations.of(context)!.ok, (status) {
+              if (status == 1) {
+                Navigation.startPageBottom(context, SignInPage());
+              }
+            });
+      }
+      else {
+        setState(() {
+          index = idx;
+        });
+      }
+    }
+    else {
+      setState(() {
+        index = idx;
+      });
+    }
   }
 
   @override
-  Widget build(BuildContext context) {
-    Future.delayed(Duration(milliseconds: 1000), () {
+  Widget build(BuildContext buildContext) {
+    Future.delayed(Duration(milliseconds: 300), () { //페이지 로딩 완료 전달
       AppBridge.sendAppx(Constants.INITIAL_PAGE);
     });
 
     return PapaComm.deafultLayout(
       home: Builder(
-        builder: (context) {
+        builder: (buildContext) {
+          this.context = buildContext;
           return Scaffold(
             backgroundColor: Colors.white,
             body: Stack(
@@ -102,7 +114,7 @@ class Rms2PageState extends State<Rms2Page> {
                         Expanded(
                           child: Tab(
                             icon: Icons.home_rounded,
-                            label: AppLocalizations.of(context)!.rms2_tab_home,
+                            label: AppLocalizations.of(buildContext)!.rms2_tab_home,
                             selected: index == 0,
                             onTap: () => onClick(0),
                           ),
@@ -110,7 +122,7 @@ class Rms2PageState extends State<Rms2Page> {
                         Expanded(
                           child: Tab(
                             icon: Icons.work_rounded,
-                            label: AppLocalizations.of(context)!.rms2_tab_work,
+                            label: AppLocalizations.of(buildContext)!.rms2_tab_work,
                             selected: index == 1,
                             onTap: () => onClick(1),
                           ),
@@ -118,7 +130,7 @@ class Rms2PageState extends State<Rms2Page> {
                         Expanded(
                           child: Tab(
                             icon: Icons.safety_check,
-                            label: AppLocalizations.of(context)!.rms2_tab_safety,
+                            label: AppLocalizations.of(buildContext)!.rms2_tab_safety,
                             selected: index == 2,
                             onTap: () => onClick(2),
                           ),
@@ -126,7 +138,7 @@ class Rms2PageState extends State<Rms2Page> {
                         Expanded(
                           child: Tab(
                             icon: Icons.alarm_rounded,
-                            label: AppLocalizations.of(context)!.rms2_tab_alarm,
+                            label: AppLocalizations.of(buildContext)!.rms2_tab_alarm,
                             selected: index == 3,
                             onTap: () => onClick(3),
                           ),
@@ -134,7 +146,7 @@ class Rms2PageState extends State<Rms2Page> {
                         Expanded(
                           child: Tab(
                             icon: Icons.person_rounded,
-                            label: AppLocalizations.of(context)!.rms2_tab_my,
+                            label: AppLocalizations.of(buildContext)!.rms2_tab_my,
                             selected: index == 4,
                             onTap: () => onClick(4),
                           ),

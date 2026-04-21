@@ -9,7 +9,7 @@ import '../../JSBridgeInterface.dart';
 import '../../common/GradientButtonStyle.dart';
 
 //====================================================
-final String tag = 'Rms2Page.dart';
+final String tag = 'PapaPage.dart';
 //====================================================
 
 class PapaPage extends StatefulWidget {

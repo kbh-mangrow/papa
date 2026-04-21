@@ -101,6 +101,36 @@ abstract class AppLocalizations {
   /// **'DeliveryPapa'**
   String get title;
 
+  /// No description provided for @signin.
+  ///
+  /// In en, this message translates to:
+  /// **'로그인'**
+  String get signin;
+
+  /// No description provided for @signup.
+  ///
+  /// In en, this message translates to:
+  /// **'회원가입'**
+  String get signup;
+
+  /// No description provided for @cancel.
+  ///
+  /// In en, this message translates to:
+  /// **'취소'**
+  String get cancel;
+
+  /// No description provided for @ok.
+  ///
+  /// In en, this message translates to:
+  /// **'확인'**
+  String get ok;
+
+  /// No description provided for @popup_signin_confirm.
+  ///
+  /// In en, this message translates to:
+  /// **'로그인이 필요한 서비스입니다.\n로그인 하시겠습니까?'**
+  String get popup_signin_confirm;
+
   /// No description provided for @rms2_tab_home.
   ///
   /// In en, this message translates to:

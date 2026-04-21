@@ -2,6 +2,13 @@
   "@@locale": "en",
   "title" : "DeliveryPapa",
 
+  "signin" : "로그인",
+  "signup" : "회원가입",
+  "cancel" : "취소",
+  "ok" : "확인",
+
+  "popup_signin_confirm" : "로그인이 필요한 서비스입니다.\n로그인 하시겠습니까?",
+
   "rms2_tab_home" : "Home",
   "rms2_tab_work" : "Work",
   "rms2_tab_safety" : "Safety",

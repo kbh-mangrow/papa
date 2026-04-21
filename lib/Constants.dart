@@ -15,7 +15,10 @@ class Constants {
 
   static const String FINISH_APP = 'finish_app';
   static const String INITIAL_PAGE = 'initial_page';
-
+  static const String SOCIAL_LOGIN = 'social_login';
+  static const String KAKAOTALK = 'kakaotalk';
+  static const String GOOGLE = 'google';
+  static const String APPLE = 'apple';
 
 
 

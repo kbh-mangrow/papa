@@ -12,4 +12,7 @@ class PapaComm {
                               navigatorKey: navigatorKey,
                               home: home);
   }
+  static bool isSignIn() {
+    return false;
+  }
 }

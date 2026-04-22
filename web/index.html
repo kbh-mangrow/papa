@@ -33,19 +33,15 @@
   <link rel="manifest" href="manifest.json">
 
   <script>
-    // Native로 메시지 보내기 (통합)
     window.sendToNative = function(message) {
-
-      // ✅ iOS
       if (window.webkit &&
           window.webkit.messageHandlers &&
-          window.webkit.messageHandlers.bridge) {
+          window.webkit.messageHandlers.iOSBridge) {
 
-        window.webkit.messageHandlers.bridge.postMessage(message);
+        window.webkit.messageHandlers.iOSBridge.postMessage(message);
         return true;
       }
 
-      // ✅ Android
       if (typeof AndroidBridge !== 'undefined' &&
           AndroidBridge.postMessage) {
 
@@ -57,7 +53,6 @@
       return false;
     };
 
-    // (기존 유지 가능)
     window.sendToAndroid = window.sendToNative;
 
     // Native → Web

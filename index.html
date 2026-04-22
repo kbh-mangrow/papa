@@ -33,17 +33,40 @@
   <link rel="manifest" href="manifest.json">
 
   <script>
-    window.sendToAndroid = function(message) {
-      if (typeof AndroidBridge !== 'undefined' && AndroidBridge.postMessage) {
+    // Native로 메시지 보내기 (통합)
+    window.sendToNative = function(message) {
+
+      // ✅ iOS
+      if (window.webkit &&
+          window.webkit.messageHandlers &&
+          window.webkit.messageHandlers.bridge) {
+
+        window.webkit.messageHandlers.bridge.postMessage(message);
+        return true;
+      }
+
+      // ✅ Android
+      if (typeof AndroidBridge !== 'undefined' &&
+          AndroidBridge.postMessage) {
+
         AndroidBridge.postMessage(String(message));
         return true;
       }
+
+      console.warn('No native bridge found');
       return false;
     };
 
+    // (기존 유지 가능)
+    window.sendToAndroid = window.sendToNative;
+
+    // Native → Web
     window.onNativeMessage = function(message) {
-      console.log('from android:', message);
-      window.fromJs(message);
+      console.log('from native:', message);
+
+      if (window.fromJs) {
+        window.fromJs(message);
+      }
     };
   </script>
 </head>

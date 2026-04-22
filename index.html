@@ -41,7 +41,14 @@
         window.webkit.messageHandlers.iOSBridge.postMessage(message);
         return true;
       }
+      if (window.parent &&
+          window.parent.webkit &&
+          window.parent.webkit.messageHandlers &&
+          window.parent.webkit.messageHandlers.iOSBridge) {
 
+        window.parent.webkit.messageHandlers.iOSBridge.postMessage(message);
+        return true;
+      }
       if (typeof AndroidBridge !== 'undefined' &&
           AndroidBridge.postMessage) {
 

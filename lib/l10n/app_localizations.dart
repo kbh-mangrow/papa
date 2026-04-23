@@ -131,6 +131,30 @@ abstract class AppLocalizations {
   /// **'로그인이 필요한 서비스입니다.\n로그인 하시겠습니까?'**
   String get popup_signin_confirm;
 
+  /// No description provided for @papa_tab_home.
+  ///
+  /// In en, this message translates to:
+  /// **'홈'**
+  String get papa_tab_home;
+
+  /// No description provided for @papa_tab_prod.
+  ///
+  /// In en, this message translates to:
+  /// **'혜택'**
+  String get papa_tab_prod;
+
+  /// No description provided for @papa_tab_alarm.
+  ///
+  /// In en, this message translates to:
+  /// **'알림'**
+  String get papa_tab_alarm;
+
+  /// No description provided for @papa_tab_my.
+  ///
+  /// In en, this message translates to:
+  /// **'마이'**
+  String get papa_tab_my;
+
   /// No description provided for @rms2_tab_home.
   ///
   /// In en, this message translates to:

@@ -6,16 +6,19 @@ import 'package:js/js_util.dart' as js_util;
 import 'package:papa/AppBridge.dart';
 import 'package:papa/Constants.dart';
 import 'package:papa/common/FlutterToast.dart';
+import 'package:papa/common/Network.dart';
 import 'package:papa/pages/papa/PapaPage.dart';
 import 'package:papa/pages/popup/AppOverlayState.dart';
 import 'package:papa/pages/rms2/Rms2Page.dart';
 import 'dart:html' as html;
+import 'Config.dart';
 import 'JSBridgeInterface.dart';
 import 'dart:js' as js;
 
 
 void main() {
   final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+  NetworkConfig.baseUrl = Config.BASE_URL;
 
   //from App
   js.context['fromJs'] = (message) {
@@ -38,13 +41,6 @@ void main() {
           }
 
           AppBridge.sendAppx(Constants.FINISH_APP);
-
-        /*
-        Navigator.push(
-  context,
-  MaterialPageRoute(builder: (_) => Page2()),
-);
-         */
           break;
         }
         default : {
@@ -90,8 +86,7 @@ class PapaAppState extends State<PapaApp> {
         return Rms2Page(navigatorKey: widget.navigatorKey);
       }
       default: {
-        //return PapaPage(navigatorKey: widget.navigatorKey);
-        return Rms2Page(navigatorKey: widget.navigatorKey);
+        return PapaPage(navigatorKey: widget.navigatorKey);
       }
     }
   }

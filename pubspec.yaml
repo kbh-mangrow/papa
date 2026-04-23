@@ -60,6 +60,7 @@ dependencies:
   pinch_zoom: ^2.0.1
   uuid: ^3.0.4
   sprintf: ^6.0.0
+  dio: ^5.9.2
 
 
 

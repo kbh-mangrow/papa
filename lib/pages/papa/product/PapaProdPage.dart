@@ -5,17 +5,17 @@ import '../../../Storage.dart';
 import '../../../l10n/app_localizations.dart';
 
 //====================================================
-final String tag = 'SafetyPage.dart';
+final String tag = 'PapaProdPage.dart';
 //====================================================
 
-class SafetyPage extends StatefulWidget {
-  const SafetyPage({super.key, });
+class PapaProdPage extends StatefulWidget {
+  const PapaProdPage({super.key, });
 
   @override
-  State<SafetyPage> createState() => SafetyPageState();
+  State<PapaProdPage> createState() => PapaProdPageState();
 }
 
-class SafetyPageState extends State<SafetyPage> {
+class PapaProdPageState extends State<PapaProdPage> {
   @override
   void initState() {
     super.initState();
@@ -29,7 +29,7 @@ class SafetyPageState extends State<SafetyPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.orange,
+      backgroundColor: Colors.yellow,
       body: Column(
         children: [
           const SizedBox(height: 10),

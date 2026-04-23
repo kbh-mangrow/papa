@@ -5,17 +5,17 @@ import '../../../Storage.dart';
 import '../../../l10n/app_localizations.dart';
 
 //====================================================
-final String tag = 'MyPage.dart';
+final String tag = 'PapaHomePage.dart';
 //====================================================
 
-class MyPage extends StatefulWidget {
-  const MyPage({super.key, });
+class PapaHomePage extends StatefulWidget {
+  const PapaHomePage({super.key, });
 
   @override
-  State<MyPage> createState() => MyPageState();
+  State<PapaHomePage> createState() => PapaHomePageState();
 }
 
-class MyPageState extends State<MyPage> {
+class PapaHomePageState extends State<PapaHomePage> {
   @override
   void initState() {
     super.initState();
@@ -29,7 +29,7 @@ class MyPageState extends State<MyPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.lightBlueAccent,
+      backgroundColor: Colors.white,
       body: Column(
         children: [
           const SizedBox(height: 10),

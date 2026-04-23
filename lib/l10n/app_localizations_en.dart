@@ -27,6 +27,18 @@ class AppLocalizationsEn extends AppLocalizations {
   String get popup_signin_confirm => '로그인이 필요한 서비스입니다.\n로그인 하시겠습니까?';
 
   @override
+  String get papa_tab_home => '홈';
+
+  @override
+  String get papa_tab_prod => '혜택';
+
+  @override
+  String get papa_tab_alarm => '알림';
+
+  @override
+  String get papa_tab_my => '마이';
+
+  @override
   String get rms2_tab_home => 'Home';
 
   @override

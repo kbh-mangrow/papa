@@ -5,17 +5,17 @@ import '../../../Storage.dart';
 import '../../../l10n/app_localizations.dart';
 
 //====================================================
-final String tag = 'HomePage.dart';
+final String tag = 'Rms2MyPage.dart';
 //====================================================
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key, });
+class Rms2MyPage extends StatefulWidget {
+  const Rms2MyPage({super.key, });
 
   @override
-  State<HomePage> createState() => HomePageState();
+  State<Rms2MyPage> createState() => Rms2MyPageState();
 }
 
-class HomePageState extends State<HomePage> {
+class Rms2MyPageState extends State<Rms2MyPage> {
   @override
   void initState() {
     super.initState();
@@ -29,7 +29,7 @@ class HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.red,
+      backgroundColor: Colors.lightBlueAccent,
       body: Column(
         children: [
           const SizedBox(height: 10),
@@ -37,6 +37,7 @@ class HomePageState extends State<HomePage> {
         ],
       ),
     );
+
   }
 
 }

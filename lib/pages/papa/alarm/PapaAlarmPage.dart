@@ -5,17 +5,17 @@ import '../../../Storage.dart';
 import '../../../l10n/app_localizations.dart';
 
 //====================================================
-final String tag = 'AlarmPage.dart';
+final String tag = 'PapaAlarmPage.dart';
 //====================================================
 
-class AlarmPage extends StatefulWidget {
-  const AlarmPage({super.key, });
+class PapaAlarmPage extends StatefulWidget {
+  const PapaAlarmPage({super.key, });
 
   @override
-  State<AlarmPage> createState() => AlarmPageState();
+  State<PapaAlarmPage> createState() => PapaAlarmPageState();
 }
 
-class AlarmPageState extends State<AlarmPage> {
+class PapaAlarmPageState extends State<PapaAlarmPage> {
   @override
   void initState() {
     super.initState();

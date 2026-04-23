@@ -1,12 +1,19 @@
 
-import 'package:flutter/material.dart' hide VoidCallback;
+import 'package:flutter/material.dart';
 import 'package:papa/PapaComm.dart';
+import 'package:papa/pages/papa/product/PapaProdPage.dart';
 import '../../../Storage.dart';
 import '../../../l10n/app_localizations.dart';
 import '../../AppBridge.dart';
 import '../../Constants.dart';
 import '../../JSBridgeInterface.dart';
 import '../../common/GradientButtonStyle.dart';
+import '../../common/Navigation.dart';
+import '../popup/PopupManager.dart';
+import '../signin/SignInPage.dart';
+import 'alarm/PapaAlarmPage.dart';
+import 'home/PapaHomePage.dart';
+import 'my/PapaMyPage.dart';
 
 //====================================================
 final String tag = 'PapaPage.dart';
@@ -21,9 +28,14 @@ class PapaPage extends StatefulWidget {
 }
 
 class PapaPageState extends State<PapaPage> {
+  int index = 0;
+  final List<Widget?> pages = List<Widget?>.filled(4, null, growable: false);
+  late BuildContext context;
+
   @override
   void initState() {
     super.initState();
+    pages[0] = getPage();
   }
 
   @override
@@ -31,72 +43,162 @@ class PapaPageState extends State<PapaPage> {
     super.dispose();
   }
 
+  Widget getPage() {
+    if (pages[index] == null) {
+      Widget page;
+      switch (index) {
+        case 0: { page = const PapaHomePage(); break; }
+        case 1: { page = const PapaProdPage(); break; }
+        case 2: { page = const PapaAlarmPage(); break; }
+        case 3: { page = const PapaMyPage(); break; }
+        default:
+          page = const SizedBox.shrink();
+      }
+      pages[index] = page;
+    }
+    return pages[index]!;
+  }
+
+  void onClick(int idx) {
+    if (index == idx) return;
+
+    if (idx == 3) { //마이
+      if (!PapaComm.isSignIn()) {
+        PopupManager.show(context,
+            AppLocalizations.of(context)!.signin,
+            AppLocalizations.of(context)!.popup_signin_confirm,
+            AppLocalizations.of(context)!.cancel,
+            AppLocalizations.of(context)!.ok, (status) {
+              if (status == 1) {
+                Navigation.startPageBottom(context, SignInPage());
+              }
+            });
+      }
+      else {
+        setState(() {
+          index = idx;
+        });
+      }
+    }
+    else {
+      setState(() {
+        index = idx;
+      });
+    }
+  }
+
+
   @override
   Widget build(BuildContext context) {
+    Future.delayed(Duration(milliseconds: 300), () { //페이지 로딩 완료 전달
+      AppBridge.sendAppx(Constants.INITIAL_PAGE);
+    });
+
     return PapaComm.deafultLayout(
-      home: Builder(
-        builder: (context) {
-          return Scaffold(
-            backgroundColor: Colors.lightBlue,
-            body: Column(
-              children: [
-                const SizedBox(height: 10),
-                Text(
-                  AppLocalizations.of(context)?.title ?? '',
-                  style: const TextStyle(
-                    fontSize: 18,
-                    color: Color(0xFF540B73),
-                    fontWeight: FontWeight.bold,
-                  ),
-                  textAlign: TextAlign.center,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                ),
-                Container(
-                  padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
-                  color: Colors.white,
-                  width: double.infinity,
-                  child: GradientButton(
-                    onPressed: () {
-
-                      JSBridgeInterface params = JSBridgeInterface(
-                        command: Constants.OPEN_VIEW,
-                        data: JSData(key: Constants.RMS2),
-                      );
-                      AppBridge.sendApp(params);
-
-                    },
-                    style: GradientButtonStyle(
-                      padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      textStyle: TextStyle(
-                        fontSize: 17,
-                        fontWeight: FontWeight.w900,
+        home: Builder(
+          builder: (buildContext) {
+            this.context = buildContext;
+            return Scaffold(
+                backgroundColor: Colors.white,
+                body: Stack(
+                  children: [
+                    Positioned.fill(
+                      child: getPage(), // 본문
+                    ),
+                    Align(
+                      alignment: Alignment.bottomCenter,
+                      child: Container(
+                        width: double.infinity,
+                        height: 60,
                         color: Colors.white,
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: Tab(
+                                icon: Icons.home_rounded,
+                                label: AppLocalizations.of(buildContext)!.papa_tab_home,
+                                selected: index == 0,
+                                onTap: () => onClick(0),
+                              ),
+                            ),
+                            Expanded(
+                              child: Tab(
+                                icon: Icons.work_rounded,
+                                label: AppLocalizations.of(buildContext)!.papa_tab_prod,
+                                selected: index == 1,
+                                onTap: () => onClick(1),
+                              ),
+                            ),
+                            Expanded(
+                              child: Tab(
+                                icon: Icons.safety_check,
+                                label: AppLocalizations.of(buildContext)!.papa_tab_alarm,
+                                selected: index == 2,
+                                onTap: () => onClick(2),
+                              ),
+                            ),
+                            Expanded(
+                              child: Tab(
+                                icon: Icons.alarm_rounded,
+                                label: AppLocalizations.of(buildContext)!.papa_tab_my,
+                                selected: index == 3,
+                                onTap: () => onClick(3),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
-                      elevation: 0,
                     ),
-                    gradient: LinearGradient(
-                      colors: [Color(0xff1D36F3), Color(0xff1D36F3)],
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                    ),
-                    child: Text('send app bridge'),
-                  ),
-                ),
-
-
-
-              ],
-            ),
-          );
-        },
-      ),
-      navigatorKey: widget.navigatorKey
+                  ],
+                )
+            );
+          },
+        ),
+        navigatorKey: widget.navigatorKey
     );
 
   }
 
+}
+
+
+class Tab extends StatelessWidget {
+  final IconData icon;
+  final String label;
+  final bool selected;
+  final VoidCallback onTap;
+
+  const Tab({
+    required this.icon,
+    required this.label,
+    required this.selected,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final color = selected ? const Color(0xFF540B73) : Colors.grey;
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(16),
+      child: SizedBox(
+        height: double.infinity,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(icon, color: color),
+            const SizedBox(height: 4),
+            Text(
+              label,
+              style: TextStyle(
+                color: color,
+                fontSize: 12,
+                fontWeight: selected ? FontWeight.w700 : FontWeight.w500,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 }

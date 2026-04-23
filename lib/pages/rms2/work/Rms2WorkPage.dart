@@ -5,17 +5,17 @@ import '../../../Storage.dart';
 import '../../../l10n/app_localizations.dart';
 
 //====================================================
-final String tag = 'WorkPage.dart';
+final String tag = 'Rms2WorkPage.dart';
 //====================================================
 
-class WorkPage extends StatefulWidget {
-  const WorkPage({super.key, });
+class Rms2WorkPage extends StatefulWidget {
+  const Rms2WorkPage({super.key, });
 
   @override
-  State<WorkPage> createState() => WorkPageState();
+  State<Rms2WorkPage> createState() => Rms2WorkPageState();
 }
 
-class WorkPageState extends State<WorkPage> {
+class Rms2WorkPageState extends State<Rms2WorkPage> {
   @override
   void initState() {
     super.initState();

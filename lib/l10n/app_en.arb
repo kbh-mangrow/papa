@@ -9,6 +9,11 @@
 
   "popup_signin_confirm" : "로그인이 필요한 서비스입니다.\n로그인 하시겠습니까?",
 
+  "papa_tab_home" : "홈",
+  "papa_tab_prod" : "혜택",
+  "papa_tab_alarm" : "알림",
+  "papa_tab_my" : "마이",
+
   "rms2_tab_home" : "Home",
   "rms2_tab_work" : "Work",
   "rms2_tab_safety" : "Safety",

@@ -98,7 +98,7 @@ abstract class AppLocalizations {
   /// No description provided for @title.
   ///
   /// In en, this message translates to:
-  /// **'DeliveryPapa'**
+  /// **'택배아빠'**
   String get title;
 
   /// No description provided for @signin.
@@ -124,6 +124,72 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'확인'**
   String get ok;
+
+  /// No description provided for @count.
+  ///
+  /// In en, this message translates to:
+  /// **'건'**
+  String get count;
+
+  /// No description provided for @show.
+  ///
+  /// In en, this message translates to:
+  /// **'보기'**
+  String get show;
+
+  /// No description provided for @more.
+  ///
+  /// In en, this message translates to:
+  /// **'모두보기'**
+  String get more;
+
+  /// No description provided for @join.
+  ///
+  /// In en, this message translates to:
+  /// **'참여하기'**
+  String get join;
+
+  /// No description provided for @sun.
+  ///
+  /// In en, this message translates to:
+  /// **'Sun'**
+  String get sun;
+
+  /// No description provided for @mon.
+  ///
+  /// In en, this message translates to:
+  /// **'Mon'**
+  String get mon;
+
+  /// No description provided for @tue.
+  ///
+  /// In en, this message translates to:
+  /// **'Tue'**
+  String get tue;
+
+  /// No description provided for @wed.
+  ///
+  /// In en, this message translates to:
+  /// **'Wed'**
+  String get wed;
+
+  /// No description provided for @thu.
+  ///
+  /// In en, this message translates to:
+  /// **'Thu'**
+  String get thu;
+
+  /// No description provided for @fri.
+  ///
+  /// In en, this message translates to:
+  /// **'Fri'**
+  String get fri;
+
+  /// No description provided for @sat.
+  ///
+  /// In en, this message translates to:
+  /// **'Sat'**
+  String get sat;
 
   /// No description provided for @popup_signin_confirm.
   ///
@@ -155,35 +221,209 @@ abstract class AppLocalizations {
   /// **'마이'**
   String get papa_tab_my;
 
+  /// No description provided for @papa_home_welcome.
+  ///
+  /// In en, this message translates to:
+  /// **'환영합니다!'**
+  String get papa_home_welcome;
+
+  /// No description provided for @papa_home_login.
+  ///
+  /// In en, this message translates to:
+  /// **'지금 로그인해보세요.'**
+  String get papa_home_login;
+
+  /// No description provided for @papa_home_hello.
+  ///
+  /// In en, this message translates to:
+  /// **'안녕하세요,'**
+  String get papa_home_hello;
+
+  /// No description provided for @papa_home_name.
+  ///
+  /// In en, this message translates to:
+  /// **'님!'**
+  String get papa_home_name;
+
+  /// No description provided for @papa_home_rms2_alarm_format.
+  ///
+  /// In en, this message translates to:
+  /// **'미확인 알림이 %d건 있습니다.'**
+  String get papa_home_rms2_alarm_format;
+
+  /// No description provided for @papa_home_use_service.
+  ///
+  /// In en, this message translates to:
+  /// **'이용중인 서비스'**
+  String get papa_home_use_service;
+
+  /// No description provided for @papa_home_use_service_descr.
+  ///
+  /// In en, this message translates to:
+  /// **'님이 이용중인 택배아빠 서비스'**
+  String get papa_home_use_service_descr;
+
+  /// No description provided for @papa_home_recommend_prod.
+  ///
+  /// In en, this message translates to:
+  /// **'추천 금융 상품'**
+  String get papa_home_recommend_prod;
+
+  /// No description provided for @papa_home_recommend_prod_descr.
+  ///
+  /// In en, this message translates to:
+  /// **'기사님만을 위한 추천 상품'**
+  String get papa_home_recommend_prod_descr;
+
+  /// No description provided for @papa_home_partner_prod.
+  ///
+  /// In en, this message translates to:
+  /// **'파트너 제휴 혜택'**
+  String get papa_home_partner_prod;
+
+  /// No description provided for @papa_home_partner_prod_descr.
+  ///
+  /// In en, this message translates to:
+  /// **'택배아빠가 엄선한 제휴 혜택'**
+  String get papa_home_partner_prod_descr;
+
+  /// No description provided for @papa_home_event.
+  ///
+  /// In en, this message translates to:
+  /// **'이벤트'**
+  String get papa_home_event;
+
+  /// No description provided for @papa_home_event_descr.
+  ///
+  /// In en, this message translates to:
+  /// **'택배아빠와 함께하는 깜짝 이벤트'**
+  String get papa_home_event_descr;
+
   /// No description provided for @rms2_tab_home.
   ///
   /// In en, this message translates to:
-  /// **'Home'**
+  /// **'홈'**
   String get rms2_tab_home;
 
   /// No description provided for @rms2_tab_work.
   ///
   /// In en, this message translates to:
-  /// **'Work'**
+  /// **'근무'**
   String get rms2_tab_work;
 
   /// No description provided for @rms2_tab_safety.
   ///
   /// In en, this message translates to:
-  /// **'Safety'**
+  /// **'안전'**
   String get rms2_tab_safety;
 
   /// No description provided for @rms2_tab_alarm.
   ///
   /// In en, this message translates to:
-  /// **'Alarm'**
+  /// **'알림'**
   String get rms2_tab_alarm;
 
   /// No description provided for @rms2_tab_my.
   ///
   /// In en, this message translates to:
-  /// **'My'**
+  /// **'마이'**
   String get rms2_tab_my;
+
+  /// No description provided for @rms2_title_full.
+  ///
+  /// In en, this message translates to:
+  /// **'RMS II 안전관리'**
+  String get rms2_title_full;
+
+  /// No description provided for @rms2_title_descr.
+  ///
+  /// In en, this message translates to:
+  /// **'안전관리 스마트 케어 서비스'**
+  String get rms2_title_descr;
+
+  /// No description provided for @rms2_work_status_onduty.
+  ///
+  /// In en, this message translates to:
+  /// **'근무중'**
+  String get rms2_work_status_onduty;
+
+  /// No description provided for @rms2_work_status_not_onduty.
+  ///
+  /// In en, this message translates to:
+  /// **'출근 전'**
+  String get rms2_work_status_not_onduty;
+
+  /// No description provided for @rms2_work_status_offwork.
+  ///
+  /// In en, this message translates to:
+  /// **'퇴근'**
+  String get rms2_work_status_offwork;
+
+  /// No description provided for @common_company_name.
+  ///
+  /// In en, this message translates to:
+  /// **'주식회사 에스엠티에이아이'**
+  String get common_company_name;
+
+  /// No description provided for @common_label_business_registration_number.
+  ///
+  /// In en, this message translates to:
+  /// **'사업자등록번호'**
+  String get common_label_business_registration_number;
+
+  /// No description provided for @common_value_business_registration_number.
+  ///
+  /// In en, this message translates to:
+  /// **'782-81-03388'**
+  String get common_value_business_registration_number;
+
+  /// No description provided for @common_label_ecommerce_registration_number.
+  ///
+  /// In en, this message translates to:
+  /// **'통신판매신고번호'**
+  String get common_label_ecommerce_registration_number;
+
+  /// No description provided for @common_value_ecommerce_registration_number.
+  ///
+  /// In en, this message translates to:
+  /// **'제 2026-서울강남-00904호'**
+  String get common_value_ecommerce_registration_number;
+
+  /// No description provided for @common_label_ceo_name.
+  ///
+  /// In en, this message translates to:
+  /// **'대표자명'**
+  String get common_label_ceo_name;
+
+  /// No description provided for @common_value_ceo_name.
+  ///
+  /// In en, this message translates to:
+  /// **'최홍범'**
+  String get common_value_ceo_name;
+
+  /// No description provided for @common_label_phone_number.
+  ///
+  /// In en, this message translates to:
+  /// **'대표번호'**
+  String get common_label_phone_number;
+
+  /// No description provided for @common_value_phone_number.
+  ///
+  /// In en, this message translates to:
+  /// **'02-567-0096'**
+  String get common_value_phone_number;
+
+  /// No description provided for @common_label_address.
+  ///
+  /// In en, this message translates to:
+  /// **'주소'**
+  String get common_label_address;
+
+  /// No description provided for @common_value_address.
+  ///
+  /// In en, this message translates to:
+  /// **'서울특별시 강남구 봉은사로 129, 2층 201호'**
+  String get common_value_address;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

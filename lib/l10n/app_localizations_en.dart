@@ -36,6 +36,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get join => '참여하기';
 
   @override
+  String get next => '다음';
+
+  @override
+  String get prev => '이전';
+
+  @override
+  String get complete => '가입';
+
+  @override
   String get sun => 'Sun';
 
   @override
@@ -55,6 +64,69 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get sat => 'Sat';
+
+  @override
+  String get signin_welcome => ' 에\n오신 것을 환영합니다! 👋';
+
+  @override
+  String get signin_id => '아이디';
+
+  @override
+  String get signin_id_hint => '아이디를 입력해 주세요.';
+
+  @override
+  String get signin_password => '비밀번호';
+
+  @override
+  String get signin_password_hint => '비밀번호를 입력해 주세요.';
+
+  @override
+  String get signin_id_save => '아이디 저장하기';
+
+  @override
+  String get signin_forgot => '기억나지 않으신가요?';
+
+  @override
+  String get signin_social => '소셜 로그인';
+
+  @override
+  String get signin_first => '첫 방문이신가요?';
+
+  @override
+  String get signin_signup => '지금 가입하기';
+
+  @override
+  String get signin_forgot_id => '아이디 찾기';
+
+  @override
+  String get signin_forgot_password => '비밀번호 찾기';
+
+  @override
+  String get signup_title => '회원가입';
+
+  @override
+  String get signup_id => '아이디';
+
+  @override
+  String get signup_id_hint => '사용할 아이디를 입력해 주세요.';
+
+  @override
+  String get signup_id_error => '아이디 형식오류. (영문/숫자 6자 이상 ~ 30자 미만)';
+
+  @override
+  String get signup_password => '비밀번호';
+
+  @override
+  String get signup_password_hint => '사용할 비밀번호를 입력해 주세요.';
+
+  @override
+  String get signup_password_re => '비밀번호 확인';
+
+  @override
+  String get signup_password_re_hint => '비밀번호를 다시 입력해 주세요.';
+
+  @override
+  String get signup_password_error => '비밀번호 형식오류. (영문/숫자 포함 8자 이상 ~ 30자 미만)';
 
   @override
   String get popup_signin_confirm => '로그인이 필요한 서비스입니다.\n로그인 하시겠습니까?';

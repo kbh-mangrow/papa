@@ -18,8 +18,7 @@ final String tag = 'Rms2Page.dart';
 //====================================================
 
 class Rms2Page extends StatefulWidget {
-  final GlobalKey<NavigatorState> navigatorKey;
-  const Rms2Page({super.key, required this.navigatorKey});
+  const Rms2Page({super.key, });
 
   @override
   State<Rms2Page> createState() => Rms2PageState();
@@ -28,7 +27,6 @@ class Rms2Page extends StatefulWidget {
 class Rms2PageState extends State<Rms2Page> {
   int index = 0;
   final List<Widget?> pages = List<Widget?>.filled(5, null, growable: false);
-  late BuildContext context;
 
   @override
   void initState() {
@@ -66,81 +64,71 @@ class Rms2PageState extends State<Rms2Page> {
   }
 
   @override
-  Widget build(BuildContext buildContext) {
+  Widget build(BuildContext context) {
     Future.delayed(Duration(milliseconds: 300), () { //페이지 로딩 완료 전달
       AppBridge.sendAppx(Constants.INITIAL_PAGE);
     });
 
-    return PapaComm.deafultLayout(
-      home: Builder(
-        builder: (buildContext) {
-          this.context = buildContext;
-          return Scaffold(
-            backgroundColor: Colors.white,
-            body: Stack(
+    return Stack(
+      children: [
+        Positioned.fill(
+          child: getPage(), // 본문
+        ),
+        Align(
+          alignment: Alignment.bottomCenter,
+          child: Container(
+            width: double.infinity,
+            height: 60,
+            color: Colors.white,
+            child: Row(
               children: [
-                Positioned.fill(
-                  child: getPage(), // 본문
+                Expanded(
+                  child: Tab(
+                    icon: Icons.home_rounded,
+                    label: AppLocalizations.of(context)!.rms2_tab_home,
+                    selected: index == 0,
+                    onTap: () => onClick(0),
+                  ),
                 ),
-                Align(
-                  alignment: Alignment.bottomCenter,
-                  child: Container(
-                    width: double.infinity,
-                    height: 60,
-                    color: Colors.white,
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: Tab(
-                            icon: Icons.home_rounded,
-                            label: AppLocalizations.of(buildContext)!.rms2_tab_home,
-                            selected: index == 0,
-                            onTap: () => onClick(0),
-                          ),
-                        ),
-                        Expanded(
-                          child: Tab(
-                            icon: Icons.work_rounded,
-                            label: AppLocalizations.of(buildContext)!.rms2_tab_work,
-                            selected: index == 1,
-                            onTap: () => onClick(1),
-                          ),
-                        ),
-                        Expanded(
-                          child: Tab(
-                            icon: Icons.safety_check,
-                            label: AppLocalizations.of(buildContext)!.rms2_tab_safety,
-                            selected: index == 2,
-                            onTap: () => onClick(2),
-                          ),
-                        ),
-                        Expanded(
-                          child: Tab(
-                            icon: Icons.alarm_rounded,
-                            label: AppLocalizations.of(buildContext)!.rms2_tab_alarm,
-                            selected: index == 3,
-                            onTap: () => onClick(3),
-                          ),
-                        ),
-                        Expanded(
-                          child: Tab(
-                            icon: Icons.person_rounded,
-                            label: AppLocalizations.of(buildContext)!.rms2_tab_my,
-                            selected: index == 4,
-                            onTap: () => onClick(4),
-                          ),
-                        ),
-                      ],
-                    ),
+                Expanded(
+                  child: Tab(
+                    icon: Icons.work_rounded,
+                    label: AppLocalizations.of(context)!.rms2_tab_work,
+                    selected: index == 1,
+                    onTap: () => onClick(1),
+                  ),
+                ),
+                Expanded(
+                  child: Tab(
+                    icon: Icons.safety_check,
+                    label: AppLocalizations.of(context)!.rms2_tab_safety,
+                    selected: index == 2,
+                    onTap: () => onClick(2),
+                  ),
+                ),
+                Expanded(
+                  child: Tab(
+                    icon: Icons.alarm_rounded,
+                    label: AppLocalizations.of(context)!.rms2_tab_alarm,
+                    selected: index == 3,
+                    onTap: () => onClick(3),
+                  ),
+                ),
+                Expanded(
+                  child: Tab(
+                    icon: Icons.person_rounded,
+                    label: AppLocalizations.of(context)!.rms2_tab_my,
+                    selected: index == 4,
+                    onTap: () => onClick(4),
                   ),
                 ),
               ],
-            )
-          );
-        },
-      ),
-      navigatorKey: widget.navigatorKey
+            ),
+          ),
+        ),
+      ],
     );
+
   }
 
 

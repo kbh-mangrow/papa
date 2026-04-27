@@ -15,6 +15,8 @@ import 'Config.dart';
 import 'JSBridgeInterface.dart';
 import 'dart:js' as js;
 
+import 'PapaComm.dart';
+
 
 void main() {
   final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
@@ -81,13 +83,20 @@ class PapaAppState extends State<PapaApp> {
 
   @override
   Widget build(BuildContext context) {
-    switch (widget.page) {
-      case Constants.RMS2 : {
-        return Rms2Page(navigatorKey: widget.navigatorKey);
-      }
-      default: {
-        return PapaPage(navigatorKey: widget.navigatorKey);
-      }
-    }
+    final Widget pageWidget = widget.page == Constants.RMS2
+        ? Rms2Page()
+        : PapaPage();
+
+    return PapaComm.deafultLayout(
+        home: Builder(
+          builder: (buildContext) {
+            return Scaffold(
+              backgroundColor: Colors.white,
+              body: pageWidget
+            );
+          },
+        ),
+        navigatorKey: widget.navigatorKey
+    );
   }
 }

@@ -3,7 +3,12 @@ import 'dart:math';
 
 import 'package:flutter/material.dart' hide VoidCallback;
 import 'package:papa/PapaComm.dart';
+import 'package:papa/Storage.dart';
+import 'package:papa/pages/rms2/Rms2Page.dart';
 
+import '../../../../AppBridge.dart';
+import '../../../../Constants.dart';
+import '../../../../common/Navigation.dart';
 import '../../../../l10n/app_localizations.dart';
 
 //====================================================
@@ -281,6 +286,9 @@ class Rms2SectionPageState extends State<Rms2SectionPage> {
                         highlightColor: Colors.white.withOpacity(0.08),
                         onTap: () {
                           //RMS2 로 이동
+                          //Navigation.startPageRight(context, Rms2Page());
+                          AppBridge.sendAppx(Constants.OPEN_VIEW, key: Constants.RMS2);
+
                         },
                       ),
                     ),

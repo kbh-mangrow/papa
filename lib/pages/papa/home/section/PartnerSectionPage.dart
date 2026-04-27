@@ -18,7 +18,7 @@ class PartnerSectionPage extends StatefulWidget {
 class PartnerSectionPageState extends State<PartnerSectionPage> {
   List<String> items = ['A', 'B', 'C'];
   final PageController controller = PageController(
-    viewportFraction: 0.8,
+    viewportFraction: 0.7,
   );
 
   @override
@@ -87,29 +87,92 @@ class PartnerSectionPageState extends State<PartnerSectionPage> {
 
   Widget PageItem(String text) {
     return Padding(
-      padding: const EdgeInsets.only(right: 12),
+      padding: const EdgeInsets.only(right: 8),
       child: Stack(
         children: [
-          Container(
-            margin: EdgeInsets.only(
-              left: 4,
-              right: 4,
-              top: 4,
-              bottom: 4,
-            ),
-            decoration: BoxDecoration(
-              color: Colors.blue,
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Center(
-              child: Text(
-                text,
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                margin: EdgeInsets.only(
+                  left: 4,
+                  right: 4,
+                  top: 4,
+                  bottom: 4,
+                ),
+                height: 144,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(8),
+                  child: Image.network(
+                    'https://cdn.the-pr.co.kr/news/photo/202504/53285_85849_3942.jpg',
+                    width: double.infinity,
+                    height: double.infinity,
+                    fit: BoxFit.cover,
+                    errorBuilder: (context, error, stackTrace) {
+                      return Image.asset(
+                        'images/img_default.png',
+                        width: double.infinity,
+                        height: double.infinity,
+                        fit: BoxFit.cover,
+                      );
+                    },
+                  ),
                 ),
               ),
-            ),
+              Container(
+                margin: EdgeInsets.only(
+                  left: 4,
+                  right: 0,
+                  top: 0,
+                  bottom: 0,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      '메가스터디',
+                      style: const TextStyle(
+                        color: Color(0xff1B2028),
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                      ),
+                      textAlign: TextAlign.left,
+                    ),
+                    Text(
+                      '초중고 인강 askjdksjhfjkshkfjhsdjhfkdjhgkjhdfgkjhfkjh',
+                      style: const TextStyle(
+                        color: Color(0xff999999),
+                        fontSize: 15,
+                      ),
+                      textAlign: TextAlign.left,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    Text.rich(
+                      TextSpan(
+                        style: TextStyle(
+                          color: Color(0xff343C4A),
+                          fontSize: 15,
+                        ),
+                        children: [
+                          TextSpan(text: '파트너 제휴'),
+                          TextSpan(
+                            text: ' 최대 50%',
+                            style: TextStyle(
+                              color: Colors.red,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+
+                  ],
+                )
+              ),
+
+
+            ],
           ),
           Positioned(
             child: Container(
@@ -122,7 +185,7 @@ class PartnerSectionPageState extends State<PartnerSectionPage> {
             child: Material(
               color: Colors.transparent,
               child: InkWell(
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(8),
                 splashColor: Colors.white.withOpacity(0.2),
                 highlightColor: Colors.white.withOpacity(0.08),
                 onTap: () {

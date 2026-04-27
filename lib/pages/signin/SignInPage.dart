@@ -23,6 +23,7 @@ class SignInPage extends StatefulWidget {
 }
 
 class SignInPageState extends State<SignInPage> {
+  Offset? _tapPosition;
   @override
   void initState() {
     super.initState();
@@ -39,7 +40,37 @@ class SignInPageState extends State<SignInPage> {
       backgroundColor: Colors.white,
       body: Column(
         children: [
-          const SizedBox(height: 10),
+          const SizedBox(height: 56),
+          Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: 16,
+              vertical: 0,
+            ),
+            child: Text.rich(
+              TextSpan(
+                children: [
+                  TextSpan(
+                    text: AppLocalizations.of(context)!.title,
+                    style: TextStyle(
+                        color: Color(0xff478DFA),
+                        fontWeight: FontWeight.bold,
+                        fontSize: 30
+                    ),
+                  ),
+                  TextSpan(
+                    text: AppLocalizations.of(context)!.signin_welcome,
+                    style: TextStyle(
+                        color: Color(0xff111827),
+                        fontSize: 15
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+
+
+
           Row(children: [
             TextButton(
               onPressed: () {
@@ -73,7 +104,7 @@ class SignInPageState extends State<SignInPage> {
             ),
             TextButton(
               onPressed: () {
-                doAuth();
+                //doAuth();
               },
               style: TextButton.styleFrom(
                 foregroundColor: Colors.blue,
@@ -82,7 +113,73 @@ class SignInPageState extends State<SignInPage> {
               child: Text('본인인증'),
             ),
 
+            Listener(
+              onPointerDown: (PointerDownEvent event) {
+                _tapPosition = event.position; // ⭐ 터치 좌표 저장
+              },
+              child: TextButton(
+                onPressed: () async {
+                  if (_tapPosition == null) return;
+
+                  final selected = await showMenu(
+                    context: context,
+                    color: Colors.white,
+                    elevation: 3,
+                    shape: RoundedRectangleBorder( // ⭐ 핵심
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    position: RelativeRect.fromLTRB(
+                      _tapPosition!.dx,
+                      _tapPosition!.dy,
+                      _tapPosition!.dx,
+                      _tapPosition!.dy,
+                    ),
+                    items: [
+                      PopupMenuItem(
+                        value: 'auth',
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 16,
+                            vertical: 0,
+                          ),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Image.asset(
+                                'image/id.png',
+                                width: 24,
+                                height: 24,
+                              ),
+                              SizedBox(width: 10,),
+                              Text('아이디 찾기'),
+                            ],
+                          ),
+                        ),
+                      ),
+                      PopupMenuItem(
+                        value: 'cancel',
+                        child: Text('취소'),
+                      ),
+                    ],
+                  );
+
+                  if (selected == 'auth') {
+                    print('본인인증 실행');
+                  }
+                },
+                style: TextButton.styleFrom(
+                  foregroundColor: Colors.blue,
+                  textStyle: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                child: const Text('TEST'),
+              ),
+            )
           ],)
+
+
         ],
       ),
     );

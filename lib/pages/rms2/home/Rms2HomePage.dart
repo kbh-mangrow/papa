@@ -1,6 +1,8 @@
 
 import 'package:flutter/material.dart' hide VoidCallback;
 import 'package:papa/PapaComm.dart';
+import '../../../AppBridge.dart';
+import '../../../Constants.dart';
 import '../../../Storage.dart';
 import '../../../l10n/app_localizations.dart';
 
@@ -29,11 +31,20 @@ class Rms2HomePageState extends State<Rms2HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.red,
+      backgroundColor: Colors.white,
       body: Column(
         children: [
           const SizedBox(height: 10),
-
+          TextButton(
+            onPressed: () {
+              AppBridge.sendAppx(Constants.OPEN_VIEW, key: Constants.DELIVERY);
+            },
+            style: TextButton.styleFrom(
+              foregroundColor: Colors.blue,
+              textStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            ),
+            child: Text('택배아빠로'),
+          ),
         ],
       ),
     );

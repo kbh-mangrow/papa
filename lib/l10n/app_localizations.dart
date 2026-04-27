@@ -149,6 +149,24 @@ abstract class AppLocalizations {
   /// **'참여하기'**
   String get join;
 
+  /// No description provided for @next.
+  ///
+  /// In en, this message translates to:
+  /// **'다음'**
+  String get next;
+
+  /// No description provided for @prev.
+  ///
+  /// In en, this message translates to:
+  /// **'이전'**
+  String get prev;
+
+  /// No description provided for @complete.
+  ///
+  /// In en, this message translates to:
+  /// **'가입'**
+  String get complete;
+
   /// No description provided for @sun.
   ///
   /// In en, this message translates to:
@@ -190,6 +208,132 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Sat'**
   String get sat;
+
+  /// No description provided for @signin_welcome.
+  ///
+  /// In en, this message translates to:
+  /// **' 에\n오신 것을 환영합니다! 👋'**
+  String get signin_welcome;
+
+  /// No description provided for @signin_id.
+  ///
+  /// In en, this message translates to:
+  /// **'아이디'**
+  String get signin_id;
+
+  /// No description provided for @signin_id_hint.
+  ///
+  /// In en, this message translates to:
+  /// **'아이디를 입력해 주세요.'**
+  String get signin_id_hint;
+
+  /// No description provided for @signin_password.
+  ///
+  /// In en, this message translates to:
+  /// **'비밀번호'**
+  String get signin_password;
+
+  /// No description provided for @signin_password_hint.
+  ///
+  /// In en, this message translates to:
+  /// **'비밀번호를 입력해 주세요.'**
+  String get signin_password_hint;
+
+  /// No description provided for @signin_id_save.
+  ///
+  /// In en, this message translates to:
+  /// **'아이디 저장하기'**
+  String get signin_id_save;
+
+  /// No description provided for @signin_forgot.
+  ///
+  /// In en, this message translates to:
+  /// **'기억나지 않으신가요?'**
+  String get signin_forgot;
+
+  /// No description provided for @signin_social.
+  ///
+  /// In en, this message translates to:
+  /// **'소셜 로그인'**
+  String get signin_social;
+
+  /// No description provided for @signin_first.
+  ///
+  /// In en, this message translates to:
+  /// **'첫 방문이신가요?'**
+  String get signin_first;
+
+  /// No description provided for @signin_signup.
+  ///
+  /// In en, this message translates to:
+  /// **'지금 가입하기'**
+  String get signin_signup;
+
+  /// No description provided for @signin_forgot_id.
+  ///
+  /// In en, this message translates to:
+  /// **'아이디 찾기'**
+  String get signin_forgot_id;
+
+  /// No description provided for @signin_forgot_password.
+  ///
+  /// In en, this message translates to:
+  /// **'비밀번호 찾기'**
+  String get signin_forgot_password;
+
+  /// No description provided for @signup_title.
+  ///
+  /// In en, this message translates to:
+  /// **'회원가입'**
+  String get signup_title;
+
+  /// No description provided for @signup_id.
+  ///
+  /// In en, this message translates to:
+  /// **'아이디'**
+  String get signup_id;
+
+  /// No description provided for @signup_id_hint.
+  ///
+  /// In en, this message translates to:
+  /// **'사용할 아이디를 입력해 주세요.'**
+  String get signup_id_hint;
+
+  /// No description provided for @signup_id_error.
+  ///
+  /// In en, this message translates to:
+  /// **'아이디 형식오류. (영문/숫자 6자 이상 ~ 30자 미만)'**
+  String get signup_id_error;
+
+  /// No description provided for @signup_password.
+  ///
+  /// In en, this message translates to:
+  /// **'비밀번호'**
+  String get signup_password;
+
+  /// No description provided for @signup_password_hint.
+  ///
+  /// In en, this message translates to:
+  /// **'사용할 비밀번호를 입력해 주세요.'**
+  String get signup_password_hint;
+
+  /// No description provided for @signup_password_re.
+  ///
+  /// In en, this message translates to:
+  /// **'비밀번호 확인'**
+  String get signup_password_re;
+
+  /// No description provided for @signup_password_re_hint.
+  ///
+  /// In en, this message translates to:
+  /// **'비밀번호를 다시 입력해 주세요.'**
+  String get signup_password_re_hint;
+
+  /// No description provided for @signup_password_error.
+  ///
+  /// In en, this message translates to:
+  /// **'비밀번호 형식오류. (영문/숫자 포함 8자 이상 ~ 30자 미만)'**
+  String get signup_password_error;
 
   /// No description provided for @popup_signin_confirm.
   ///

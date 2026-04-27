@@ -20,8 +20,7 @@ final String tag = 'PapaPage.dart';
 //====================================================
 
 class PapaPage extends StatefulWidget {
-  final GlobalKey<NavigatorState> navigatorKey;
-  const PapaPage({super.key, required this.navigatorKey});
+  const PapaPage({super.key, });
 
   @override
   State<PapaPage> createState() => PapaPageState();
@@ -94,67 +93,65 @@ class PapaPageState extends State<PapaPage> {
       AppBridge.sendAppx(Constants.INITIAL_PAGE);
     });
 
-    return PapaComm.deafultLayout(
-        home: Builder(
-          builder: (buildContext) {
-            this.context = buildContext;
-            return Scaffold(
-                backgroundColor: Colors.white,
-                body: Stack(
-                  children: [
-                    Positioned.fill(
-                      child: getPage(), // 본문
-                    ),
-                    Align(
-                      alignment: Alignment.bottomCenter,
-                      child: Container(
-                        width: double.infinity,
-                        height: 84,
-                        color: Colors.white,
-                        child: Row(
-                          children: [
-                            Expanded(
-                              child: Tab(
-                                icon: Icons.home_rounded,
-                                label: AppLocalizations.of(buildContext)!.papa_tab_home,
-                                selected: index == 0,
-                                onTap: () => onClick(0),
-                              ),
-                            ),
-                            Expanded(
-                              child: Tab(
-                                icon: Icons.work_rounded,
-                                label: AppLocalizations.of(buildContext)!.papa_tab_prod,
-                                selected: index == 1,
-                                onTap: () => onClick(1),
-                              ),
-                            ),
-                            Expanded(
-                              child: Tab(
-                                icon: Icons.safety_check,
-                                label: AppLocalizations.of(buildContext)!.papa_tab_alarm,
-                                selected: index == 2,
-                                onTap: () => onClick(2),
-                              ),
-                            ),
-                            Expanded(
-                              child: Tab(
-                                icon: Icons.alarm_rounded,
-                                label: AppLocalizations.of(buildContext)!.papa_tab_my,
-                                selected: index == 3,
-                                onTap: () => onClick(3),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                )
-            );
-          },
+    return Stack(
+      children: [
+        Positioned.fill(
+          child: getPage(), // 본문
         ),
-        navigatorKey: widget.navigatorKey
+        Align(
+          alignment: Alignment.bottomCenter,
+          child: Container(
+            width: double.infinity,
+            height: 84,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.03),
+                  blurRadius: 3,
+                  offset: Offset(0, -5),
+                ),
+              ],
+            ),
+            child: Row(
+              children: [
+                Expanded(
+                  child: Tab(
+                    icon: Icons.home_rounded,
+                    label: AppLocalizations.of(context)!.papa_tab_home,
+                    selected: index == 0,
+                    onTap: () => onClick(0),
+                  ),
+                ),
+                Expanded(
+                  child: Tab(
+                    icon: Icons.work_rounded,
+                    label: AppLocalizations.of(context)!.papa_tab_prod,
+                    selected: index == 1,
+                    onTap: () => onClick(1),
+                  ),
+                ),
+                Expanded(
+                  child: Tab(
+                    icon: Icons.safety_check,
+                    label: AppLocalizations.of(context)!.papa_tab_alarm,
+                    selected: index == 2,
+                    onTap: () => onClick(2),
+                  ),
+                ),
+                Expanded(
+                  child: Tab(
+                    icon: Icons.alarm_rounded,
+                    label: AppLocalizations.of(context)!.papa_tab_my,
+                    selected: index == 3,
+                    onTap: () => onClick(3),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ],
     );
 
   }

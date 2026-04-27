@@ -2,7 +2,12 @@
 import 'package:flutter/material.dart' hide VoidCallback;
 import 'package:papa/PapaComm.dart';
 import 'package:papa/common/FlutterToast.dart';
+import 'package:papa/pages/papa/home/section/AdsSectionPage.dart';
+import 'package:papa/pages/papa/home/section/EventSectionPage.dart';
+import 'package:papa/pages/papa/home/section/PartnerSectionPage.dart';
+import 'package:papa/pages/papa/home/section/RecommendSectionPage.dart';
 import 'package:papa/pages/papa/home/section/Rms2SectionPage.dart';
+import 'package:papa/pages/papa/home/section/UseServiceSectionPage.dart';
 import '../../../Storage.dart';
 import '../../../common/Date.dart';
 import '../../../l10n/app_localizations.dart';
@@ -139,13 +144,178 @@ class PapaHomePageState extends State<PapaHomePage> {
 
             ],),
           ),
+          Expanded(
+            child: SingleChildScrollView(
+              child: Column(children: [
+                SizedBox(height: 16),
+                Column(children: [
+                  //RMS2
+                  Column(children: [ Rms2SectionPage(),
+                    SizedBox(height: 30,)
+                  ],),
+                  //프로모션
+                  Column(children: [ AdsSectionPage(),
+                    SizedBox(height: 30,)
+                  ],),
+                  //이용중인서비스
+                  Column(children: [ UseServiceSectionPage(),
+                    SizedBox(height: 30,)
+                  ],),
+                  //추천금융상품
+                  Column(children: [ RecommendSectionPage(),
+                    SizedBox(height: 20,)
+                  ],),
+                  //파트너제휴혜택
+                  Column(children: [ PartnerSectionPage(),
+                    SizedBox(height: 10,)
+                  ],),
+                  //이벤트
+                  Column(children: [ EventSectionPage(),
+                    SizedBox(height: 20,)
+                  ],),
+                  //사업자등록번호
+                  //============================================================
+                  Container(
+                    width: double.infinity,
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 16,
+                        vertical: 0,
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [ Container(
+                            width: double.infinity,
+                            height: 1,
+                            color: Color(0xffE5E8EF),
+                          ),
+                          SizedBox(height: 20,),
+                          Text(
+                            AppLocalizations.of(context)!.common_company_name,
+                            style: const TextStyle(
+                              color: Color(0xff1B2028),
+                              fontWeight: FontWeight.bold,
+                              fontSize: 14,
+                            ),
+                            textAlign: TextAlign.left,
+                          ),
+                          SizedBox(height: 14,),
+                          Row(children: [
+                            Text(
+                              AppLocalizations.of(context)!.common_label_business_registration_number,
+                              style: const TextStyle(
+                                color: Color(0xff1B2028),
+                                fontWeight: FontWeight.bold,
+                                fontSize: 12,
+                              ),
+                              textAlign: TextAlign.left,
+                            ),
+                            SizedBox(width: 8,),
+                            Text(
+                              AppLocalizations.of(context)!.common_value_business_registration_number,
+                              style: const TextStyle(
+                                color: Color(0x8805203E),
+                                fontSize: 12,
+                              ),
+                              textAlign: TextAlign.left,
+                            ),
+                          ],),
+                          SizedBox(height: 5,),
+                          Row(children: [
+                            Text(
+                              AppLocalizations.of(context)!.common_label_ecommerce_registration_number,
+                              style: const TextStyle(
+                                color: Color(0xff1B2028),
+                                fontWeight: FontWeight.bold,
+                                fontSize: 12,
+                              ),
+                              textAlign: TextAlign.left,
+                            ),
+                            SizedBox(width: 8,),
+                            Text(
+                              AppLocalizations.of(context)!.common_value_ecommerce_registration_number,
+                              style: const TextStyle(
+                                color: Color(0x8805203E),
+                                fontSize: 12,
+                              ),
+                              textAlign: TextAlign.left,
+                            ),
+                          ],),
+                          SizedBox(height: 5,),
+                          Row(children: [
+                            Text(
+                              AppLocalizations.of(context)!.common_label_ceo_name,
+                              style: const TextStyle(
+                                color: Color(0xff1B2028),
+                                fontWeight: FontWeight.bold,
+                                fontSize: 12,
+                              ),
+                              textAlign: TextAlign.left,
+                            ),
+                            SizedBox(width: 8,),
+                            Text(
+                              AppLocalizations.of(context)!.common_value_ceo_name,
+                              style: const TextStyle(
+                                color: Color(0x8805203E),
+                                fontSize: 12,
+                              ),
+                              textAlign: TextAlign.left,
+                            ),
+                          ],),
+                          SizedBox(height: 5,),
+                          Row(children: [
+                            Text(
+                              AppLocalizations.of(context)!.common_label_phone_number,
+                              style: const TextStyle(
+                                color: Color(0xff1B2028),
+                                fontWeight: FontWeight.bold,
+                                fontSize: 12,
+                              ),
+                              textAlign: TextAlign.left,
+                            ),
+                            SizedBox(width: 8,),
+                            Text(
+                              AppLocalizations.of(context)!.common_value_phone_number,
+                              style: const TextStyle(
+                                color: Color(0x8805203E),
+                                fontSize: 12,
+                              ),
+                              textAlign: TextAlign.left,
+                            ),
+                          ],),
+                          SizedBox(height: 5,),
+                          Row(children: [
+                            Text(
+                              AppLocalizations.of(context)!.common_label_address,
+                              style: const TextStyle(
+                                color: Color(0xff1B2028),
+                                fontWeight: FontWeight.bold,
+                                fontSize: 12,
+                              ),
+                              textAlign: TextAlign.left,
+                            ),
+                            SizedBox(width: 8,),
+                            Text(
+                              AppLocalizations.of(context)!.common_value_address,
+                              style: const TextStyle(
+                                color: Color(0x8805203E),
+                                fontSize: 12,
+                              ),
+                              textAlign: TextAlign.left,
+                            ),
+                          ],),
 
-          SingleChildScrollView(
-            child: Column(children: [
-              SizedBox(height: 16),
-              Rms2SectionPage(),
-            ],),
+
+                      ],),
+                    ),
+                  )
+                  //============================================================
+                ],),
+                SizedBox(height: 100,)
+              ],),
+            ),
           ),
+
 
         ],
       ),

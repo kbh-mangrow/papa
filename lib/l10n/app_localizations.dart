@@ -245,11 +245,17 @@ abstract class AppLocalizations {
   /// **'님!'**
   String get papa_home_name;
 
-  /// No description provided for @papa_home_rms2_alarm_format.
+  /// No description provided for @papa_home_rms2_alarm_format1.
   ///
   /// In en, this message translates to:
-  /// **'미확인 알림이 %d건 있습니다.'**
-  String get papa_home_rms2_alarm_format;
+  /// **'미확인 알림이 '**
+  String get papa_home_rms2_alarm_format1;
+
+  /// No description provided for @papa_home_rms2_alarm_format2.
+  ///
+  /// In en, this message translates to:
+  /// **' 있습니다.'**
+  String get papa_home_rms2_alarm_format2;
 
   /// No description provided for @papa_home_use_service.
   ///
@@ -350,7 +356,7 @@ abstract class AppLocalizations {
   /// No description provided for @rms2_work_status_not_onduty.
   ///
   /// In en, this message translates to:
-  /// **'출근 전'**
+  /// **'출근전'**
   String get rms2_work_status_not_onduty;
 
   /// No description provided for @rms2_work_status_offwork.
@@ -358,6 +364,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'퇴근'**
   String get rms2_work_status_offwork;
+
+  /// No description provided for @rms2_work_status_dayoff.
+  ///
+  /// In en, this message translates to:
+  /// **'휴가'**
+  String get rms2_work_status_dayoff;
 
   /// No description provided for @common_company_name.
   ///

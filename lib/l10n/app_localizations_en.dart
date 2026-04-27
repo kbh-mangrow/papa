@@ -84,7 +84,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get papa_home_name => '님!';
 
   @override
-  String get papa_home_rms2_alarm_format => '미확인 알림이 %d건 있습니다.';
+  String get papa_home_rms2_alarm_format1 => '미확인 알림이 ';
+
+  @override
+  String get papa_home_rms2_alarm_format2 => ' 있습니다.';
 
   @override
   String get papa_home_use_service => '이용중인 서비스';
@@ -135,10 +138,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get rms2_work_status_onduty => '근무중';
 
   @override
-  String get rms2_work_status_not_onduty => '출근 전';
+  String get rms2_work_status_not_onduty => '출근전';
 
   @override
   String get rms2_work_status_offwork => '퇴근';
+
+  @override
+  String get rms2_work_status_dayoff => '휴가';
 
   @override
   String get common_company_name => '주식회사 에스엠티에이아이';

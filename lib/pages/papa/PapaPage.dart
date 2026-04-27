@@ -109,7 +109,7 @@ class PapaPageState extends State<PapaPage> {
                       alignment: Alignment.bottomCenter,
                       child: Container(
                         width: double.infinity,
-                        height: 60,
+                        height: 84,
                         color: Colors.white,
                         child: Row(
                           children: [

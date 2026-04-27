@@ -18,6 +18,8 @@ class Rms2SectionPage extends StatefulWidget {
 }
 
 class Rms2SectionPageState extends State<Rms2SectionPage> {
+  int alarmCount = 3; //미확인 알림
+
   @override
   void initState() {
     super.initState();
@@ -38,12 +40,12 @@ class Rms2SectionPageState extends State<Rms2SectionPage> {
         ),
         child: Stack(
           children: [ Container(
-            height: 188,
+            height: 200,
             padding: const EdgeInsets.all(0), // 내부 여백
             decoration: BoxDecoration(
               border: Border.all(
                 color: Color(0x297CAAFA),
-                width: 2,
+                width: 1,
               ),
               borderRadius: BorderRadius.circular(10),
               color: Colors.white
@@ -52,7 +54,7 @@ class Rms2SectionPageState extends State<Rms2SectionPage> {
               children: [
                 Stack(children: [
                   Container(
-                    height: 140,
+                    height: 150,
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
                         begin: Alignment.topCenter,
@@ -149,12 +151,10 @@ class Rms2SectionPageState extends State<Rms2SectionPage> {
                               ],
                             ),
                             Spacer(),
+
                             //근무중
-                            Container(
-                              width: 100,
-                              height: 26,
-                              color: Colors.red,
-                            )
+                            getStatus(0)
+
                           ],),
                         ),
                         SizedBox(height: 5,),
@@ -167,31 +167,251 @@ class Rms2SectionPageState extends State<Rms2SectionPage> {
                           ),
                           textAlign: TextAlign.center,
                         ),
+
                         //프로그레스
-
                         Container(
-                          height: 0,
-                          color: Colors.blue,
+                          height: 40,
+                          child: Stack(
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.symmetric(
+                                  horizontal: 16,
+                                  vertical: 0,
+                                ),
+                                child: Row(
+                                  children: [
+                                    Text(
+                                      '06:00',
+                                      style: const TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.normal,
+                                        fontSize: 10,
+                                      ),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                    Spacer(),
+                                    Text(
+                                      '15:00',
+                                      style: const TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.normal,
+                                        fontSize: 10,
+                                      ),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  ],
+                                )
+                              ),
+
+                              //슬라이더 백 라인 그리기
+                              Positioned(
+                                bottom: 5,
+                                left: 16,
+                                right: 16,
+                                child: LayoutBuilder(
+                                  builder: (context, constraints) {
+                                    final fullWidth = constraints.maxWidth;
+                                    final progress = 0.3;
+
+                                    return SizedBox(
+                                      height: 32, // thumb 높이 확보
+                                      child: Stack(
+                                        clipBehavior: Clip.none, // 바깥으로 나가도 자르지 않음
+                                        alignment: Alignment.centerLeft,
+                                        children: [
+                                          Container(
+                                            height: 4,
+                                            decoration: BoxDecoration(
+                                              border: Border.all(
+                                                color: const Color(0x33ffffff),
+                                                width: 1,
+                                              ),
+                                              borderRadius: BorderRadius.circular(2),
+                                              color: const Color(0x33ffffff),
+                                            ),
+                                          ),
+
+                                          Container(
+                                            width: fullWidth * progress,
+                                            height: 4,
+                                            decoration: BoxDecoration(
+                                              borderRadius: BorderRadius.circular(2),
+                                              gradient: const LinearGradient(
+                                                begin: Alignment.centerLeft,
+                                                end: Alignment.centerRight,
+                                                colors: [
+                                                  Color(0xff307AEF),
+                                                  Color(0xff60A5FA),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+
+                                          Positioned(
+                                            left: (fullWidth * progress) - 12,
+                                            top: 3,
+                                            child: Image.asset(
+                                              'image/thumb.png',
+                                              width: 50,
+                                              height: 32,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    );
+                                  },
+                                ),
+                              )
+
+
+                            ],
+
+                          ),
                         )
-
-
 
                       ],
                     ),
-                  )
-                ],)
+                  ),
+                  Positioned.fill(
+                    child: Material(
+                      color: Colors.transparent,
+                      child: InkWell(
+                        borderRadius: BorderRadius.circular(10),
+                        splashColor: Colors.white.withOpacity(0.2),
+                        highlightColor: Colors.white.withOpacity(0.08),
+                        onTap: () {
+                          //RMS2 로 이동
+                        },
+                      ),
+                    ),
+                  ),
+                ],),
+                //미확인알림
+                Row(children: [
+                  SizedBox(width: 10,),
+                  Image.asset(
+                    'image/bell.png',
+                    width: 56,
+                    height: 45,
+                  ),
+                  SizedBox(width: 10,),
+                  Text.rich(
+                    TextSpan(
+                      style: TextStyle(
+                        color: Color(0xff343C4A),
+                        fontSize: 14,
+                      ),
+                      children: [
+                        TextSpan(text: AppLocalizations.of(context)!.papa_home_rms2_alarm_format1),
+                        TextSpan(
+                          text: '$alarmCount' + AppLocalizations.of(context)!.count,
+                          style: TextStyle(
+                            color: Colors.red,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        TextSpan(text: AppLocalizations.of(context)!.papa_home_rms2_alarm_format2),
+                      ],
+                    ),
+                  ),
+                  Spacer(),
+                  InkWell(
+                    onTap: () {
 
-
+                    },
+                    child: Container(
+                      width: 50,
+                      height: 32,
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                            color: Color(0x523B82F6),
+                            width: 1,
+                          ),
+                          borderRadius: BorderRadius.circular(16),
+                          color: Color(0x143B82F6)
+                      ),
+                      child: Center(
+                        child: Text(
+                          AppLocalizations.of(context)!.show,
+                          style: const TextStyle(
+                            color: Color(0xff0C3766),
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                            height: 1.0,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      )
+                    ),
+                  ),
+                  SizedBox(width: 14,)
+                ],),
               ],
-              //미확인알림
-
 
             ),
-          )
+          ),
+
+
         ],)
       ),
     );
 
   }
 
+  Widget getStatus(int status) {
+    var img = "image/status_green.png";
+    var txt = "근무중";
+    var bg = Color(0x2487FBDC);
+    var color = Color(0xff3BFFCB);
+
+    switch (status) {
+      case 0 : {
+
+        break;
+      }
+    }
+
+    return Container(
+      width: 70,
+      height: 26,
+      decoration: BoxDecoration(
+        border: Border.all(
+          color: bg,
+          width: 1,
+        ),
+        borderRadius: BorderRadius.circular(14),
+        color: bg
+      ),
+      child: Center(
+        child: Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: 5,
+            vertical: 0,
+          ),
+          child: Row(
+            children: [
+              Image.asset(
+                img,
+                width: 16,
+                height: 16,
+              ),
+              SizedBox(width: 1,),
+              Text(
+                txt,
+                style: TextStyle(
+                  color: color,
+                  fontSize: 12,
+                  fontWeight: FontWeight.bold,
+                  height: 1.0,
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ],
+          ),
+
+        )
+      )
+
+    );
+  }
 }

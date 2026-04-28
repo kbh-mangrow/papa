@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart' hide VoidCallback;
+import 'package:flutter/services.dart';
 import 'package:papa/PapaComm.dart';
 import 'package:papa/pages/signin/SignUpStep1Page.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
@@ -118,12 +119,84 @@ class SignUpPageState extends State<SignUpPage> {
             barRadius: const Radius.circular(0), // 끝부분 둥글게
           ),
 
+          /*
           switch (index) {
             3 => const SignUpStep1Page(),
             2 => const SignUpStep2Page(),
             1 => const SignUpStep3Page(),
             _ => const SizedBox(),
           },
+           */
+          SizedBox(
+            width: double.infinity,
+            child: Text(
+              AppLocalizations.of(context)!.signin_id,
+              style: const TextStyle(
+                color: Color(0xff1B2028),
+                fontSize: 14,
+              ),
+              textAlign: TextAlign.left,
+            ),
+          ),
+          SizedBox(height: 4,),
+          Container(
+              width: double.infinity,
+              height: 48,
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: Color(0xA37CAAFA),
+                  width: 1,
+                ),
+                borderRadius: BorderRadius.circular(16),
+                color: Colors.white,
+              ),
+              child: Row(
+                children: [
+                  SizedBox(width: 12,),
+                  Image.asset(
+                    'image/id.png',
+                    width: 24,
+                    height: 24,
+                  ),
+                  SizedBox(width: 12,),
+                  Expanded(
+                    child: SizedBox(
+                      height: 48,
+                      child: Center(
+                          child: TextField(
+                            keyboardType: TextInputType.text,
+                            textInputAction: TextInputAction.done,
+                            cursorHeight: 18,
+                            textAlignVertical: TextAlignVertical.center,
+                            inputFormatters: [
+                              FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z0-9]')),
+                            ],
+                            maxLength: 30,
+                            maxLengthEnforcement: MaxLengthEnforcement.enforced,
+                            style: const TextStyle(
+                              fontSize: 18,
+                              color: Color(0xff1B2028),
+                            ),
+                            decoration: InputDecoration(
+                              hintText: AppLocalizations.of(context)!.signin_id_hint,
+                              hintStyle: const TextStyle(
+                                color: Color(0xff8395B4),
+                                fontSize: 14,
+                              ),
+                              border: InputBorder.none,
+                              isDense: true,
+                              counterText: '',
+                              contentPadding: const EdgeInsets.only(bottom: 4),
+                            ),
+                          )
+                      ),
+                    ),
+                  ),
+                  SizedBox(width: 12,),
+                ],
+              )
+          ),
+
 
         ],
       ),

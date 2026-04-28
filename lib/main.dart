@@ -56,7 +56,7 @@ void main() {
   String page = uri.queryParameters['page'] ?? '';
 
   //test
-  page = Constants.RMS2;
+  //page = Constants.RMS2;
 
   runApp(PapaApp(page: page, navigatorKey: navigatorKey));
 }

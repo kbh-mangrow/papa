@@ -73,11 +73,71 @@ class UseServiceSectionPageState extends State<UseServiceSectionPage> {
                       onTap: () {
 
                       },
-                      child: const SizedBox(
+                      child: SizedBox(
                         width: double.infinity,
                         height: 84,
                         child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
+                            Container(
+                              margin: EdgeInsets.only(
+                                left: 4,
+                              ),
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(7),
+                                child: Container(
+                                  height: 72,
+                                  width: 100,
+                                  color: Colors.white,
+                                  child: Image.network(
+                                    'https://cdn.the-pr.co.kr/news/photo/202504/53285_85849_3942.jpg',
+                                    height: 100,
+                                    width: 77,
+                                    fit: BoxFit.fitHeight,
+                                    errorBuilder: (context, error, stackTrace) {
+                                      return Image.asset(
+                                        'image/img_default.png',
+                                        height: 100,
+                                        width: 77,
+                                        fit: BoxFit.cover,
+                                      );
+                                    },
+                                  ),
+                                ),
+                              ),
+                            ),
+                            SizedBox(width: 16,),
+                            Expanded(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    '초중고 인강 askjdksjhfjkshkfjhsdjhfkdjhgkjhdfgkjhfkjh',
+                                    style: const TextStyle(
+                                        color: Color(0xff1B2028),
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold
+                                    ),
+                                    textAlign: TextAlign.left,
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                  SizedBox(height: 4,),
+                                  Text(
+                                    '초중고 인강 askjdksjhfjkshkfjhsdjhfkdjhgkjhdfgkjhfkjh',
+                                    style: const TextStyle(
+                                      color: Color(0xff67758E),
+                                      fontSize: 14,
+                                    ),
+                                    textAlign: TextAlign.left,
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                ],
+                              ),
+                            ),
+                            SizedBox(width: 16,),
 
                           ],
                         ),

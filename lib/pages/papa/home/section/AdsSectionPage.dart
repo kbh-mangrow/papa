@@ -47,7 +47,7 @@ class AdsSectionPageState extends State<AdsSectionPage> {
                     fit: BoxFit.fitHeight,
                     errorBuilder: (context, error, stackTrace) {
                       return Image.asset(
-                        'images/img_default.png',
+                        'image/img_default.png',
                         width: double.infinity,
                         height: double.infinity,
                         fit: BoxFit.cover,

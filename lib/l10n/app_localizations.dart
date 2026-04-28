@@ -281,6 +281,24 @@ abstract class AppLocalizations {
   /// **'비밀번호 찾기'**
   String get signin_forgot_password;
 
+  /// No description provided for @social_apple.
+  ///
+  /// In en, this message translates to:
+  /// **'Apple로 로그인'**
+  String get social_apple;
+
+  /// No description provided for @social_kakao.
+  ///
+  /// In en, this message translates to:
+  /// **'카카오 로그인'**
+  String get social_kakao;
+
+  /// No description provided for @social_google.
+  ///
+  /// In en, this message translates to:
+  /// **'Google로 로그인'**
+  String get social_google;
+
   /// No description provided for @signup_title.
   ///
   /// In en, this message translates to:

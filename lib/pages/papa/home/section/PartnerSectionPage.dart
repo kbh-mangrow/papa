@@ -110,7 +110,7 @@ class PartnerSectionPageState extends State<PartnerSectionPage> {
                     fit: BoxFit.cover,
                     errorBuilder: (context, error, stackTrace) {
                       return Image.asset(
-                        'images/img_default.png',
+                        'image/img_default.png',
                         width: double.infinity,
                         height: double.infinity,
                         fit: BoxFit.cover,
@@ -175,10 +175,33 @@ class PartnerSectionPageState extends State<PartnerSectionPage> {
             ],
           ),
           Positioned(
-            child: Container(
-              width: 50,
-              height: 20,
-              color: Colors.red,
+            child: Stack(
+              children: [
+                Container(
+                  width: 50,
+                  height: 22,
+                  child: Image.asset(
+                    'image/sticker.png',
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                Container(
+                  alignment: Alignment.center,
+                  width: 50,
+                  height: 20,
+                  child: Text(
+                    '50%',
+                    style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold
+                    ),
+                    textAlign: TextAlign.center,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+              ],
             )
           ),
           Positioned.fill(

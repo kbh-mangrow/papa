@@ -44,7 +44,6 @@ class Rms2WorkPageState extends State<Rms2WorkPage> {
             TextButton(
               onPressed: () {
                 Navigation.startPageRight(context, WorkDetailPage());
-                AppOverlayState.isDialogOpen = true;
               },
               style: TextButton.styleFrom(
                 foregroundColor: Colors.blue,

@@ -2,14 +2,18 @@
 import 'package:calendar_date_picker2/calendar_date_picker2.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart' hide VoidCallback;
+import 'package:flutter/services.dart';
 import 'package:flutter_datetime_picker_bdaya/flutter_datetime_picker_bdaya.dart';
 import 'package:papa/AppBridge.dart';
 import 'package:papa/Constants.dart';
 import 'package:papa/PapaComm.dart';
 import 'package:papa/http/json/JSAuthReq.dart';
+import 'package:papa/pages/signin/SignUpPage.dart';
 import '../../../Storage.dart';
 import '../../../l10n/app_localizations.dart';
+import '../../common/Navigation.dart';
 import '../../common/Network.dart';
+import '../../common/System.dart';
 import '../../http/IAuth.dart';
 import '../../http/json/JSAuthRes.dart';
 import '../common/LoadingOverlay.dart';
@@ -28,7 +32,11 @@ class SignInPage extends StatefulWidget {
 }
 
 class SignInPageState extends State<SignInPage> {
-  Offset? _tapPosition;
+  bool isSaved = false; //아이디 저장
+  bool isClicked = false; //팝업
+  bool isVisible = false; //비밀번호 보기
+  Offset? tapPosition;
+
   @override
   void initState() {
     super.initState();
@@ -43,356 +51,565 @@ class SignInPageState extends State<SignInPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Column(
-        children: [
-          const SizedBox(height: 56),
-          Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: 16,
-              vertical: 0,
-            ),
-            child: Text.rich(
-              TextSpan(
-                children: [
-                  TextSpan(
-                    text: AppLocalizations.of(context)!.title,
-                    style: TextStyle(
-                        color: Color(0xff478DFA),
-                        fontWeight: FontWeight.bold,
-                        fontSize: 30
+      body: Stack(children: [
+        Column(
+          children: [
+            const SizedBox(height: 76),
+            Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 22,
+                  vertical: 0,
+                ),
+                child: SizedBox(
+                  width: double.infinity,
+                  child: Text.rich(
+                    TextSpan(
+                      children: [
+                        TextSpan(
+                          text: AppLocalizations.of(context)!.title,
+                          style: TextStyle(
+                              color: Color(0xff478DFA),
+                              fontWeight: FontWeight.bold,
+                              fontSize: 36
+                          ),
+                        ),
+                        TextSpan(
+                          text: AppLocalizations.of(context)!.signin_welcome,
+                          style: TextStyle(
+                              color: Color(0xff111827),
+                              fontWeight: FontWeight.w600,
+                              fontSize: 24
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                  TextSpan(
-                    text: AppLocalizations.of(context)!.signin_welcome,
-                    style: TextStyle(
-                        color: Color(0xff111827),
-                        fontSize: 15
-                    ),
-                  ),
-                ],
-              ),
+                )
             ),
-          ),
-
-
-
-          Row(children: [
-            TextButton(
-              onPressed: () {
-                AppBridge.sendAppx(Constants.SOCIAL_LOGIN, key: Constants.KAKAOTALK);
-              },
-              style: TextButton.styleFrom(
-                foregroundColor: Colors.blue,
-                textStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-              ),
-              child: Text('카카오'),
-            ),
-            TextButton(
-              onPressed: () {
-                AppBridge.sendAppx(Constants.SOCIAL_LOGIN, key: Constants.GOOGLE);
-              },
-              style: TextButton.styleFrom(
-                foregroundColor: Colors.blue,
-                textStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-              ),
-              child: Text('구글'),
-            ),
-            TextButton(
-              onPressed: () {
-                AppBridge.sendAppx(Constants.SOCIAL_LOGIN, key: Constants.APPLE);
-              },
-              style: TextButton.styleFrom(
-                foregroundColor: Colors.blue,
-                textStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-              ),
-              child: Text('애플'),
-            ),
-            TextButton(
-              onPressed: () {
-                //doAuth();
-              },
-              style: TextButton.styleFrom(
-                foregroundColor: Colors.blue,
-                textStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-              ),
-              child: Text('본인인증'),
-            ),
-
-            Listener(
-              onPointerDown: (PointerDownEvent event) {
-                _tapPosition = event.position; // ⭐ 터치 좌표 저장
-              },
-              child: TextButton(
-                onPressed: () async {
-                  if (_tapPosition == null) return;
-
-                  final selected = await showMenu(
-                    context: context,
-                    color: Colors.white,
-                    elevation: 3,
-                    shape: RoundedRectangleBorder( // ⭐ 핵심
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    position: RelativeRect.fromLTRB(
-                      _tapPosition!.dx,
-                      _tapPosition!.dy,
-                      _tapPosition!.dx,
-                      _tapPosition!.dy,
-                    ),
-                    items: [
-                      PopupMenuItem(
-                        value: 'auth',
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(
-                            horizontal: 16,
-                            vertical: 0,
+            const SizedBox(height: 52),
+            Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 0,
+                ),
+                child: Column(
+                    children: [
+                      //아이디
+                      SizedBox(
+                        width: double.infinity,
+                        child: Text(
+                          AppLocalizations.of(context)!.signin_id,
+                          style: const TextStyle(
+                            color: Color(0xff1B2028),
+                            fontSize: 14,
+                          ),
+                          textAlign: TextAlign.left,
+                        ),
+                      ),
+                      SizedBox(height: 4,),
+                      Container(
+                          width: double.infinity,
+                          height: 48,
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: Color(0xA37CAAFA),
+                              width: 1,
+                            ),
+                            borderRadius: BorderRadius.circular(16),
+                            color: Colors.white,
                           ),
                           child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
+                              SizedBox(width: 12,),
                               Image.asset(
                                 'image/id.png',
                                 width: 24,
                                 height: 24,
                               ),
-                              SizedBox(width: 10,),
-                              Text('아이디 찾기'),
+                              SizedBox(width: 12,),
+                              Expanded(
+                                child: SizedBox(
+                                  height: 48,
+                                  child: Center(
+                                      child: TextField(
+                                        keyboardType: TextInputType.text,
+                                        textInputAction: TextInputAction.done,
+                                        cursorHeight: 18,
+                                        textAlignVertical: TextAlignVertical.center,
+                                        inputFormatters: [
+                                          FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z0-9]')),
+                                        ],
+                                        maxLength: 30,
+                                        maxLengthEnforcement: MaxLengthEnforcement.enforced, // ⭐ 이거 추가
+                                        style: const TextStyle(
+                                          fontSize: 18,
+                                          color: Color(0xff1B2028),
+                                        ),
+                                        decoration: InputDecoration(
+                                          hintText: AppLocalizations.of(context)!.signin_id_hint,
+                                          hintStyle: const TextStyle(
+                                            color: Color(0xff8395B4),
+                                            fontSize: 14,
+                                          ),
+                                          border: InputBorder.none,
+                                          isDense: true,
+                                          counterText: '',
+                                          contentPadding: const EdgeInsets.only(bottom: 4),
+                                        ),
+                                      )
+                                  ),
+                                ),
+                              ),
+                              SizedBox(width: 12,),
                             ],
+                          )
+                      ),
+                      SizedBox(height: 20,),
+
+                      //비밀번호
+                      SizedBox(
+                        width: double.infinity,
+                        child: Text(
+                          AppLocalizations.of(context)!.signin_password,
+                          style: const TextStyle(
+                            color: Color(0xff1B2028),
+                            fontSize: 14,
                           ),
+                          textAlign: TextAlign.left,
                         ),
                       ),
-                      PopupMenuItem(
-                        value: 'cancel',
-                        child: Text('취소'),
+                      SizedBox(height: 4,),
+                      Container(
+                          width: double.infinity,
+                          height: 48,
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: Color(0xA37CAAFA),
+                              width: 1,
+                            ),
+                            borderRadius: BorderRadius.circular(16),
+                            color: Colors.white,
+                          ),
+                          child: Row(
+                            children: [
+                              SizedBox(width: 12,),
+                              Image.asset(
+                                'image/password.png',
+                                width: 24,
+                                height: 24,
+                              ),
+                              SizedBox(width: 12,),
+                              Expanded(
+                                child: SizedBox(
+                                  height: 48,
+                                  child: Center(
+                                      child: TextField(
+                                        obscureText: true,
+                                        keyboardType: TextInputType.visiblePassword,
+                                        textInputAction: TextInputAction.done,
+                                        cursorHeight: 18,
+                                        textAlignVertical: TextAlignVertical.center,
+                                        inputFormatters: [
+                                          FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z0-9]')),
+                                        ],
+                                        maxLength: 30,
+                                        maxLengthEnforcement: MaxLengthEnforcement.enforced, // ⭐ 이거 추가
+                                        style: const TextStyle(
+                                          fontSize: 18,
+                                          color: Color(0xff1B2028),
+                                        ),
+                                        decoration: InputDecoration(
+                                          hintText: AppLocalizations.of(context)!.signin_password_hint,
+                                          hintStyle: const TextStyle(
+                                            color: Color(0xff8395B4),
+                                            fontSize: 14,
+                                          ),
+                                          border: InputBorder.none,
+                                          isDense: true,
+                                          counterText: '',
+                                          contentPadding: const EdgeInsets.only(bottom: 4),
+                                        ),
+                                      )
+                                  ),
+                                ),
+                              ),
+                              SizedBox(width: 12,),
+                            ],
+                          )
                       ),
-                    ],
-                  );
+                      SizedBox(height: 10,),
+                      Row(children: [
+                        InkWell(
+                          onTap: () {
+                            setState(() {
+                              isSaved = !isSaved;
+                            });
+                          },
+                          child: Container(
+                            height: 40,
+                            child: Row(children: [
+                              Image.asset(
+                                isSaved ?
+                                'image/check_on.png' : 'image/check_off.png',
+                                width: 28,
+                                height: 28,
+                              ),
+                              SizedBox(width: 8,),
+                              Text(
+                                AppLocalizations.of(context)!.signin_id_save,
+                                style: const TextStyle(
+                                  color: Color(0xff67758E),
+                                  fontSize: 16,
+                                ),
+                                textAlign: TextAlign.left,
+                              ),
+                              SizedBox(width: 5,),
+                            ],),
+                          ),
+                        ),
+                        Spacer(),
+                        Listener(
+                          onPointerDown: (PointerDownEvent event) {
+                            tapPosition = event.position;
+                          },
+                          child: TextButton(
+                            onPressed: () async {
+                              if (tapPosition == null) return;
 
-                  if (selected == 'auth') {
-                    print('본인인증 실행');
-                  }
-                },
-                style: TextButton.styleFrom(
-                  foregroundColor: Colors.blue,
-                  textStyle: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
+                              setState(() {
+                                isClicked = true;
+                              });
+
+                              final selected = await showMenu(
+                                context: context,
+                                color: Colors.white,
+                                elevation: 3,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                position: RelativeRect.fromLTRB(
+                                  tapPosition!.dx,
+                                  tapPosition!.dy,
+                                  tapPosition!.dx,
+                                  tapPosition!.dy,
+                                ),
+                                items: [
+                                  PopupMenuItem(
+                                    value: 'find_id',
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                        horizontal: 10,
+                                        vertical: 0,
+                                      ),
+                                      child: Row(
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        children: [
+                                          Image.asset(
+                                            'image/user.png',
+                                            width: 24,
+                                            height: 24,
+                                          ),
+                                          const SizedBox(width: 10),
+                                          Text(AppLocalizations.of(context)!.signin_forgot_id),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                  PopupMenuItem(
+                                    value: 'find_password',
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                        horizontal: 10,
+                                        vertical: 0,
+                                      ),
+                                      child: Row(
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        children: [
+                                          Image.asset(
+                                            'image/lock.png',
+                                            width: 24,
+                                            height: 24,
+                                          ),
+                                          const SizedBox(width: 10),
+                                          Text(AppLocalizations.of(context)!.signin_forgot_password),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              );
+
+                              setState(() {
+                                isClicked = false;
+                              });
+
+                              if (selected == 'find_id') {
+                                print('아이디 찾기 실행');
+                              } else if (selected == 'find_password') {
+                                print('비밀번호 찾기 실행');
+                              }
+                            },
+                            style: TextButton.styleFrom(
+                              padding: EdgeInsets.zero,
+                              minimumSize: Size.zero,
+                              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                              foregroundColor: const Color(0xff2563EB),
+                              shape: const RoundedRectangleBorder(
+                                borderRadius: BorderRadius.zero,
+                              ),
+                            ),
+                            child: SizedBox(
+                              height: 40,
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Text(
+                                    AppLocalizations.of(context)!.signin_forgot,
+                                    style: const TextStyle(
+                                      color: Color(0xff2563EB),
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                  const SizedBox(width: 5),
+                                  Image.asset(
+                                    isClicked ? 'image/arrow_up.png' : 'image/arrow_down.png',
+                                    width: 16,
+                                    height: 16,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        )
+                      ],),
+                      SizedBox(height: 10,),
+
+
+
+                    ]
+                )
+            ),
+
+            //로그인버튼
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Material(
+                color: const Color(0xff478DFA),
+                borderRadius: BorderRadius.circular(14),
+                child: InkWell(
+                  borderRadius: BorderRadius.circular(14),
+                  onTap: () {
+                    print('click');
+                  },
+                  child: SizedBox(
+                    width: double.infinity,
+                    height: 48,
+                    child: Center(
+                      child: Text(
+                        AppLocalizations.of(context)!.signin,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
                   ),
                 ),
-                child: const Text('TEST'),
               ),
-            )
-          ],),
-
-          TextButton(
-            onPressed: () {
-              showModalBottomSheet(
-                context: context,
-                // 1. 내부 콘텐츠 크기에 맞춰 높이가 유연하게 변하도록 설정
-                isScrollControlled: true,
-                builder: (BuildContext context) {
-                  // 2. 내부 위젯이 차지하는 공간을 최소화(wrap_content)
-                  return Padding(
-                    // 키보드가 올라올 경우를 대비해 하단 여백 추가 (선택사항)
-                    padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min, // 중요: 콘텐츠 크기만큼만 높이 차지
-                      children: <Widget>[
-                        const SizedBox(height: 20),
-                        const Text('내용만큼 늘어나는 바텀시트'),
-                        const ListTile(
-                          leading: Icon(Icons.info),
-                          title: Text('콘텐츠 1'),
-                        ),
-                        const ListTile(
-                          leading: Icon(Icons.check),
-                          title: Text('콘텐츠 2'),
-                        ),
-                        const SizedBox(height: 20),
-                      ],
-                    ),
-                  );
-                },
-              );
-            },
-            style: TextButton.styleFrom(
-              foregroundColor: Colors.blue,
-              textStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
-            child: Text('BottomSheet'),
-          ),
 
-          TextButton(
-            onPressed: () {
-              //https://pub.dev/packages/calendar_date_picker2
-              showModalBottomSheet(
-                context: context,
-                isScrollControlled: true,
-                backgroundColor: Colors.transparent, // 배경을 투명하게 해야 여백이 보입니다.
-                builder: (BuildContext context) {
-                  return Container(
-                    // 1. 양옆과 하단에 마진을 주어 팝업처럼 띄움
-                    margin: const EdgeInsets.all(20),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(25), // 전체 모서리 둥글게
-                    ),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min, // 콘텐츠 크기만큼 (Wrap Content)
-                      children: [
-                        const SizedBox(height: 16),
-                        const Text(
-                          "날짜 선택",
-                          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                        ),
-
-                        CalendarDatePicker2(
-                          config: CalendarDatePicker2Config(
-                            calendarType: CalendarDatePicker2Type.single,
-                            selectedDayHighlightColor: Colors.blueAccent,
-                            // 달력 내부 여백 조절
-                            controlsTextStyle: const TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                          value: [DateTime.now()],
-                          onValueChanged: (dates) => print(dates),
-                        ),
-
-                        // 하단 버튼
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+            SizedBox(height: 38,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(width: 70, height: 1, color: Color(0xffB5BFD2),),
+                SizedBox(width: 16,),
+                Text(
+                  AppLocalizations.of(context)!.signin_social,
+                  style: const TextStyle(
+                    color: Color(0xff8395B4),
+                    fontSize: 14,
+                  ),
+                  textAlign: TextAlign.left,
+                ),
+                SizedBox(width: 16,),
+                Container(width: 70, height: 1, color: Color(0xffB5BFD2),),
+              ],),
+            SizedBox(height: 30,),
+            //소셜로그인
+            Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: 22,
+                vertical: 0,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  (System.getBrowserName() == System.SAFARI) ?
+                  Expanded(
+                    child: Material(
+                      color: const Color(0xff000000),
+                      borderRadius: BorderRadius.circular(12),
+                      child: InkWell(
+                        borderRadius: BorderRadius.circular(12),
+                        onTap: () {
+                          AppBridge.sendAppx(Constants.SOCIAL_LOGIN, key: Constants.APPLE);
+                        },
+                        child: SizedBox(
+                          height: 48,
                           child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Expanded(
-                                child: TextButton(
-                                  onPressed: () => Navigator.pop(context),
-                                  child: const Text("취소"),
-                                ),
+                              Image.asset(
+                                'image/apple.png',
+                                width: 24,
+                                height: 24,
                               ),
-                              Expanded(
-                                child: ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                      backgroundColor: Colors.blueAccent,
-                                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))
-                                  ),
-                                  onPressed: () => Navigator.pop(context),
-                                  child: const Text("확인", style: TextStyle(color: Colors.white)),
+                              const SizedBox(width: 8),
+                              Text(
+                                AppLocalizations.of(context)!.social_apple,
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 14,
                                 ),
                               ),
                             ],
                           ),
                         ),
-                      ],
+                      ),
                     ),
-                  );
-                },
-              );
-            },
-            style: TextButton.styleFrom(
-              foregroundColor: Colors.blue,
-              textStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-            ),
-            child: Text('달력'),
-          ),
-          TextButton(
-            onPressed: () {
-              /*
-              //https://pub.dev/packages/flutter_datetime_picker_bdaya
-              //DatePickerBdaya.showDateTimePicker(context)
-              DatePickerBdaya.showDateTimePicker(context,
-                  showTitleActions: true,
-                  minTime: DateTime(2018, 3, 5),
-                  maxTime: DateTime(2019, 6, 7), onChanged: (date) {
-                    print('change $date');
-                  }, onConfirm: (date) {
-                    print('confirm $date');
-                  }, currentTime: DateTime.now(), locale: LocaleType.ko);
-               */
-              /*
-              showModalBottomSheet(
-                context: context,
-                isScrollControlled: true,
-                backgroundColor: Colors.transparent, // 배경을 투명하게 해야 여백이 보입니다.
-                builder: (BuildContext context) {
-                  return Container(
-                    // 1. 양옆과 하단에 마진을 주어 팝업처럼 띄움
-                    margin: const EdgeInsets.all(20),
-                    decoration: BoxDecoration(
+                  ) :
+                  Expanded(
+                    child: Material(
                       color: Colors.white,
-                      borderRadius: BorderRadius.circular(25), // 전체 모서리 둥글게
-                    ),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min, // 콘텐츠 크기만큼 (Wrap Content)
-                      children: [
-                        const SizedBox(height: 16),
-                        const Text(
-                          "날짜 선택",
-                          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                        side: const BorderSide(
+                          color: Color(0x140C0A09),
+                          width: 2,
                         ),
-
-                        SizedBox(
-                          width: 350,
-                          child: CupertinoCalendar(
-                            minimumDateTime: DateTime(2024, 7, 10),
-                            maximumDateTime: DateTime(2025, 7, 10),
-                            initialDateTime: DateTime(2024, 8, 15, 9, 41),
-                            currentDateTime: DateTime(2024, 8, 15),
-                            timeLabel: 'Ends',
-                            mode: CupertinoCalendarMode.dateTime,
-                          ),
-                        ),
-
-                        // 하단 버튼
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+                      ),
+                      child: InkWell(
+                        borderRadius: BorderRadius.circular(12),
+                        onTap: () {
+                          AppBridge.sendAppx(Constants.SOCIAL_LOGIN, key: Constants.GOOGLE);
+                        },
+                        child: SizedBox(
+                          height: 48,
                           child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Expanded(
-                                child: TextButton(
-                                  onPressed: () => Navigator.pop(context),
-                                  child: const Text("취소"),
-                                ),
+                              Image.asset(
+                                'image/google.png',
+                                width: 24,
+                                height: 24,
                               ),
-                              Expanded(
-                                child: ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                      backgroundColor: Colors.blueAccent,
-                                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))
-                                  ),
-                                  onPressed: () => Navigator.pop(context),
-                                  child: const Text("확인", style: TextStyle(color: Colors.white)),
+                              const SizedBox(width: 8),
+                              Text(
+                                AppLocalizations.of(context)!.social_google,
+                                style: const TextStyle(
+                                  color: Color(0xff1B2028),
+                                  fontSize: 14,
                                 ),
                               ),
                             ],
                           ),
                         ),
-                      ],
+                      ),
                     ),
-                  );
-                },
-              );
-               */
+                  ),
 
-              picker.DatePicker.showTimePicker(context,
-                  showTitleActions: true, onChanged: (date) {
-                    print('change $date in time zone ' +
-                        date.timeZoneOffset.inHours.toString());
-                  }, onConfirm: (date) {
-                    print('confirm $date');
-                  }, currentTime: DateTime.now());
+                  SizedBox(width: 12,),
+                  Expanded(
+                    child: Material(
+                      color: const Color(0xffFEE500),
+                      borderRadius: BorderRadius.circular(12),
+                      child: InkWell(
+                        borderRadius: BorderRadius.circular(12),
+                        onTap: () {
+                          AppBridge.sendAppx(Constants.SOCIAL_LOGIN, key: Constants.KAKAOTALK);
+                        },
+                        child: SizedBox(
+                          height: 48,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Image.asset(
+                                'image/kakao.png',
+                                width: 24,
+                                height: 24,
+                              ),
+                              const SizedBox(width: 8),
+                              Text(
+                                AppLocalizations.of(context)!.social_kakao,
+                                style: const TextStyle(
+                                  color: Color(0xff1B2028),
+                                  fontSize: 14,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
 
-            },
-            style: TextButton.styleFrom(
-              foregroundColor: Colors.blue,
-              textStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                ],),
             ),
-            child: Text('타임피커'),
+            SizedBox(height: 20,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  AppLocalizations.of(context)!.signin_first,
+                  style: const TextStyle(
+                    color: Color(0xff6B7280),
+                    fontSize: 16,
+                  ),
+                ),
+                SizedBox(width: 5,),
+                InkWell(
+                  child: Container(
+                      height: 40,
+                      child: Center(child: Text(
+                        AppLocalizations.of(context)!.signin_signup,
+                        style: const TextStyle(
+                            color: Color(0xff2563EB),
+                            fontSize: 16,
+                            fontWeight: FontWeight.normal
+                        ),
+                      ),)
+                  ),
+                  onTap: () {
+                    Navigation.startPageRight(context, SignUpPage());
+                  },
+                )
+              ],)
+
+
+          ],
+        ),
+        Positioned(
+          top: 7,
+          right: 1,
+          child: InkWell(
+            onTap: () {
+              Navigator.pop(context);
+            },
+            child: Container(
+              width: 50,
+              height: 50,
+              alignment: Alignment.center,
+              child: Image.asset(
+                'image/close.png',
+                width: 20,
+                height: 20,
+              ),
+            ),
           ),
-
-          //스케쥴러
-          //https://pub.dev/packages/syncfusion_flutter_calendar
-
-        ],
-      ),
+        )
+      ],)
     );
 
   }

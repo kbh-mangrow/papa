@@ -102,6 +102,15 @@ class AppLocalizationsKo extends AppLocalizations {
   String get signin_forgot_password => '비밀번호 찾기';
 
   @override
+  String get social_apple => 'Apple로 로그인';
+
+  @override
+  String get social_kakao => '카카오 로그인';
+
+  @override
+  String get social_google => 'Google로 로그인';
+
+  @override
   String get signup_title => '회원가입';
 
   @override

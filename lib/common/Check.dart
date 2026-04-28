@@ -27,7 +27,7 @@ class Check extends StatelessWidget {
       onTap: () => onChanged(!value),
       child: Row(
         mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start, // 텍스트 위 정렬
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Image.asset(
             value ? checked : unchecked,

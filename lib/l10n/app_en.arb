@@ -35,6 +35,10 @@
   "signin_forgot_id" : "아이디 찾기",
   "signin_forgot_password" : "비밀번호 찾기",
 
+  "social_apple" : "Apple로 로그인",
+  "social_kakao" : "카카오 로그인",
+  "social_google" : "Google로 로그인",
+
   "signup_title" : "회원가입",
   "signup_id" : "아이디",
   "signup_id_hint" : "사용할 아이디를 입력해 주세요.",

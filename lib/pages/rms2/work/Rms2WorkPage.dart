@@ -6,6 +6,7 @@ import 'package:papa/pages/rms2/work/WorkDetailPage.dart';
 import '../../../Storage.dart';
 import '../../../common/Navigation.dart';
 import '../../../l10n/app_localizations.dart';
+import '../../popup/AppOverlayState.dart';
 
 //====================================================
 final String tag = 'Rms2WorkPage.dart';
@@ -43,6 +44,7 @@ class Rms2WorkPageState extends State<Rms2WorkPage> {
             TextButton(
               onPressed: () {
                 Navigation.startPageRight(context, WorkDetailPage());
+                AppOverlayState.isDialogOpen = true;
               },
               style: TextButton.styleFrom(
                 foregroundColor: Colors.blue,

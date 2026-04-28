@@ -78,8 +78,17 @@ class Rms2PageState extends State<Rms2Page> {
           alignment: Alignment.bottomCenter,
           child: Container(
             width: double.infinity,
-            height: 60,
-            color: Colors.white,
+            height: 84,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.03),
+                  blurRadius: 3,
+                  offset: Offset(0, -5),
+                ),
+              ],
+            ),
             child: Row(
               children: [
                 Expanded(

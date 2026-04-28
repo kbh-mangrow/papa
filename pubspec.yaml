@@ -62,7 +62,12 @@ dependencies:
   sprintf: ^6.0.0
   dio: ^5.9.2
   flutter_sticky_header: ^0.8.0
-
+  calendar_date_picker2: ^2.0.1
+  flutter_datetime_picker_bdaya: ^3.0.2
+  flutter_datetime_picker_plus: ^2.2.0
+  syncfusion_flutter_calendar: ^31.1.19
+  syncfusion_flutter_signaturepad: ^31.1.19
+  chart_sparkline: ^1.1.2
 
 dev_dependencies:
   flutter_test:

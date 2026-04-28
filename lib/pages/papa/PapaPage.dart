@@ -29,7 +29,6 @@ class PapaPage extends StatefulWidget {
 class PapaPageState extends State<PapaPage> {
   int index = 0;
   final List<Widget?> pages = List<Widget?>.filled(4, null, growable: false);
-  late BuildContext context;
 
   @override
   void initState() {

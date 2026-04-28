@@ -286,9 +286,7 @@ class Rms2SectionPageState extends State<Rms2SectionPage> {
                         highlightColor: Colors.white.withOpacity(0.08),
                         onTap: () {
                           //RMS2 로 이동
-                          //Navigation.startPageRight(context, Rms2Page());
                           AppBridge.sendAppx(Constants.OPEN_VIEW, key: Constants.RMS2);
-
                         },
                       ),
                     ),

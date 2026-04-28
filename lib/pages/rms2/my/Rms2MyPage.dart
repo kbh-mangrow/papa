@@ -29,7 +29,7 @@ class Rms2MyPageState extends State<Rms2MyPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.lightBlueAccent,
+      backgroundColor: Colors.white,
       body: Column(
         children: [
           const SizedBox(height: 10),

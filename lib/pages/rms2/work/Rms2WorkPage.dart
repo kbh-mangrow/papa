@@ -1,7 +1,10 @@
 
+import 'package:chart_sparkline/chart_sparkline.dart';
 import 'package:flutter/material.dart' hide VoidCallback;
 import 'package:papa/PapaComm.dart';
+import 'package:papa/pages/rms2/work/WorkDetailPage.dart';
 import '../../../Storage.dart';
+import '../../../common/Navigation.dart';
 import '../../../l10n/app_localizations.dart';
 
 //====================================================
@@ -16,6 +19,8 @@ class Rms2WorkPage extends StatefulWidget {
 }
 
 class Rms2WorkPageState extends State<Rms2WorkPage> {
+  var data = [0.0, 1.0, 1.5, 2.0, 0.0, 0.0, -0.5, -1.0, -0.5, 0.0, 0.0];
+
   @override
   void initState() {
     super.initState();
@@ -29,10 +34,39 @@ class Rms2WorkPageState extends State<Rms2WorkPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.green,
+      backgroundColor: Colors.white,
       body: Column(
         children: [
           const SizedBox(height: 10),
+
+          Row(children: [
+            TextButton(
+              onPressed: () {
+                Navigation.startPageRight(context, WorkDetailPage());
+              },
+              style: TextButton.styleFrom(
+                foregroundColor: Colors.blue,
+                textStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              ),
+              child: Text('근무상세'),
+            ),
+
+
+          ],),
+          /*
+          Sparkline(
+            data: data,
+            useCubicSmoothing: true,
+            cubicSmoothingFactor: 0.2,
+          ),
+           */
+          //https://pub.dev/packages/chart_sparkline
+          Sparkline(
+            data: data,
+            pointsMode: PointsMode.all,
+            pointSize: 8.0,
+            pointColor: Colors.amber,
+          )
 
         ],
       ),

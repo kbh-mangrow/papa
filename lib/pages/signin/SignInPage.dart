@@ -213,7 +213,7 @@ class SignInPageState extends State<SignInPage> {
                                           FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z0-9]')),
                                         ],
                                         maxLength: 30,
-                                        maxLengthEnforcement: MaxLengthEnforcement.enforced, // ⭐ 이거 추가
+                                        maxLengthEnforcement: MaxLengthEnforcement.enforced,
                                         style: const TextStyle(
                                           fontSize: 18,
                                           color: Color(0xff1B2028),

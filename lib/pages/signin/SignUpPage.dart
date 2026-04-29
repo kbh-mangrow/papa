@@ -21,7 +21,7 @@ class SignUpPage extends StatefulWidget {
 }
 
 class SignUpPageState extends State<SignUpPage> {
-  int index = 3;
+  int index = 1;
 
   @override
   void initState() {
@@ -114,7 +114,7 @@ class SignUpPageState extends State<SignUpPage> {
               LinearPercentIndicator(
                 width: MediaQuery.of(context).size.width,
                 lineHeight: 4,
-                percent: 1 / index,
+                percent: index * 0.25,
                 padding: EdgeInsets.zero,
                 backgroundColor: Color(0xffeeeeee),
                 progressColor: Color(0xff478DFA),
@@ -122,9 +122,9 @@ class SignUpPageState extends State<SignUpPage> {
               ),
 
               switch (index) {
-                3 => const SignUpStep1Page(),
+                1 => const SignUpStep1Page(),
                 2 => const SignUpStep2Page(),
-                1 => const SignUpStep3Page(),
+                3 => const SignUpStep3Page(),
                 _ => const SizedBox(),
               },
 
@@ -135,24 +135,95 @@ class SignUpPageState extends State<SignUpPage> {
           AnimatedPositioned(
             duration: const Duration(milliseconds: 200),
             curve: Curves.easeOut,
-            left: 16,
-            right: 16,
+            left: 0,
+            right: 0,
             bottom: MediaQuery.of(context).viewInsets.bottom + 16,
             child: SafeArea(
               top: false,
-              child: SizedBox(
-                height: 48,
-                child: ElevatedButton(
-                  onPressed: () {},
-                  child: const Text('확인'),
+              child: Container(
+                width: double.infinity,
+                height: 80,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.03),
+                      blurRadius: 3,
+                      offset: Offset(0, -5),
+                    ),
+                  ],
                 ),
-              ),
+                child: getNextButton()
+              )
             ),
           ),
         ],
       ),
     );
 
+  }
+
+  Widget getNextButton() {
+    Widget button;
+    if (index == 1) {
+      button = Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Material(
+          color: const Color(0xff478DFA),
+          borderRadius: BorderRadius.circular(14),
+          child: InkWell(
+            borderRadius: BorderRadius.circular(14),
+            onTap: () {
+              print('click');
+            },
+            child: SizedBox(
+              width: double.infinity,
+              height: 48,
+              child: Center(
+                child: Text(
+                  AppLocalizations.of(context)!.signin,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+      );
+    }
+    else {
+      button = button = Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        child: Material(
+          color: const Color(0xff478DFA),
+          borderRadius: BorderRadius.circular(14),
+          child: InkWell(
+            borderRadius: BorderRadius.circular(14),
+            onTap: () {
+              print('click');
+            },
+            child: SizedBox(
+              width: double.infinity,
+              height: 48,
+              child: Center(
+                child: Text(
+                  AppLocalizations.of(context)!.signin,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+      );
+    }
+    return button;
   }
 
 }

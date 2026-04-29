@@ -31,6 +31,12 @@ class SignUpStep1PageState extends State<SignUpStep1Page> {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
+      height: 100,
+      color:Colors.orange
+    );
+    /*
+    return Container(
+      width: double.infinity,
       child: Expanded(child:
       SingleChildScrollView(
         padding: const EdgeInsets.fromLTRB(16, 24, 16, 100),
@@ -116,7 +122,7 @@ class SignUpStep1PageState extends State<SignUpStep1Page> {
       ),
 
     );
-
+    */
 
   }
 

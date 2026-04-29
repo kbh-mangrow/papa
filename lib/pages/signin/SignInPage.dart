@@ -149,7 +149,7 @@ class SignInPageState extends State<SignInPage> {
                                           hintText: AppLocalizations.of(context)!.signin_id_hint,
                                           hintStyle: const TextStyle(
                                             color: Color(0xff8395B4),
-                                            fontSize: 14,
+                                            fontSize: 18,
                                           ),
                                           border: InputBorder.none,
                                           isDense: true,
@@ -222,7 +222,7 @@ class SignInPageState extends State<SignInPage> {
                                           hintText: AppLocalizations.of(context)!.signin_password_hint,
                                           hintStyle: const TextStyle(
                                             color: Color(0xff8395B4),
-                                            fontSize: 14,
+                                            fontSize: 18,
                                           ),
                                           border: InputBorder.none,
                                           isDense: true,
@@ -409,7 +409,7 @@ class SignInPageState extends State<SignInPage> {
                         AppLocalizations.of(context)!.signin,
                         style: const TextStyle(
                           color: Colors.white,
-                          fontSize: 16,
+                          fontSize: 20,
                           fontWeight: FontWeight.bold,
                         ),
                       ),

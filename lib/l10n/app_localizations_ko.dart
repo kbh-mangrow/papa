@@ -138,6 +138,45 @@ class AppLocalizationsKo extends AppLocalizations {
   String get signup_password_error => '비밀번호 형식오류. (영문/숫자 포함 8자 이상 ~ 30자 미만)';
 
   @override
+  String get signup_password_re_error => '비밀번호가 일치하지 않습니다.';
+
+  @override
+  String get signup_name => '이름';
+
+  @override
+  String get signup_name_hint => '이름을 입력해주세요.';
+
+  @override
+  String get signup_birth => '생년월일/성별';
+
+  @override
+  String get signup_mobile => '휴대전화 번호';
+
+  @override
+  String get signup_mobile_hint => '휴대전화 번호를 입력해주세요.';
+
+  @override
+  String get signup_mobile_error => '전화번호 형식이 올바르지 않습니다.';
+
+  @override
+  String get signup_skt => 'SKT';
+
+  @override
+  String get signup_kt => 'KT';
+
+  @override
+  String get signup_lg => 'LG U+';
+
+  @override
+  String get signup_skt_lite => 'SKT 알뜰폰';
+
+  @override
+  String get signup_kt_lite => 'KT 알뜰폰';
+
+  @override
+  String get signup_lg_lite => 'LG U+ 알뜰폰';
+
+  @override
   String get popup_signin_confirm => '로그인이 필요한 서비스입니다.\n로그인 하시겠습니까?';
 
   @override

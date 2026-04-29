@@ -59,7 +59,7 @@ class SignUpPageState extends State<SignUpPage> {
                             ),
                           ),
                           TextSpan(
-                            text: ' ($index/3)',
+                            text: ' ($index/4)',
                             style: TextStyle(
                                 color: Color(0xff999999),
                                 fontSize: 16
@@ -153,7 +153,7 @@ class SignUpPageState extends State<SignUpPage> {
                     ),
                   ],
                 ),
-                child: getNextButton()
+                child: getBottomLayout()
               )
             ),
           ),
@@ -163,10 +163,10 @@ class SignUpPageState extends State<SignUpPage> {
 
   }
 
-  Widget getNextButton() {
-    Widget button;
+  Widget getBottomLayout() {
+    Widget widget;
     if (index == 1) {
-      button = Padding(
+      widget = Padding(
         padding: const EdgeInsets.all(16.0),
         child: Material(
           color: const Color(0xff478DFA),
@@ -174,17 +174,19 @@ class SignUpPageState extends State<SignUpPage> {
           child: InkWell(
             borderRadius: BorderRadius.circular(14),
             onTap: () {
-              print('click');
+              setState(() {
+                index = 2;
+              });
             },
             child: SizedBox(
               width: double.infinity,
               height: 48,
               child: Center(
                 child: Text(
-                  AppLocalizations.of(context)!.signin,
+                  AppLocalizations.of(context)!.next,
                   style: const TextStyle(
                     color: Colors.white,
-                    fontSize: 16,
+                    fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -195,35 +197,92 @@ class SignUpPageState extends State<SignUpPage> {
       );
     }
     else {
-      button = button = Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: Material(
-          color: const Color(0xff478DFA),
-          borderRadius: BorderRadius.circular(14),
-          child: InkWell(
-            borderRadius: BorderRadius.circular(14),
-            onTap: () {
-              print('click');
-            },
-            child: SizedBox(
-              width: double.infinity,
-              height: 48,
-              child: Center(
-                child: Text(
-                  AppLocalizations.of(context)!.signin,
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
+      widget = Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Row(
+          children: [
+            Expanded(child:
+              Material(
+                color: const Color(0xffF7FAFF),
+                borderRadius: BorderRadius.circular(14),
+                child: InkWell(
+                  borderRadius: BorderRadius.circular(14),
+                  onTap: () {
+                    setState(() {
+                      if (index == 2) {
+                        index = 1;
+                      }
+                      else if (index == 3) {
+                        index = 2;
+                      }
+                      else {
+                        index = 3;
+                      }
+                    });
+                  },
+                  child: SizedBox(
+                    width: double.infinity,
+                    height: 48,
+                    child: Center(
+                      child: Text(
+                        AppLocalizations.of(context)!.prev,
+                        style: const TextStyle(
+                          color: Color(0xff478DFA),
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
+            SizedBox(width: 12,),
+            Expanded(child:
+              Material(
+                color: const Color(0xff478DFA),
+                borderRadius: BorderRadius.circular(14),
+                child: InkWell(
+                  borderRadius: BorderRadius.circular(14),
+                  onTap: () {
+                    setState(() {
+                      if (index == 2) {
+                        index = 3;
+                      }
+                      else if (index == 3) {
+                        index = 4;
+                      }
+                      else {
+                        //가입
+                      }
+                    });
+
+                  },
+                  child: SizedBox(
+                    width: double.infinity,
+                    height: 48,
+                    child: Center(
+                      child: Text(
+                        (index == 2 || index == 3) ?
+                          AppLocalizations.of(context)!.next :
+                        AppLocalizations.of(context)!.complete,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
       );
     }
-    return button;
+
+    return widget;
   }
 
 }

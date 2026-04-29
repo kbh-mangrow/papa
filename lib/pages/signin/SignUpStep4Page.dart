@@ -5,17 +5,17 @@ import '../../../Storage.dart';
 import '../../../l10n/app_localizations.dart';
 
 //====================================================
-final String tag = 'SignUpStep3Page.dart';
+final String tag = 'SignUpStep4Page.dart';
 //====================================================
 
-class SignUpStep3Page extends StatefulWidget {
-  const SignUpStep3Page({super.key, });
+class SignUpStep4Page extends StatefulWidget {
+  const SignUpStep4Page({super.key, });
 
   @override
-  State<SignUpStep3Page> createState() => SignUpStep3PageState();
+  State<SignUpStep4Page> createState() => SignUpStep4PageState();
 }
 
-class SignUpStep3PageState extends State<SignUpStep3Page> {
+class SignUpStep4PageState extends State<SignUpStep4Page> {
   @override
   void initState() {
     super.initState();

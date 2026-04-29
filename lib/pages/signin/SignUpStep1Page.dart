@@ -17,6 +17,10 @@ class SignUpStep1Page extends StatefulWidget {
 }
 
 class SignUpStep1PageState extends State<SignUpStep1Page> {
+  String idError = '';
+  String passwordError = '';
+  String rePasswordError = '';
+
   @override
   void initState() {
     super.initState();
@@ -31,13 +35,18 @@ class SignUpStep1PageState extends State<SignUpStep1Page> {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: 100,
-      color:Colors.orange,
-      child: Column(children: [
+      margin: EdgeInsets.symmetric(
+        horizontal: 16,
+        vertical: 0,
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+        SizedBox(height: 32,),
         SizedBox(
           width: double.infinity,
           child: Text(
-            AppLocalizations.of(context)!.signin_id,
+            AppLocalizations.of(context)!.signup_id,
             style: const TextStyle(
               color: Color(0xff1B2028),
               fontSize: 14,
@@ -60,12 +69,6 @@ class SignUpStep1PageState extends State<SignUpStep1Page> {
             child: Row(
               children: [
                 SizedBox(width: 12,),
-                Image.asset(
-                  'image/id.png',
-                  width: 24,
-                  height: 24,
-                ),
-                SizedBox(width: 12,),
                 Expanded(
                   child: SizedBox(
                     height: 48,
@@ -85,10 +88,10 @@ class SignUpStep1PageState extends State<SignUpStep1Page> {
                             color: Color(0xff1B2028),
                           ),
                           decoration: InputDecoration(
-                            hintText: AppLocalizations.of(context)!.signin_id_hint,
+                            hintText: AppLocalizations.of(context)!.signup_id_hint,
                             hintStyle: const TextStyle(
                               color: Color(0xff8395B4),
-                              fontSize: 14,
+                              fontSize: 18,
                             ),
                             border: InputBorder.none,
                             isDense: true,
@@ -103,99 +106,159 @@ class SignUpStep1PageState extends State<SignUpStep1Page> {
               ],
             )
         ),
+        //아아디 에러
+        (idError.isEmpty) ? SizedBox.shrink()
+        : Text(
+          idError,
+          style: const TextStyle(
+            color: Color(0xff1E11D48),
+            fontSize: 14,
+          ),
+          textAlign: TextAlign.left,
+        ),
+        SizedBox(height: 24,),
+        //비밀번호
+        SizedBox(
+          width: double.infinity,
+          child: Text(
+            AppLocalizations.of(context)!.signup_password,
+            style: const TextStyle(
+              color: Color(0xff1B2028),
+              fontSize: 14,
+            ),
+            textAlign: TextAlign.left,
+          ),
+        ),
+        SizedBox(height: 4,),
+        Container(
+            width: double.infinity,
+            height: 48,
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: Color(0xA37CAAFA),
+                width: 1,
+              ),
+              borderRadius: BorderRadius.circular(16),
+              color: Colors.white,
+            ),
+            child: Row(
+              children: [
+                SizedBox(width: 12,),
+                Expanded(
+                  child: SizedBox(
+                    height: 48,
+                    child: Center(
+                        child: TextField(
+                          obscureText: true,
+                          keyboardType: TextInputType.visiblePassword,
+                          textInputAction: TextInputAction.done,
+                          cursorHeight: 18,
+                          textAlignVertical: TextAlignVertical.center,
+                          inputFormatters: [
+                            FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z0-9]')),
+                          ],
+                          maxLength: 30,
+                          maxLengthEnforcement: MaxLengthEnforcement.enforced,
+                          style: const TextStyle(
+                            fontSize: 18,
+                            color: Color(0xff1B2028),
+                          ),
+                          decoration: InputDecoration(
+                            hintText: AppLocalizations.of(context)!.signup_password_hint,
+                            hintStyle: const TextStyle(
+                              color: Color(0xff8395B4),
+                              fontSize: 18,
+                            ),
+                            border: InputBorder.none,
+                            isDense: true,
+                            counterText: '',
+                            contentPadding: const EdgeInsets.only(bottom: 4),
+                          ),
+                        )
+                    ),
+                  ),
+                ),
+                SizedBox(width: 12,),
+              ],
+            )
+        ),
+        //비밀번호 에러
+        (passwordError.isEmpty) ? SizedBox.shrink()
+            : Text(
+          passwordError,
+          style: const TextStyle(
+            color: Color(0xff1E11D48),
+            fontSize: 14,
+          ),
+          textAlign: TextAlign.left,
+        ),
+        SizedBox(height: 12,),
+        Container(
+            width: double.infinity,
+            height: 48,
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: Color(0xA37CAAFA),
+                width: 1,
+              ),
+              borderRadius: BorderRadius.circular(16),
+              color: Colors.white,
+            ),
+            child: Row(
+              children: [
+                SizedBox(width: 12,),
+                Expanded(
+                  child: SizedBox(
+                    height: 48,
+                    child: Center(
+                        child: TextField(
+                          obscureText: true,
+                          keyboardType: TextInputType.visiblePassword,
+                          textInputAction: TextInputAction.done,
+                          cursorHeight: 18,
+                          textAlignVertical: TextAlignVertical.center,
+                          inputFormatters: [
+                            FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z0-9]')),
+                          ],
+                          maxLength: 30,
+                          maxLengthEnforcement: MaxLengthEnforcement.enforced,
+                          style: const TextStyle(
+                            fontSize: 18,
+                            color: Color(0xff1B2028),
+                          ),
+                          decoration: InputDecoration(
+                            hintText: AppLocalizations.of(context)!.signup_password_re_hint,
+                            hintStyle: const TextStyle(
+                              color: Color(0xff8395B4),
+                              fontSize: 18,
+                            ),
+                            border: InputBorder.none,
+                            isDense: true,
+                            counterText: '',
+                            contentPadding: const EdgeInsets.only(bottom: 4),
+                          ),
+                        )
+                    ),
+                  ),
+                ),
+                SizedBox(width: 12,),
+              ],
+            )
+        ),
+        //비밀번호 확인 에러
+        (rePasswordError.isEmpty) ? SizedBox.shrink()
+            : Text(
+          rePasswordError,
+          style: const TextStyle(
+            color: Color(0xff1E11D48),
+            fontSize: 14,
+          ),
+          textAlign: TextAlign.left,
+        ),
+
 
       ],),
     );
-    /*
-    return Container(
-      width: double.infinity,
-      child: Expanded(child:
-      SingleChildScrollView(
-        padding: const EdgeInsets.fromLTRB(16, 24, 16, 100),
-        child: Container(
-          width: double.infinity,
-          child: Column(
-            children: [
-              SizedBox(
-                width: double.infinity,
-                child: Text(
-                  AppLocalizations.of(context)!.signin_id,
-                  style: const TextStyle(
-                    color: Color(0xff1B2028),
-                    fontSize: 14,
-                  ),
-                  textAlign: TextAlign.left,
-                ),
-              ),
-              SizedBox(height: 4,),
-              Container(
-                  width: double.infinity,
-                  height: 48,
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: Color(0xA37CAAFA),
-                      width: 1,
-                    ),
-                    borderRadius: BorderRadius.circular(16),
-                    color: Colors.white,
-                  ),
-                  child: Row(
-                    children: [
-                      SizedBox(width: 12,),
-                      Image.asset(
-                        'image/id.png',
-                        width: 24,
-                        height: 24,
-                      ),
-                      SizedBox(width: 12,),
-                      Expanded(
-                        child: SizedBox(
-                          height: 48,
-                          child: Center(
-                              child: TextField(
-                                keyboardType: TextInputType.text,
-                                textInputAction: TextInputAction.done,
-                                cursorHeight: 18,
-                                textAlignVertical: TextAlignVertical.center,
-                                inputFormatters: [
-                                  FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z0-9]')),
-                                ],
-                                maxLength: 30,
-                                maxLengthEnforcement: MaxLengthEnforcement.enforced,
-                                style: const TextStyle(
-                                  fontSize: 18,
-                                  color: Color(0xff1B2028),
-                                ),
-                                decoration: InputDecoration(
-                                  hintText: AppLocalizations.of(context)!.signin_id_hint,
-                                  hintStyle: const TextStyle(
-                                    color: Color(0xff8395B4),
-                                    fontSize: 14,
-                                  ),
-                                  border: InputBorder.none,
-                                  isDense: true,
-                                  counterText: '',
-                                  contentPadding: const EdgeInsets.only(bottom: 4),
-                                ),
-                              )
-                          ),
-                        ),
-                      ),
-                      SizedBox(width: 12,),
-                    ],
-                  )
-              ),
-
-            ],
-          ),
-        ),
-
-      ),
-      ),
-
-    );
-    */
-
   }
 
 }

@@ -353,6 +353,84 @@ abstract class AppLocalizations {
   /// **'비밀번호 형식오류. (영문/숫자 포함 8자 이상 ~ 30자 미만)'**
   String get signup_password_error;
 
+  /// No description provided for @signup_password_re_error.
+  ///
+  /// In en, this message translates to:
+  /// **'비밀번호가 일치하지 않습니다.'**
+  String get signup_password_re_error;
+
+  /// No description provided for @signup_name.
+  ///
+  /// In en, this message translates to:
+  /// **'이름'**
+  String get signup_name;
+
+  /// No description provided for @signup_name_hint.
+  ///
+  /// In en, this message translates to:
+  /// **'이름을 입력해주세요.'**
+  String get signup_name_hint;
+
+  /// No description provided for @signup_birth.
+  ///
+  /// In en, this message translates to:
+  /// **'생년월일/성별'**
+  String get signup_birth;
+
+  /// No description provided for @signup_mobile.
+  ///
+  /// In en, this message translates to:
+  /// **'휴대전화 번호'**
+  String get signup_mobile;
+
+  /// No description provided for @signup_mobile_hint.
+  ///
+  /// In en, this message translates to:
+  /// **'휴대전화 번호를 입력해주세요.'**
+  String get signup_mobile_hint;
+
+  /// No description provided for @signup_mobile_error.
+  ///
+  /// In en, this message translates to:
+  /// **'전화번호 형식이 올바르지 않습니다.'**
+  String get signup_mobile_error;
+
+  /// No description provided for @signup_skt.
+  ///
+  /// In en, this message translates to:
+  /// **'SKT'**
+  String get signup_skt;
+
+  /// No description provided for @signup_kt.
+  ///
+  /// In en, this message translates to:
+  /// **'KT'**
+  String get signup_kt;
+
+  /// No description provided for @signup_lg.
+  ///
+  /// In en, this message translates to:
+  /// **'LG U+'**
+  String get signup_lg;
+
+  /// No description provided for @signup_skt_lite.
+  ///
+  /// In en, this message translates to:
+  /// **'SKT 알뜰폰'**
+  String get signup_skt_lite;
+
+  /// No description provided for @signup_kt_lite.
+  ///
+  /// In en, this message translates to:
+  /// **'KT 알뜰폰'**
+  String get signup_kt_lite;
+
+  /// No description provided for @signup_lg_lite.
+  ///
+  /// In en, this message translates to:
+  /// **'LG U+ 알뜰폰'**
+  String get signup_lg_lite;
+
   /// No description provided for @popup_signin_confirm.
   ///
   /// In en, this message translates to:

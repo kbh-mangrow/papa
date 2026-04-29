@@ -48,6 +48,21 @@
   "signup_password_re" : "비밀번호 확인",
   "signup_password_re_hint" : "비밀번호를 다시 입력해 주세요.",
   "signup_password_error" : "비밀번호 형식오류. (영문/숫자 포함 8자 이상 ~ 30자 미만)",
+  "signup_password_re_error" : "비밀번호가 일치하지 않습니다.",
+
+  "signup_name" : "이름",
+  "signup_name_hint" : "이름을 입력해주세요.",
+  "signup_birth" : "생년월일/성별",
+  "signup_mobile" : "휴대전화 번호",
+  "signup_mobile_hint" : "휴대전화 번호를 입력해주세요.",
+  "signup_mobile_error" : "전화번호 형식이 올바르지 않습니다.",
+  "signup_skt" : "SKT",
+  "signup_kt" : "KT",
+  "signup_lg" : "LG U+",
+  "signup_skt_lite" : "SKT 알뜰폰",
+  "signup_kt_lite" : "KT 알뜰폰",
+  "signup_lg_lite" : "LG U+ 알뜰폰",
+
 
   "popup_signin_confirm" : "로그인이 필요한 서비스입니다.\n로그인 하시겠습니까?",
 

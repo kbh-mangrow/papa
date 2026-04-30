@@ -43,7 +43,7 @@ class Rms2WorkPageState extends State<Rms2WorkPage> {
           Row(children: [
             TextButton(
               onPressed: () {
-                Navigation.startPageRight(context, WorkDetailPage());
+                Navigation.startPageRight(context, WorkDetailPage(), 'work_detail');
               },
               style: TextButton.styleFrom(
                 foregroundColor: Colors.blue,

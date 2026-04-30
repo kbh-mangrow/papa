@@ -141,40 +141,69 @@ class AppLocalizationsEn extends AppLocalizations {
   String get signup_password_re_error => '비밀번호가 일치하지 않습니다.';
 
   @override
-  String get signup_name => '이름';
+  String get signup_auth_code_guide => '입력하신 번호로 인증번호가 발송되었습니다.';
 
   @override
-  String get signup_name_hint => '이름을 입력해주세요.';
+  String get signup_retry => '재전송';
 
   @override
-  String get signup_birth => '생년월일/성별';
+  String get signup_remain_time => '남은 시간';
 
   @override
-  String get signup_mobile => '휴대전화 번호';
+  String get signup_auth_code => '인증번호';
 
   @override
-  String get signup_mobile_hint => '휴대전화 번호를 입력해주세요.';
+  String get signup_auth_code_error => '인증번호가 올바르지 않습니다.';
 
   @override
-  String get signup_mobile_error => '전화번호 형식이 올바르지 않습니다.';
+  String get signup_complete => '가입 완료';
 
   @override
-  String get signup_skt => 'SKT';
+  String get signup_complete_welcome => '택배아빠에 오신 것을 환영합니다!';
 
   @override
-  String get signup_kt => 'KT';
+  String get signup_complete_home => '홈으로';
 
   @override
-  String get signup_lg => 'LG U+';
+  String get forgot_id_title => '아이디 찾기';
 
   @override
-  String get signup_skt_lite => 'SKT 알뜰폰';
+  String forgot_id_result(Object id) {
+    return ' 님이 가입하신 아이디는\n$id 입니다.';
+  }
 
   @override
-  String get signup_kt_lite => 'KT 알뜰폰';
+  String get forgot_id_result_guide => '개인정보 보호를 위해 아이디의 일부만 보여집니다.';
 
   @override
-  String get signup_lg_lite => 'LG U+ 알뜰폰';
+  String get forgot_id_result_none => '가입 내역이 없습니다.';
+
+  @override
+  String get forgot_id_signin => '로그인하기';
+
+  @override
+  String get forgot_id_signup => '가입하기';
+
+  @override
+  String get forgot_pwd_title => '비밀번호 찾기';
+
+  @override
+  String get forgot_pwd_result => '임시 비밀번호가 발급되었습니다.';
+
+  @override
+  String get forgot_pwd_result_guide => '임시 비밀번호는 로그인 후,\n마이에서 비밀번호를 변경하신 후 이용해 주세요.';
+
+  @override
+  String get forgot_pwd_temp => '임시비빌번호';
+
+  @override
+  String get forgot_pwd_signin => '로그인하기';
+
+  @override
+  String get forgot_pwd_signup => '가입하기';
+
+  @override
+  String get forgot_pwd_copy => '클립보드에 복사되었습니다.';
 
   @override
   String get popup_signin_confirm => '로그인이 필요한 서비스입니다.\n로그인 하시겠습니까?';
@@ -267,6 +296,30 @@ class AppLocalizationsEn extends AppLocalizations {
   String get rms2_work_status_dayoff => '휴가';
 
   @override
+  String get terms_agree_all => '모두 동의합니다.';
+
+  @override
+  String get terms_group => '[필수] 단체운영 규약서';
+
+  @override
+  String get terms_privacy => '[필수] 개인정보처리방침';
+
+  @override
+  String get terms_service => '[필수] 서비스 이용 약관';
+
+  @override
+  String get terms_information => '[필수] 개인정보 수집 이용 동의';
+
+  @override
+  String get terms_provision => '[필수] 개인정보 3자제공 동의';
+
+  @override
+  String get terms_marketing => '[선택] 마케팅 정보 수신 동의';
+
+  @override
+  String get terms_ads => '[선택] 채널 추가 및 광고성 정보 수신 동의';
+
+  @override
   String get common_company_name => '주식회사 에스엠티에이아이';
 
   @override
@@ -298,4 +351,40 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get common_value_address => '서울특별시 강남구 봉은사로 129, 2층 201호';
+
+  @override
+  String get common_name => '이름';
+
+  @override
+  String get common_name_hint => '이름을 입력해주세요.';
+
+  @override
+  String get common_birth => '주민등록변호 앞 7자리 (생년월일/성별)';
+
+  @override
+  String get common_mobile => '휴대전화 번호';
+
+  @override
+  String get common_mobile_hint => '휴대전화 번호를 입력해주세요.';
+
+  @override
+  String get common_mobile_error => '전화번호 형식이 올바르지 않습니다.';
+
+  @override
+  String get common_skt => 'SKT';
+
+  @override
+  String get common_kt => 'KT';
+
+  @override
+  String get common_lg => 'LG U+';
+
+  @override
+  String get common_skt_lite => 'SKT 알뜰폰';
+
+  @override
+  String get common_kt_lite => 'KT 알뜰폰';
+
+  @override
+  String get common_lg_lite => 'LG U+ 알뜰폰';
 }

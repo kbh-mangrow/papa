@@ -2,25 +2,27 @@
 import 'package:flutter/material.dart' hide VoidCallback;
 import 'package:flutter/services.dart';
 import 'package:papa/PapaComm.dart';
-import 'package:papa/pages/signin/SignUpStep1Page.dart';
+import 'package:papa/pages/signin/forgot/id/ForgotIdStep1Page.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
-import '../../../Storage.dart';
-import '../../../l10n/app_localizations.dart';
-import 'SignUpStep2Page.dart';
-import 'SignUpStep3Page.dart';
+import '../../../../../Storage.dart';
+import '../../../../../l10n/app_localizations.dart';
+import '../../../../common/Navigation.dart';
+import 'ForgotIdResultPage.dart';
+import 'ForgotIdStep2Page.dart';
+
 
 //====================================================
-final String tag = 'SignUpPage.dart';
+final String tag = 'ForgotIdPage.dart';
 //====================================================
 
-class SignUpPage extends StatefulWidget {
-  const SignUpPage({super.key, });
+class ForgotIdPage extends StatefulWidget {
+  const ForgotIdPage({super.key, });
 
   @override
-  State<SignUpPage> createState() => SignUpPageState();
+  State<ForgotIdPage> createState() => ForgotIdPageState();
 }
 
-class SignUpPageState extends State<SignUpPage> {
+class ForgotIdPageState extends State<ForgotIdPage> {
   int index = 1;
 
   @override
@@ -52,14 +54,14 @@ class SignUpPageState extends State<SignUpPage> {
                       TextSpan(
                         children: [
                           TextSpan(
-                            text: AppLocalizations.of(context)!.signup_title,
+                            text: AppLocalizations.of(context)!.forgot_id_title,
                             style: TextStyle(
                                 color: Color(0xff111827),
                                 fontSize: 16
                             ),
                           ),
                           TextSpan(
-                            text: ' ($index/4)',
+                            text: ' ($index/2)',
                             style: TextStyle(
                                 color: Color(0xff999999),
                                 fontSize: 16
@@ -114,7 +116,7 @@ class SignUpPageState extends State<SignUpPage> {
               LinearPercentIndicator(
                 width: MediaQuery.of(context).size.width,
                 lineHeight: 4,
-                percent: index * 0.25,
+                percent: index * 0.5,
                 padding: EdgeInsets.zero,
                 backgroundColor: Color(0xffeeeeee),
                 progressColor: Color(0xff478DFA),
@@ -122,9 +124,8 @@ class SignUpPageState extends State<SignUpPage> {
               ),
 
               switch (index) {
-                1 => const SignUpStep1Page(),
-                2 => const SignUpStep2Page(),
-                3 => const SignUpStep3Page(),
+                1 => const ForgotIdStep1Page(),
+                2 => const ForgotIdStep2Page(),
                 _ => const SizedBox(),
               },
 
@@ -139,22 +140,22 @@ class SignUpPageState extends State<SignUpPage> {
             right: 0,
             bottom: MediaQuery.of(context).viewInsets.bottom + 16,
             child: SafeArea(
-              top: false,
-              child: Container(
-                width: double.infinity,
-                height: 80,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.03),
-                      blurRadius: 3,
-                      offset: Offset(0, -5),
+                top: false,
+                child: Container(
+                    width: double.infinity,
+                    height: 80,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.03),
+                          blurRadius: 3,
+                          offset: Offset(0, -5),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
-                child: getBottomLayout()
-              )
+                    child: getBottomLayout()
+                )
             ),
           ),
         ],
@@ -202,80 +203,78 @@ class SignUpPageState extends State<SignUpPage> {
         child: Row(
           children: [
             Expanded(child:
-              Material(
-                color: const Color(0xffF7FAFF),
+            Material(
+              color: const Color(0xffF7FAFF),
+              borderRadius: BorderRadius.circular(14),
+              child: InkWell(
                 borderRadius: BorderRadius.circular(14),
-                child: InkWell(
-                  borderRadius: BorderRadius.circular(14),
-                  onTap: () {
-                    setState(() {
-                      if (index == 2) {
-                        index = 1;
-                      }
-                      else if (index == 3) {
-                        index = 2;
-                      }
-                      else {
-                        index = 3;
-                      }
-                    });
-                  },
-                  child: SizedBox(
-                    width: double.infinity,
-                    height: 48,
-                    child: Center(
-                      child: Text(
-                        AppLocalizations.of(context)!.prev,
-                        style: const TextStyle(
-                          color: Color(0xff478DFA),
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                        ),
+                onTap: () {
+                  setState(() {
+                    if (index == 2) {
+                      index = 1;
+                    }
+                  });
+                },
+                child: SizedBox(
+                  width: double.infinity,
+                  height: 48,
+                  child: Center(
+                    child: Text(
+                      AppLocalizations.of(context)!.prev,
+                      style: const TextStyle(
+                        color: Color(0xff478DFA),
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
                 ),
               ),
             ),
+            ),
             SizedBox(width: 12,),
             Expanded(child:
-              Material(
-                color: const Color(0xff478DFA),
+            Material(
+              color: const Color(0xff478DFA),
+              borderRadius: BorderRadius.circular(14),
+              child: InkWell(
                 borderRadius: BorderRadius.circular(14),
-                child: InkWell(
-                  borderRadius: BorderRadius.circular(14),
-                  onTap: () {
-                    setState(() {
-                      if (index == 2) {
-                        index = 3;
-                      }
-                      else if (index == 3) {
-                        index = 4;
-                      }
-                      else {
-                        //가입
-                      }
-                    });
+                onTap: () {
+                  setState(() {
+                    //Navigation.startPageFade(context, ForgotIdResultPage());
+                    Navigator.pushReplacement(
+                      context,
+                      PageRouteBuilder(
+                        pageBuilder: (_, __, ___) => ForgotIdResultPage(),
+                        transitionsBuilder: (_, animation, __, child) {
+                          return FadeTransition(
+                            opacity: animation,
+                            child: child,
+                          );
+                        },
+                      ),
+                    );
 
-                  },
-                  child: SizedBox(
-                    width: double.infinity,
-                    height: 48,
-                    child: Center(
-                      child: Text(
-                        (index == 2 || index == 3) ?
-                          AppLocalizations.of(context)!.next :
-                        AppLocalizations.of(context)!.complete,
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                        ),
+                  });
+                },
+                child: SizedBox(
+                  width: double.infinity,
+                  height: 48,
+                  child: Center(
+                    child: Text(
+                      (index == 2 || index == 3) ?
+                      AppLocalizations.of(context)!.next :
+                      AppLocalizations.of(context)!.complete,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
                 ),
               ),
+            ),
             ),
           ],
         ),

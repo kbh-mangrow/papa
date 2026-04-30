@@ -359,77 +359,131 @@ abstract class AppLocalizations {
   /// **'비밀번호가 일치하지 않습니다.'**
   String get signup_password_re_error;
 
-  /// No description provided for @signup_name.
+  /// No description provided for @signup_auth_code_guide.
   ///
   /// In en, this message translates to:
-  /// **'이름'**
-  String get signup_name;
+  /// **'입력하신 번호로 인증번호가 발송되었습니다.'**
+  String get signup_auth_code_guide;
 
-  /// No description provided for @signup_name_hint.
+  /// No description provided for @signup_retry.
   ///
   /// In en, this message translates to:
-  /// **'이름을 입력해주세요.'**
-  String get signup_name_hint;
+  /// **'재전송'**
+  String get signup_retry;
 
-  /// No description provided for @signup_birth.
+  /// No description provided for @signup_remain_time.
   ///
   /// In en, this message translates to:
-  /// **'생년월일/성별'**
-  String get signup_birth;
+  /// **'남은 시간'**
+  String get signup_remain_time;
 
-  /// No description provided for @signup_mobile.
+  /// No description provided for @signup_auth_code.
   ///
   /// In en, this message translates to:
-  /// **'휴대전화 번호'**
-  String get signup_mobile;
+  /// **'인증번호'**
+  String get signup_auth_code;
 
-  /// No description provided for @signup_mobile_hint.
+  /// No description provided for @signup_auth_code_error.
   ///
   /// In en, this message translates to:
-  /// **'휴대전화 번호를 입력해주세요.'**
-  String get signup_mobile_hint;
+  /// **'인증번호가 올바르지 않습니다.'**
+  String get signup_auth_code_error;
 
-  /// No description provided for @signup_mobile_error.
+  /// No description provided for @signup_complete.
   ///
   /// In en, this message translates to:
-  /// **'전화번호 형식이 올바르지 않습니다.'**
-  String get signup_mobile_error;
+  /// **'가입 완료'**
+  String get signup_complete;
 
-  /// No description provided for @signup_skt.
+  /// No description provided for @signup_complete_welcome.
   ///
   /// In en, this message translates to:
-  /// **'SKT'**
-  String get signup_skt;
+  /// **'택배아빠에 오신 것을 환영합니다!'**
+  String get signup_complete_welcome;
 
-  /// No description provided for @signup_kt.
+  /// No description provided for @signup_complete_home.
   ///
   /// In en, this message translates to:
-  /// **'KT'**
-  String get signup_kt;
+  /// **'홈으로'**
+  String get signup_complete_home;
 
-  /// No description provided for @signup_lg.
+  /// No description provided for @forgot_id_title.
   ///
   /// In en, this message translates to:
-  /// **'LG U+'**
-  String get signup_lg;
+  /// **'아이디 찾기'**
+  String get forgot_id_title;
 
-  /// No description provided for @signup_skt_lite.
+  /// No description provided for @forgot_id_result.
   ///
   /// In en, this message translates to:
-  /// **'SKT 알뜰폰'**
-  String get signup_skt_lite;
+  /// **' 님이 가입하신 아이디는\n{id} 입니다.'**
+  String forgot_id_result(Object id);
 
-  /// No description provided for @signup_kt_lite.
+  /// No description provided for @forgot_id_result_guide.
   ///
   /// In en, this message translates to:
-  /// **'KT 알뜰폰'**
-  String get signup_kt_lite;
+  /// **'개인정보 보호를 위해 아이디의 일부만 보여집니다.'**
+  String get forgot_id_result_guide;
 
-  /// No description provided for @signup_lg_lite.
+  /// No description provided for @forgot_id_result_none.
   ///
   /// In en, this message translates to:
-  /// **'LG U+ 알뜰폰'**
-  String get signup_lg_lite;
+  /// **'가입 내역이 없습니다.'**
+  String get forgot_id_result_none;
+
+  /// No description provided for @forgot_id_signin.
+  ///
+  /// In en, this message translates to:
+  /// **'로그인하기'**
+  String get forgot_id_signin;
+
+  /// No description provided for @forgot_id_signup.
+  ///
+  /// In en, this message translates to:
+  /// **'가입하기'**
+  String get forgot_id_signup;
+
+  /// No description provided for @forgot_pwd_title.
+  ///
+  /// In en, this message translates to:
+  /// **'비밀번호 찾기'**
+  String get forgot_pwd_title;
+
+  /// No description provided for @forgot_pwd_result.
+  ///
+  /// In en, this message translates to:
+  /// **'임시 비밀번호가 발급되었습니다.'**
+  String get forgot_pwd_result;
+
+  /// No description provided for @forgot_pwd_result_guide.
+  ///
+  /// In en, this message translates to:
+  /// **'임시 비밀번호는 로그인 후,\n마이에서 비밀번호를 변경하신 후 이용해 주세요.'**
+  String get forgot_pwd_result_guide;
+
+  /// No description provided for @forgot_pwd_temp.
+  ///
+  /// In en, this message translates to:
+  /// **'임시비빌번호'**
+  String get forgot_pwd_temp;
+
+  /// No description provided for @forgot_pwd_signin.
+  ///
+  /// In en, this message translates to:
+  /// **'로그인하기'**
+  String get forgot_pwd_signin;
+
+  /// No description provided for @forgot_pwd_signup.
+  ///
+  /// In en, this message translates to:
+  /// **'가입하기'**
+  String get forgot_pwd_signup;
+
+  /// No description provided for @forgot_pwd_copy.
+  ///
+  /// In en, this message translates to:
+  /// **'클립보드에 복사되었습니다.'**
+  String get forgot_pwd_copy;
 
   /// No description provided for @popup_signin_confirm.
   ///
@@ -611,6 +665,54 @@ abstract class AppLocalizations {
   /// **'휴가'**
   String get rms2_work_status_dayoff;
 
+  /// No description provided for @terms_agree_all.
+  ///
+  /// In en, this message translates to:
+  /// **'모두 동의합니다.'**
+  String get terms_agree_all;
+
+  /// No description provided for @terms_group.
+  ///
+  /// In en, this message translates to:
+  /// **'[필수] 단체운영 규약서'**
+  String get terms_group;
+
+  /// No description provided for @terms_privacy.
+  ///
+  /// In en, this message translates to:
+  /// **'[필수] 개인정보처리방침'**
+  String get terms_privacy;
+
+  /// No description provided for @terms_service.
+  ///
+  /// In en, this message translates to:
+  /// **'[필수] 서비스 이용 약관'**
+  String get terms_service;
+
+  /// No description provided for @terms_information.
+  ///
+  /// In en, this message translates to:
+  /// **'[필수] 개인정보 수집 이용 동의'**
+  String get terms_information;
+
+  /// No description provided for @terms_provision.
+  ///
+  /// In en, this message translates to:
+  /// **'[필수] 개인정보 3자제공 동의'**
+  String get terms_provision;
+
+  /// No description provided for @terms_marketing.
+  ///
+  /// In en, this message translates to:
+  /// **'[선택] 마케팅 정보 수신 동의'**
+  String get terms_marketing;
+
+  /// No description provided for @terms_ads.
+  ///
+  /// In en, this message translates to:
+  /// **'[선택] 채널 추가 및 광고성 정보 수신 동의'**
+  String get terms_ads;
+
   /// No description provided for @common_company_name.
   ///
   /// In en, this message translates to:
@@ -676,6 +778,78 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'서울특별시 강남구 봉은사로 129, 2층 201호'**
   String get common_value_address;
+
+  /// No description provided for @common_name.
+  ///
+  /// In en, this message translates to:
+  /// **'이름'**
+  String get common_name;
+
+  /// No description provided for @common_name_hint.
+  ///
+  /// In en, this message translates to:
+  /// **'이름을 입력해주세요.'**
+  String get common_name_hint;
+
+  /// No description provided for @common_birth.
+  ///
+  /// In en, this message translates to:
+  /// **'주민등록변호 앞 7자리 (생년월일/성별)'**
+  String get common_birth;
+
+  /// No description provided for @common_mobile.
+  ///
+  /// In en, this message translates to:
+  /// **'휴대전화 번호'**
+  String get common_mobile;
+
+  /// No description provided for @common_mobile_hint.
+  ///
+  /// In en, this message translates to:
+  /// **'휴대전화 번호를 입력해주세요.'**
+  String get common_mobile_hint;
+
+  /// No description provided for @common_mobile_error.
+  ///
+  /// In en, this message translates to:
+  /// **'전화번호 형식이 올바르지 않습니다.'**
+  String get common_mobile_error;
+
+  /// No description provided for @common_skt.
+  ///
+  /// In en, this message translates to:
+  /// **'SKT'**
+  String get common_skt;
+
+  /// No description provided for @common_kt.
+  ///
+  /// In en, this message translates to:
+  /// **'KT'**
+  String get common_kt;
+
+  /// No description provided for @common_lg.
+  ///
+  /// In en, this message translates to:
+  /// **'LG U+'**
+  String get common_lg;
+
+  /// No description provided for @common_skt_lite.
+  ///
+  /// In en, this message translates to:
+  /// **'SKT 알뜰폰'**
+  String get common_skt_lite;
+
+  /// No description provided for @common_kt_lite.
+  ///
+  /// In en, this message translates to:
+  /// **'KT 알뜰폰'**
+  String get common_kt_lite;
+
+  /// No description provided for @common_lg_lite.
+  ///
+  /// In en, this message translates to:
+  /// **'LG U+ 알뜰폰'**
+  String get common_lg_lite;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

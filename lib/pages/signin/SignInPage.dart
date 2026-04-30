@@ -8,7 +8,7 @@ import 'package:papa/AppBridge.dart';
 import 'package:papa/Constants.dart';
 import 'package:papa/PapaComm.dart';
 import 'package:papa/http/json/JSAuthReq.dart';
-import 'package:papa/pages/signin/SignUpPage.dart';
+import 'package:papa/pages/signin/signup/SignUpPage.dart';
 import '../../../Storage.dart';
 import '../../../l10n/app_localizations.dart';
 import '../../common/Navigation.dart';
@@ -19,6 +19,9 @@ import '../../http/json/JSAuthRes.dart';
 import '../common/LoadingOverlay.dart';
 import 'package:flutter_datetime_picker_plus/flutter_datetime_picker_plus.dart'
 as picker;
+
+import 'forgot/id/ForgotIdPage.dart';
+import 'forgot/password/ForgotPwdPage.dart';
 
 //====================================================
 final String tag = 'SignInPage.dart';
@@ -344,9 +347,9 @@ class SignInPageState extends State<SignInPage> {
                               });
 
                               if (selected == 'find_id') {
-                                print('아이디 찾기 실행');
+                                Navigation.startPageRight(context, ForgotIdPage(), 'forgot_id');
                               } else if (selected == 'find_password') {
-                                print('비밀번호 찾기 실행');
+                                Navigation.startPageRight(context, ForgotPwdPage(), 'forgot_pwd');
                               }
                             },
                             style: TextButton.styleFrom(
@@ -582,7 +585,7 @@ class SignInPageState extends State<SignInPage> {
                       ),)
                   ),
                   onTap: () {
-                    Navigation.startPageRight(context, SignUpPage());
+                    Navigation.startPageRight(context, SignUpPage(), 'signup');
                   },
                 )
               ],)

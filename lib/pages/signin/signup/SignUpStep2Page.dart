@@ -2,8 +2,8 @@
 import 'package:flutter/material.dart' hide VoidCallback;
 import 'package:flutter/services.dart';
 import 'package:papa/PapaComm.dart';
-import '../../../Storage.dart';
-import '../../../l10n/app_localizations.dart';
+import '../../../../Storage.dart';
+import '../../../../l10n/app_localizations.dart';
 
 //====================================================
 final String tag = 'SignUpStep2Page.dart';
@@ -17,10 +17,10 @@ class SignUpStep2Page extends StatefulWidget {
 }
 
 class SignUpStep2PageState extends State<SignUpStep2Page> {
-  String mobileCorp = 'SKT';
+  String mobileCorp = '';
   Offset? tapPosition;
   bool isClicked = false;
-
+  String mobileError = '전화번호 형식이 올바르지 않습니다.';
 
   @override
   void initState() {
@@ -40,12 +40,14 @@ class SignUpStep2PageState extends State<SignUpStep2Page> {
         horizontal: 16,
         vertical: 0,
       ),
-      child: Column(children: [
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
         SizedBox(height: 32,),
         SizedBox(
           width: double.infinity,
           child: Text(
-            AppLocalizations.of(context)!.signup_name,
+            AppLocalizations.of(context)!.common_name,
             style: const TextStyle(
               color: Color(0xff1B2028),
               fontSize: 14,
@@ -87,7 +89,7 @@ class SignUpStep2PageState extends State<SignUpStep2Page> {
                             color: Color(0xff1B2028),
                           ),
                           decoration: InputDecoration(
-                            hintText: AppLocalizations.of(context)!.signup_name_hint,
+                            hintText: AppLocalizations.of(context)!.common_name_hint,
                             hintStyle: const TextStyle(
                               color: Color(0xff8395B4),
                               fontSize: 18,
@@ -109,7 +111,7 @@ class SignUpStep2PageState extends State<SignUpStep2Page> {
         SizedBox(
           width: double.infinity,
           child: Text(
-            AppLocalizations.of(context)!.signup_birth,
+            AppLocalizations.of(context)!.common_birth,
             style: const TextStyle(
               color: Color(0xff1B2028),
               fontSize: 14,
@@ -239,7 +241,7 @@ class SignUpStep2PageState extends State<SignUpStep2Page> {
         SizedBox(
           width: double.infinity,
           child: Text(
-            AppLocalizations.of(context)!.signup_mobile,
+            AppLocalizations.of(context)!.common_mobile,
             style: const TextStyle(
               color: Color(0xff1B2028),
               fontSize: 14,
@@ -248,7 +250,9 @@ class SignUpStep2PageState extends State<SignUpStep2Page> {
           ),
         ),
         SizedBox(height: 4,),
-        Row(children: [
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
           Material(
             color: Colors.white,
             borderRadius: BorderRadius.circular(16),
@@ -281,27 +285,27 @@ class SignUpStep2PageState extends State<SignUpStep2Page> {
                     items: [
                       PopupMenuItem(
                         value: 'skt',
-                        child: Text(AppLocalizations.of(context)!.signup_skt),
+                        child: Text(AppLocalizations.of(context)!.common_skt),
                       ),
                       PopupMenuItem(
                         value: 'kt',
-                        child: Text(AppLocalizations.of(context)!.signup_kt),
+                        child: Text(AppLocalizations.of(context)!.common_kt),
                       ),
                       PopupMenuItem(
                         value: 'lg',
-                        child: Text(AppLocalizations.of(context)!.signup_lg),
+                        child: Text(AppLocalizations.of(context)!.common_lg),
                       ),
                       PopupMenuItem(
                         value: 'skt_lite',
-                        child: Text(AppLocalizations.of(context)!.signup_skt_lite),
+                        child: Text(AppLocalizations.of(context)!.common_skt_lite),
                       ),
                       PopupMenuItem(
                         value: 'kt_lite',
-                        child: Text(AppLocalizations.of(context)!.signup_kt_lite),
+                        child: Text(AppLocalizations.of(context)!.common_kt_lite),
                       ),
                       PopupMenuItem(
                         value: 'lg_lite',
-                        child: Text(AppLocalizations.of(context)!.signup_lg_lite),
+                        child: Text(AppLocalizations.of(context)!.common_lg_lite),
                       ),
                     ],
                   );
@@ -312,27 +316,27 @@ class SignUpStep2PageState extends State<SignUpStep2Page> {
                   if (selected != null) {
                     switch (selected) {
                       case 'skt' : {
-                        mobileCorp = AppLocalizations.of(context)!.signup_skt;
+                        mobileCorp = AppLocalizations.of(context)!.common_skt;
                         break;
                       }
                       case 'kt' : {
-                        mobileCorp = AppLocalizations.of(context)!.signup_kt;
+                        mobileCorp = AppLocalizations.of(context)!.common_kt;
                         break;
                       }
                       case 'lg' : {
-                        mobileCorp = AppLocalizations.of(context)!.signup_lg;
+                        mobileCorp = AppLocalizations.of(context)!.common_lg;
                         break;
                       }
                       case 'skt_lite' : {
-                        mobileCorp = AppLocalizations.of(context)!.signup_skt_lite;
+                        mobileCorp = AppLocalizations.of(context)!.common_skt_lite;
                         break;
                       }
                       case 'kt_lite' : {
-                        mobileCorp = AppLocalizations.of(context)!.signup_kt_lite;
+                        mobileCorp = AppLocalizations.of(context)!.common_kt_lite;
                         break;
                       }
                       case 'lg_lite' : {
-                        mobileCorp = AppLocalizations.of(context)!.signup_lg_lite;
+                        mobileCorp = AppLocalizations.of(context)!.common_lg_lite;
                         break;
                       }
                     }
@@ -355,7 +359,7 @@ class SignUpStep2PageState extends State<SignUpStep2Page> {
                       Expanded(
                         child: Center(
                           child: Text(
-                            mobileCorp,
+                              mobileCorp.isEmpty ? AppLocalizations.of(context)!.common_skt : mobileCorp,
                             style: const TextStyle(
                               color: Color(0xff1B2028),
                               fontSize: 18,
@@ -378,56 +382,69 @@ class SignUpStep2PageState extends State<SignUpStep2Page> {
             ),
           ),
           SizedBox(width: 12,),
-          Expanded( child:
-            Container(
-              width: double.infinity,
-              height: 48,
-              decoration: BoxDecoration(
-                border: Border.all(
-                  color: Color(0xA37CAAFA),
-                  width: 1,
-                ),
-                borderRadius: BorderRadius.circular(16),
-                color: Colors.white,
-              ),
-              child: Row(
-                children: [
-                  SizedBox(width: 12,),
-                  Expanded(
-                    child: SizedBox(
-                      height: 48,
-                      child: Center(
-                          child: TextField(
-                            keyboardType: TextInputType.number,
-                            textInputAction: TextInputAction.done,
-                            cursorHeight: 18,
-                            textAlignVertical: TextAlignVertical.center,
-                            maxLength: 6,
-                            maxLengthEnforcement: MaxLengthEnforcement.enforced,
-                            style: const TextStyle(
-                              fontSize: 18,
-                              color: Color(0xff1B2028),
-                            ),
-                            decoration: InputDecoration(
-                              hintText: AppLocalizations.of(context)!.signup_mobile_hint,
-                              hintStyle: const TextStyle(
-                                color: Color(0xff8395B4),
-                                fontSize: 18,
-                              ),
-                              border: InputBorder.none,
-                              isDense: true,
-                              counterText: '',
-                              contentPadding: const EdgeInsets.only(bottom: 4),
-                            ),
-                          )
-                      ),
+          Expanded(
+            child:
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+              Container(
+                  width: double.infinity,
+                  height: 48,
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: Color(0xA37CAAFA),
+                      width: 1,
                     ),
+                    borderRadius: BorderRadius.circular(16),
+                    color: Colors.white,
                   ),
-                  SizedBox(width: 12,),
-                ],
-              )
-            ),
-
+                  child: Row(
+                    children: [
+                      SizedBox(width: 12,),
+                      Expanded(
+                        child: SizedBox(
+                          height: 48,
+                          child: Center(
+                              child: TextField(
+                                keyboardType: TextInputType.number,
+                                textInputAction: TextInputAction.done,
+                                cursorHeight: 18,
+                                textAlignVertical: TextAlignVertical.center,
+                                maxLength: 11,
+                                maxLengthEnforcement: MaxLengthEnforcement.enforced,
+                                style: const TextStyle(
+                                  fontSize: 18,
+                                  color: Color(0xff1B2028),
+                                ),
+                                decoration: InputDecoration(
+                                  hintText: AppLocalizations.of(context)!.common_mobile_hint,
+                                  hintStyle: const TextStyle(
+                                    color: Color(0xff8395B4),
+                                    fontSize: 18,
+                                  ),
+                                  border: InputBorder.none,
+                                  isDense: true,
+                                  counterText: '',
+                                  contentPadding: const EdgeInsets.only(bottom: 4),
+                                ),
+                              )
+                          ),
+                        ),
+                      ),
+                      SizedBox(width: 12,),
+                    ],
+                  )
+              ),
+              (mobileError.isEmpty) ? SizedBox.shrink()
+                  : Text(
+                mobileError,
+                style: const TextStyle(
+                  color: Color(0xff1E11D48),
+                  fontSize: 14,
+                ),
+                textAlign: TextAlign.left,
+              ),
+            ],)
           ),
         ],),
 

@@ -39,7 +39,7 @@ class Rms2SafetyPageState extends State<Rms2SafetyPage> {
           Row(children: [
             TextButton(
               onPressed: () {
-                Navigation.startPageRight(context, SignPage());
+                Navigation.startPageRight(context, SignPage(), 'signin');
               },
               style: TextButton.styleFrom(
                 foregroundColor: Colors.blue,

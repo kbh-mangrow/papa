@@ -1,9 +1,10 @@
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class Navigation {
 
-  static void startPageBottom(BuildContext context, Widget page) {
+  static void startPageBottom(BuildContext context, Widget page, String name) {
     Navigator.push(context,
       PageRouteBuilder(
         pageBuilder: (context, animation, secondaryAnimation) => page,
@@ -20,11 +21,12 @@ class Navigation {
             child: child,
           );
         },
+        settings: RouteSettings(name: '/${name}'),
       ),
     );
   }
 
-  static void startPageRight(BuildContext context, Widget page) {
+  static void startPageRight(BuildContext context, Widget page, String name) {
     Navigator.push(
       context,
       PageRouteBuilder(
@@ -42,10 +44,11 @@ class Navigation {
             child: child,
           );
         },
+        settings: RouteSettings(name: '/${name}'),
       ),
     );
   }
-  static void startPageFade(BuildContext context, Widget page) {
+  static void startPageFade(BuildContext context, Widget page, String name) {
     Navigator.push(
       context,
       PageRouteBuilder(
@@ -62,18 +65,35 @@ class Navigation {
             child: child,
           );
         },
+        settings: RouteSettings(name: '/${name}'),
       ),
     );
   }
 
-  static void startPageNoAnimation(BuildContext context, Widget page) {
+  static void startPageNoAnimation(BuildContext context, Widget page, String name) {
     Navigator.push(
       context,
       PageRouteBuilder(
         transitionDuration: Duration.zero,
         reverseTransitionDuration: Duration.zero,
         pageBuilder: (context, animation, secondaryAnimation) => page,
+        settings: RouteSettings(name: '/${name}'),
       ),
+    );
+  }
+  static void homePage(BuildContext context) {
+    Navigator.popUntil(
+      context, (route) => route.isFirst,
+    );
+  }
+  static void startPageByHome(BuildContext context, Widget page, String name) {
+    Navigator.pushAndRemoveUntil(
+      context,
+      MaterialPageRoute(
+        builder: (_) => page,
+        settings: RouteSettings(name: '/${name}'),
+      ),
+          (route) => route.isFirst,
     );
   }
 }

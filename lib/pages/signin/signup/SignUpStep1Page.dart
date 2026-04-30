@@ -2,8 +2,8 @@
 import 'package:flutter/material.dart' hide VoidCallback;
 import 'package:flutter/services.dart';
 import 'package:papa/PapaComm.dart';
-import '../../../Storage.dart';
-import '../../../l10n/app_localizations.dart';
+import '../../../../Storage.dart';
+import '../../../../l10n/app_localizations.dart';
 
 //====================================================
 final String tag = 'SignUpStep1Page.dart';

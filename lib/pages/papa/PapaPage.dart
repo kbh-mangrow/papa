@@ -68,7 +68,7 @@ class PapaPageState extends State<PapaPage> {
             AppLocalizations.of(context)!.cancel,
             AppLocalizations.of(context)!.ok, (status) {
               if (status == 1) {
-                Navigation.startPageBottom(context, SignInPage());
+                Navigation.startPageBottom(context, SignInPage(), 'signin');
               }
             });
       }

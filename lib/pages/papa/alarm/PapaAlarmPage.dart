@@ -41,6 +41,7 @@ class PapaAlarmPageState extends State<PapaAlarmPage> {
       backgroundColor: Color(0xffF7FAFF),
       body: Column(
         children: [
+          
           const SizedBox(height: 10),
           isEmpty
               ? Center(
@@ -115,7 +116,6 @@ class PapaAlarmPageState extends State<PapaAlarmPage> {
                               color: Colors.white,
                               borderRadius: borderRadius,
                               child: InkWell(
-
                                 onTap: () {
                                   print('선택됨: $item');
                                 },

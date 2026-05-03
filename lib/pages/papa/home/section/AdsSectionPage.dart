@@ -44,7 +44,7 @@ class AdsSectionPageState extends State<AdsSectionPage> {
                     'https://cdn.the-pr.co.kr/news/photo/202504/53285_85849_3942.jpg',
                     width: double.infinity,
                     height: double.infinity,
-                    fit: BoxFit.fitHeight,
+                    fit: BoxFit.cover,
                     errorBuilder: (context, error, stackTrace) {
                       return Image.asset(
                         'image/img_default.png',

@@ -15,7 +15,7 @@ class PapaComm {
                               home: home);
   }
   static bool isSignIn() {
-    return false;
+    return true;
   }
   static String getWeekDay(BuildContext context, int weekday) {
     var days = [AppLocalizations.of(context)!.mon,

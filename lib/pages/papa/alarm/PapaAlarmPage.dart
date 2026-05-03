@@ -20,7 +20,7 @@ class PapaAlarmPageState extends State<PapaAlarmPage> {
   final Map<String, List<String>> sectionData = {
     '오늘': List.generate(3, (i) => '오늘 알림 ${i + 1}'),
     '어제': List.generate(2, (i) => '어제 알림 ${i + 1}'),
-    '그제': List.generate(1, (i) => '그제 알림 ${i + 1}'),
+    '2026.04.30': List.generate(1, (i) => '그제 알림 ${i + 1}'),
   };
 
 
@@ -41,23 +41,40 @@ class PapaAlarmPageState extends State<PapaAlarmPage> {
       backgroundColor: Color(0xffF7FAFF),
       body: Column(
         children: [
-          
-          const SizedBox(height: 10),
-          isEmpty
+          Container(
+            color: Colors.white,
+            padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
+            width: double.infinity,
+            height: 56,
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: Text(AppLocalizations.of(context)!.papa_alarm_title,
+                style: TextStyle(
+                    color: Color(0xff111827),
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold
+                ),
+                textAlign: TextAlign.left,
+              ),
+            )
+          ),
+          (isEmpty)
               ? Center(
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
+                SizedBox(height: 100,),
                 Image.asset(
-                  'images/empty.png',
-                  width: 120,
+                  'image/alarm_none.png',
+                  width: 240,
+                  height: 240,
                 ),
                 const SizedBox(height: 12),
-                const Text(
-                  '알림이 없습니다',
+                Text(
+                  AppLocalizations.of(context)!.papa_alarm_none,
                   style: TextStyle(
-                    color: Color(0xff8395B4),
-                    fontSize: 14,
+                    color: Color(0xff67758E),
+                    fontSize: 16,
                   ),
                 ),
               ],
@@ -69,22 +86,33 @@ class PapaAlarmPageState extends State<PapaAlarmPage> {
                 for (final section in sectionData.keys)
                   SliverStickyHeader(
                     header: Container(
-                      height: 44,
+                      height: 56,
                       color: const Color(0xffF7FAFF),
                       padding: const EdgeInsets.symmetric(horizontal: 16),
                       alignment: Alignment.centerLeft,
-                      child: Text(
-                        section,
-                        style: const TextStyle(
-                          color: Color(0xff1B2028),
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
+                      child: Container(
+                        height: 24,
+                        padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: Color(0x527CAAFA),
+                            width: 2,
+                          ),
+                          borderRadius: BorderRadius.circular(12),
+                          color: Color(0xffDCEAFF),
+                        ),
+                        child: Text(
+                          section,
+                          style: const TextStyle(
+                            color: Color(0xff0C3766),
+                            fontSize: 16,
+                            height: 1.2
+                          ),
                         ),
                       ),
                     ),
-                    sliver: SliverList(
-                      delegate: SliverChildBuilderDelegate(
-                            (context, index) {
+                    sliver: SliverList(delegate:
+                      SliverChildBuilderDelegate((context, index) {
                           final items = sectionData[section]!;
                           final item = items[index];
 
@@ -122,25 +150,18 @@ class PapaAlarmPageState extends State<PapaAlarmPage> {
                                 child: Column(
                                   children: [
                                     SizedBox(
-                                      height: 150,
                                       child: Padding(
                                         padding: const EdgeInsets.symmetric(horizontal: 16),
                                         child: Align(
                                           alignment: Alignment.centerLeft,
-                                          child: Text(
-                                            item,
-                                            style: const TextStyle(
-                                              color: Color(0xff1B2028),
-                                              fontSize: 14,
-                                            ),
-                                          ),
+                                          child: getAlarmLayer(0, item) //각 알람 아이템
                                         ),
                                       ),
                                     ),
 
                                     if (!isLast)
                                       Container(
-                                        margin: const EdgeInsets.only(left: 16),
+                                        margin: const EdgeInsets.only(left: 66),
                                         height: 1,
                                         color: const Color(0xffeeeeee),
                                       ),
@@ -154,56 +175,101 @@ class PapaAlarmPageState extends State<PapaAlarmPage> {
                       ),
                     ),
                   ),
+
               ],
             ),
           ),
-
+          SizedBox(height: 100,),
         ],
       ),
     );
 
   }
 
+  Widget getAlarmLayer(int type, String text) {
+    Widget layer;
+    switch (type) {
+      case 0: {
+        layer = Stack(
+          children: [
+            Container(
+              padding: EdgeInsets.symmetric(
+                horizontal: 0,
+                vertical: 14,
+              ),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Image.asset(
+                    'image/alarm.png',
+                    width: 36,
+                    height: 36,
+                  ),
+                  SizedBox(width: 14,),
+                  Expanded(child:
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('사고번호 : 260407-A0001',
+                          style: TextStyle(
+                            color: Color(0xff478DFA),
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold
+                          ),
+                          textAlign: TextAlign.left,
+                        ),
+                        SizedBox(height: 4,),
+                        Text('자원봉사자 보고서 제출 완료',
+                          style: TextStyle(
+                            color: Color(0xff111827),
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold
+                          ),
+                          textAlign: TextAlign.left,
+                        ),
+                        SizedBox(height: 4,),
+                        Text(
+                          '제출하신 보고서를 검토 중입니다. 검토가 완료되면 알려드리겠습니다.',
+                          style: TextStyle(
+                            color: Color(0xff67758E),
+                            fontSize: 14,
+                          ),
+                        ),
+
+                      ],
+                    )
+                  ),
+                ],
+              ),
+            ),
+            Positioned(
+              top: 10,
+              left: 30,
+              child: Image.asset(
+                'image/indicator.png',
+                width: 10,
+                height: 10,
+              ),
+            ),
+            Positioned(
+              top: 14,
+              right: 0,
+              child: Text('방금',
+                style: TextStyle(
+                    color: Color(0xff8395B4),
+                    fontSize: 12,
+                ),
+              ),
+            ),
+          ],
+        );
+        break;
+      }
+      default:
+        layer = SizedBox();
+    }
+    return layer;
+  }
 
 }
 
-class SectionHeaderDelegate extends SliverPersistentHeaderDelegate {
-  final String title;
-
-  SectionHeaderDelegate({required this.title});
-
-  @override
-  double get minExtent => 150;
-
-  @override
-  double get maxExtent => 150;
-
-  @override
-  Widget build(
-      BuildContext context,
-      double shrinkOffset,
-      bool overlapsContent,
-      ) {
-    return Material(
-      color: const Color(0xffF7FAFF), // 배경 확실히
-      child: Container(
-        height: 150,
-        padding: const EdgeInsets.symmetric(horizontal: 16),
-        alignment: Alignment.centerLeft,
-        child: Text(
-          title,
-          style: const TextStyle(
-            color: Color(0xff1B2028),
-            fontSize: 16,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-      ),
-    );
-  }
-
-  @override
-  bool shouldRebuild(covariant SectionHeaderDelegate oldDelegate) {
-    return oldDelegate.title != title;
-  }
-}

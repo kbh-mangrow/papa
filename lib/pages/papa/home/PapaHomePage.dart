@@ -40,7 +40,7 @@ class PapaHomePageState extends State<PapaHomePage> {
       backgroundColor: Color(0xffF7FAFF),
       body: Column(
         children: [
-          const SizedBox(height: 40),
+          const SizedBox(height: 16),
           Padding(
             padding: EdgeInsets.symmetric(
               horizontal: 16,

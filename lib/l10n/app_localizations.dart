@@ -167,6 +167,12 @@ abstract class AppLocalizations {
   /// **'가입'**
   String get complete;
 
+  /// No description provided for @view.
+  ///
+  /// In en, this message translates to:
+  /// **'더보기'**
+  String get view;
+
   /// No description provided for @sun.
   ///
   /// In en, this message translates to:
@@ -208,6 +214,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Sat'**
   String get sat;
+
+  /// No description provided for @today.
+  ///
+  /// In en, this message translates to:
+  /// **'오늘'**
+  String get today;
+
+  /// No description provided for @yesterday.
+  ///
+  /// In en, this message translates to:
+  /// **'어제'**
+  String get yesterday;
 
   /// No description provided for @signin_welcome.
   ///
@@ -598,6 +616,204 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'택배아빠와 함께하는 깜짝 이벤트'**
   String get papa_home_event_descr;
+
+  /// No description provided for @papa_alarm_title.
+  ///
+  /// In en, this message translates to:
+  /// **'알림'**
+  String get papa_alarm_title;
+
+  /// No description provided for @papa_alarm_none.
+  ///
+  /// In en, this message translates to:
+  /// **'알림 내역이 없습니다'**
+  String get papa_alarm_none;
+
+  /// No description provided for @papa_prod_title.
+  ///
+  /// In en, this message translates to:
+  /// **'혜택'**
+  String get papa_prod_title;
+
+  /// No description provided for @papa_prod_finance.
+  ///
+  /// In en, this message translates to:
+  /// **'금융 상품'**
+  String get papa_prod_finance;
+
+  /// No description provided for @papa_prod_finance_descr.
+  ///
+  /// In en, this message translates to:
+  /// **'오직 택배아빠에서만 가능한 금융 상품'**
+  String get papa_prod_finance_descr;
+
+  /// No description provided for @papa_prod_partner.
+  ///
+  /// In en, this message translates to:
+  /// **'파트너 제휴 혜택'**
+  String get papa_prod_partner;
+
+  /// No description provided for @papa_prod_partner_descr.
+  ///
+  /// In en, this message translates to:
+  /// **'택배아빠가 엄선한 제휴 혜택'**
+  String get papa_prod_partner_descr;
+
+  /// No description provided for @papa_prod_event.
+  ///
+  /// In en, this message translates to:
+  /// **'이벤트'**
+  String get papa_prod_event;
+
+  /// No description provided for @papa_prod_event_descr.
+  ///
+  /// In en, this message translates to:
+  /// **'택배아빠와 함께하는 깜짝 이벤트'**
+  String get papa_prod_event_descr;
+
+  /// No description provided for @papa_my_hello.
+  ///
+  /// In en, this message translates to:
+  /// **'안녕하세요.'**
+  String get papa_my_hello;
+
+  /// No description provided for @papa_my_name.
+  ///
+  /// In en, this message translates to:
+  /// **'님'**
+  String get papa_my_name;
+
+  /// No description provided for @papa_my_navi_delivery_status.
+  ///
+  /// In en, this message translates to:
+  /// **'현재 RMS II 가 시작 화면으로 설정되어 있습니다.'**
+  String get papa_my_navi_delivery_status;
+
+  /// No description provided for @papa_my_navi_delivery.
+  ///
+  /// In en, this message translates to:
+  /// **'택배아빠를 시작 화면으로 설정하기'**
+  String get papa_my_navi_delivery;
+
+  /// No description provided for @papa_my_use_service.
+  ///
+  /// In en, this message translates to:
+  /// **'이용중인 서비스'**
+  String get papa_my_use_service;
+
+  /// No description provided for @papa_my_settings.
+  ///
+  /// In en, this message translates to:
+  /// **'설정'**
+  String get papa_my_settings;
+
+  /// No description provided for @papa_my_settings_informaion.
+  ///
+  /// In en, this message translates to:
+  /// **'내 정보 상세'**
+  String get papa_my_settings_informaion;
+
+  /// No description provided for @papa_my_settings_alarm.
+  ///
+  /// In en, this message translates to:
+  /// **'알림 설정'**
+  String get papa_my_settings_alarm;
+
+  /// No description provided for @papa_my_settings_change_password.
+  ///
+  /// In en, this message translates to:
+  /// **'비밀번호 변경'**
+  String get papa_my_settings_change_password;
+
+  /// No description provided for @papa_my_settings_terms.
+  ///
+  /// In en, this message translates to:
+  /// **'가입 약관 및 정책'**
+  String get papa_my_settings_terms;
+
+  /// No description provided for @papa_my_settings_signout.
+  ///
+  /// In en, this message translates to:
+  /// **'로그아웃'**
+  String get papa_my_settings_signout;
+
+  /// No description provided for @papa_my_info_type.
+  ///
+  /// In en, this message translates to:
+  /// **'유형'**
+  String get papa_my_info_type;
+
+  /// No description provided for @papa_my_info_id.
+  ///
+  /// In en, this message translates to:
+  /// **'ID'**
+  String get papa_my_info_id;
+
+  /// No description provided for @papa_my_info_name.
+  ///
+  /// In en, this message translates to:
+  /// **'이름'**
+  String get papa_my_info_name;
+
+  /// No description provided for @papa_my_info_email.
+  ///
+  /// In en, this message translates to:
+  /// **'이메일'**
+  String get papa_my_info_email;
+
+  /// No description provided for @papa_my_info_phone.
+  ///
+  /// In en, this message translates to:
+  /// **'전화번호'**
+  String get papa_my_info_phone;
+
+  /// No description provided for @papa_my_info_withdraw.
+  ///
+  /// In en, this message translates to:
+  /// **'회원 탈퇴'**
+  String get papa_my_info_withdraw;
+
+  /// No description provided for @papa_alarm_allow.
+  ///
+  /// In en, this message translates to:
+  /// **'알림 허용'**
+  String get papa_alarm_allow;
+
+  /// No description provided for @papa_alarm_prod.
+  ///
+  /// In en, this message translates to:
+  /// **'혜택 알림'**
+  String get papa_alarm_prod;
+
+  /// No description provided for @papa_alarm_prod_descr.
+  ///
+  /// In en, this message translates to:
+  /// **'보험, 금융 상품 등의 알림'**
+  String get papa_alarm_prod_descr;
+
+  /// No description provided for @papa_alarm_notice.
+  ///
+  /// In en, this message translates to:
+  /// **'새소식 알림'**
+  String get papa_alarm_notice;
+
+  /// No description provided for @papa_alarm_notice_descr.
+  ///
+  /// In en, this message translates to:
+  /// **'마케팅, 이벤트 등의 알림'**
+  String get papa_alarm_notice_descr;
+
+  /// No description provided for @papa_alarm_etc.
+  ///
+  /// In en, this message translates to:
+  /// **'기타 알림'**
+  String get papa_alarm_etc;
+
+  /// No description provided for @papa_alarm_etc_descr.
+  ///
+  /// In en, this message translates to:
+  /// **'보험 약관 업데이트, 공지 등의 알림'**
+  String get papa_alarm_etc_descr;
 
   /// No description provided for @rms2_tab_home.
   ///

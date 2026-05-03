@@ -45,6 +45,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get complete => '가입';
 
   @override
+  String get view => '더보기';
+
+  @override
   String get sun => 'Sun';
 
   @override
@@ -64,6 +67,12 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get sat => 'Sat';
+
+  @override
+  String get today => '오늘';
+
+  @override
+  String get yesterday => '어제';
 
   @override
   String get signin_welcome => ' 에\n오신 것을 환영합니다! 👋';
@@ -261,6 +270,105 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get papa_home_event_descr => '택배아빠와 함께하는 깜짝 이벤트';
+
+  @override
+  String get papa_alarm_title => '알림';
+
+  @override
+  String get papa_alarm_none => '알림 내역이 없습니다';
+
+  @override
+  String get papa_prod_title => '혜택';
+
+  @override
+  String get papa_prod_finance => '금융 상품';
+
+  @override
+  String get papa_prod_finance_descr => '오직 택배아빠에서만 가능한 금융 상품';
+
+  @override
+  String get papa_prod_partner => '파트너 제휴 혜택';
+
+  @override
+  String get papa_prod_partner_descr => '택배아빠가 엄선한 제휴 혜택';
+
+  @override
+  String get papa_prod_event => '이벤트';
+
+  @override
+  String get papa_prod_event_descr => '택배아빠와 함께하는 깜짝 이벤트';
+
+  @override
+  String get papa_my_hello => '안녕하세요.';
+
+  @override
+  String get papa_my_name => '님';
+
+  @override
+  String get papa_my_navi_delivery_status => '현재 RMS II 가 시작 화면으로 설정되어 있습니다.';
+
+  @override
+  String get papa_my_navi_delivery => '택배아빠를 시작 화면으로 설정하기';
+
+  @override
+  String get papa_my_use_service => '이용중인 서비스';
+
+  @override
+  String get papa_my_settings => '설정';
+
+  @override
+  String get papa_my_settings_informaion => '내 정보 상세';
+
+  @override
+  String get papa_my_settings_alarm => '알림 설정';
+
+  @override
+  String get papa_my_settings_change_password => '비밀번호 변경';
+
+  @override
+  String get papa_my_settings_terms => '가입 약관 및 정책';
+
+  @override
+  String get papa_my_settings_signout => '로그아웃';
+
+  @override
+  String get papa_my_info_type => '유형';
+
+  @override
+  String get papa_my_info_id => 'ID';
+
+  @override
+  String get papa_my_info_name => '이름';
+
+  @override
+  String get papa_my_info_email => '이메일';
+
+  @override
+  String get papa_my_info_phone => '전화번호';
+
+  @override
+  String get papa_my_info_withdraw => '회원 탈퇴';
+
+  @override
+  String get papa_alarm_allow => '알림 허용';
+
+  @override
+  String get papa_alarm_prod => '혜택 알림';
+
+  @override
+  String get papa_alarm_prod_descr => '보험, 금융 상품 등의 알림';
+
+  @override
+  String get papa_alarm_notice => '새소식 알림';
+
+  @override
+  String get papa_alarm_notice_descr => '마케팅, 이벤트 등의 알림';
+
+  @override
+  String get papa_alarm_etc => '기타 알림';
+
+  @override
+  String get papa_alarm_etc_descr => '보험 약관 업데이트, 공지 등의 알림';
 
   @override
   String get rms2_tab_home => '홈';

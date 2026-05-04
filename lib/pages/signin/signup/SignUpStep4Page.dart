@@ -128,11 +128,26 @@ class SignUpStep4PageState extends State<SignUpStep4Page> {
                       height: 28,
                     ),
                     const SizedBox(width: 8),
-                    Text(
-                      AppLocalizations.of(context)!.terms_group,
-                      style: const TextStyle(
-                        color: Color(0xff1B2028),
-                        fontSize: 16,
+                    Expanded(child: Text(
+                        AppLocalizations.of(context)!.terms_group,
+                        style: const TextStyle(
+                          color: Color(0xff1B2028),
+                          fontSize: 16,
+                        ),
+                      ),
+                    ),
+                    Container(
+                      width: 48,
+                      height: 48,
+                      child: InkWell(
+                        onTap: () {},
+                        child: Center(
+                          child: SizedBox(
+                            width: 16,
+                            height: 16,
+                            child: Image.asset('image/arrow_right.png'),
+                          ),
+                        )
                       ),
                     ),
                     const SizedBox(width: 5),
@@ -173,11 +188,26 @@ class SignUpStep4PageState extends State<SignUpStep4Page> {
                       height: 28,
                     ),
                     const SizedBox(width: 8),
-                    Text(
+                    Expanded(child: Text(
                       AppLocalizations.of(context)!.terms_privacy,
                       style: const TextStyle(
                         color: Color(0xff1B2028),
                         fontSize: 16,
+                      ),
+                    ),
+                    ),
+                    Container(
+                      width: 48,
+                      height: 48,
+                      child: InkWell(
+                          onTap: () {},
+                          child: Center(
+                            child: SizedBox(
+                              width: 16,
+                              height: 16,
+                              child: Image.asset('image/arrow_right.png'),
+                            ),
+                          )
                       ),
                     ),
                     const SizedBox(width: 5),
@@ -218,11 +248,26 @@ class SignUpStep4PageState extends State<SignUpStep4Page> {
                       height: 28,
                     ),
                     const SizedBox(width: 8),
-                    Text(
+                    Expanded(child: Text(
                       AppLocalizations.of(context)!.terms_service,
                       style: const TextStyle(
                         color: Color(0xff1B2028),
                         fontSize: 16,
+                      ),
+                    ),
+                    ),
+                    Container(
+                      width: 48,
+                      height: 48,
+                      child: InkWell(
+                          onTap: () {},
+                          child: Center(
+                            child: SizedBox(
+                              width: 16,
+                              height: 16,
+                              child: Image.asset('image/arrow_right.png'),
+                            ),
+                          )
                       ),
                     ),
                     const SizedBox(width: 5),
@@ -263,11 +308,26 @@ class SignUpStep4PageState extends State<SignUpStep4Page> {
                       height: 28,
                     ),
                     const SizedBox(width: 8),
-                    Text(
+                    Expanded(child: Text(
                       AppLocalizations.of(context)!.terms_information,
                       style: const TextStyle(
                         color: Color(0xff1B2028),
                         fontSize: 16,
+                      ),
+                    ),
+                    ),
+                    Container(
+                      width: 48,
+                      height: 48,
+                      child: InkWell(
+                          onTap: () {},
+                          child: Center(
+                            child: SizedBox(
+                              width: 16,
+                              height: 16,
+                              child: Image.asset('image/arrow_right.png'),
+                            ),
+                          )
                       ),
                     ),
                     const SizedBox(width: 5),
@@ -308,11 +368,26 @@ class SignUpStep4PageState extends State<SignUpStep4Page> {
                       height: 28,
                     ),
                     const SizedBox(width: 8),
-                    Text(
+                    Expanded(child: Text(
                       AppLocalizations.of(context)!.terms_provision,
                       style: const TextStyle(
                         color: Color(0xff1B2028),
                         fontSize: 16,
+                      ),
+                    ),
+                    ),
+                    Container(
+                      width: 48,
+                      height: 48,
+                      child: InkWell(
+                          onTap: () {},
+                          child: Center(
+                            child: SizedBox(
+                              width: 16,
+                              height: 16,
+                              child: Image.asset('image/arrow_right.png'),
+                            ),
+                          )
                       ),
                     ),
                     const SizedBox(width: 5),
@@ -353,11 +428,26 @@ class SignUpStep4PageState extends State<SignUpStep4Page> {
                       height: 28,
                     ),
                     const SizedBox(width: 8),
-                    Text(
+                    Expanded(child: Text(
                       AppLocalizations.of(context)!.terms_marketing,
                       style: const TextStyle(
                         color: Color(0xff1B2028),
                         fontSize: 16,
+                      ),
+                    ),
+                    ),
+                    Container(
+                      width: 48,
+                      height: 48,
+                      child: InkWell(
+                          onTap: () {},
+                          child: Center(
+                            child: SizedBox(
+                              width: 16,
+                              height: 16,
+                              child: Image.asset('image/arrow_right.png'),
+                            ),
+                          )
                       ),
                     ),
                     const SizedBox(width: 5),
@@ -398,11 +488,26 @@ class SignUpStep4PageState extends State<SignUpStep4Page> {
                       height: 28,
                     ),
                     const SizedBox(width: 8),
-                    Text(
+                    Expanded(child: Text(
                       AppLocalizations.of(context)!.terms_ads,
                       style: const TextStyle(
                         color: Color(0xff1B2028),
                         fontSize: 16,
+                      ),
+                    ),
+                    ),
+                    Container(
+                      width: 48,
+                      height: 48,
+                      child: InkWell(
+                          onTap: () {},
+                          child: Center(
+                            child: SizedBox(
+                              width: 16,
+                              height: 16,
+                              child: Image.asset('image/arrow_right.png'),
+                            ),
+                          )
                       ),
                     ),
                     const SizedBox(width: 5),

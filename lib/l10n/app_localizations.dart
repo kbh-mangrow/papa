@@ -815,6 +815,42 @@ abstract class AppLocalizations {
   /// **'보험 약관 업데이트, 공지 등의 알림'**
   String get papa_alarm_etc_descr;
 
+  /// No description provided for @change_password_now.
+  ///
+  /// In en, this message translates to:
+  /// **'현재 비밀번호'**
+  String get change_password_now;
+
+  /// No description provided for @change_password_now_hint.
+  ///
+  /// In en, this message translates to:
+  /// **'현재 비밀번호를 입력해 주세요.'**
+  String get change_password_now_hint;
+
+  /// No description provided for @change_password_new.
+  ///
+  /// In en, this message translates to:
+  /// **'새 비밀번호'**
+  String get change_password_new;
+
+  /// No description provided for @change_password_new_hint.
+  ///
+  /// In en, this message translates to:
+  /// **'새 비밀번호를 입력해 주세요.'**
+  String get change_password_new_hint;
+
+  /// No description provided for @change_password_new_re_hint.
+  ///
+  /// In en, this message translates to:
+  /// **'새 비밀번호를 다시 입력해 주세요.'**
+  String get change_password_new_re_hint;
+
+  /// No description provided for @change_password_error.
+  ///
+  /// In en, this message translates to:
+  /// **'비밀번호 형식오류. (영문/숫자 포함 8자 이상 ~ 30자 미만)'**
+  String get change_password_error;
+
   /// No description provided for @rms2_tab_home.
   ///
   /// In en, this message translates to:

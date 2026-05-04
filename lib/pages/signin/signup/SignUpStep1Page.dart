@@ -17,7 +17,7 @@ class SignUpStep1Page extends StatefulWidget {
 }
 
 class SignUpStep1PageState extends State<SignUpStep1Page> {
-  String idError = '';
+  String idError = 'a';
   String passwordError = '';
   String rePasswordError = '';
 

@@ -353,7 +353,7 @@ class PapaMyPageState extends State<PapaMyPage> {
                                   alignment: Alignment.bottomCenter,
                                   child: Container(
                                     height: 1,
-                                    margin: const EdgeInsets.only(left: 52),
+                                    margin: const EdgeInsets.only(left: 36),
                                     color: const Color(0xffE5E8EF),
                                   ),
                                 ),
@@ -408,7 +408,7 @@ class PapaMyPageState extends State<PapaMyPage> {
                                     alignment: Alignment.bottomCenter,
                                     child: Container(
                                       height: 1,
-                                      margin: const EdgeInsets.only(left: 52),
+                                      margin: const EdgeInsets.only(left: 36),
                                       color: const Color(0xffE5E8EF),
                                     ),
                                   ),
@@ -463,7 +463,7 @@ class PapaMyPageState extends State<PapaMyPage> {
                                     alignment: Alignment.bottomCenter,
                                     child: Container(
                                       height: 1,
-                                      margin: const EdgeInsets.only(left: 52),
+                                      margin: const EdgeInsets.only(left: 36),
                                       color: const Color(0xffE5E8EF),
                                     ),
                                   ),

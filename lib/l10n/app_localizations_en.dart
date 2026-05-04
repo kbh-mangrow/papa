@@ -371,6 +371,24 @@ class AppLocalizationsEn extends AppLocalizations {
   String get papa_alarm_etc_descr => '보험 약관 업데이트, 공지 등의 알림';
 
   @override
+  String get change_password_now => '현재 비밀번호';
+
+  @override
+  String get change_password_now_hint => '현재 비밀번호를 입력해 주세요.';
+
+  @override
+  String get change_password_new => '새 비밀번호';
+
+  @override
+  String get change_password_new_hint => '새 비밀번호를 입력해 주세요.';
+
+  @override
+  String get change_password_new_re_hint => '새 비밀번호를 다시 입력해 주세요.';
+
+  @override
+  String get change_password_error => '비밀번호 형식오류. (영문/숫자 포함 8자 이상 ~ 30자 미만)';
+
+  @override
   String get rms2_tab_home => '홈';
 
   @override
